@@ -1,0 +1,57 @@
+=== Customs - EU Import Duty for WooCommerce ===
+Contributors: motylanogha
+Tags: woocommerce, import duty, customs, eu, checkout
+Requires at least: 6.5
+Tested up to: 7.0
+Requires PHP: 8.1
+Stable tag: 0.1.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+Estimate and add the EU flat import duty as a clear checkout line for parcels shipped into the EU from outside it. WooCommerce ready.
+
+== Description ==
+
+From 1 July 2026 the EU removes the 150 EUR duty-free threshold for low-value imports and applies a flat customs duty per tariff line on consignments up to 150 EUR shipped into the EU from outside it. Customs estimates that duty and shows it to the shopper as its own line at cart and checkout, so there are no surprise charges on delivery.
+
+It only adds the duty when all of these are true: the feature is enabled, the store ships from outside the EU, the destination is an EU country, and the cart goods value is at or below your threshold. Intra-EU orders and orders over the threshold are left untouched.
+
+What it does:
+
+* Adds an "EU import duty (estimate)" fee at cart and checkout using the native WooCommerce fees API
+* Calculates the duty as the number of distinct tariff lines in the cart multiplied by your per-line amount
+* Counts tariff lines from a per-product tariff code, falling back to the product category, then the product
+* Works in the classic checkout and the Cart and Checkout Blocks, and is HPOS compatible
+* Per-line amount, threshold, store origin country, EUR conversion rate, tariff-line basis, fee label and taxable flag are all configurable
+* Adds taxes on top: the duty is shown as its own line in addition to VAT
+
+This is the WooCommerce equivalent of the import duty handling that hosted platforms add at checkout, without a monthly subscription.
+
+== Installation ==
+
+1. Install and activate WooCommerce.
+2. Install Customs and activate it.
+3. Open WooCommerce and then EU Import Duty, set your per-line amount and threshold, and confirm your store origin country.
+4. Assign tariff lines to products if you want finer control, otherwise each distinct product category counts as one line.
+
+== Frequently Asked Questions ==
+
+= When does the duty apply? =
+Only for orders shipping to an EU country from a store based outside the EU, with a goods value at or below your threshold (150 EUR by default). Intra-EU orders are excluded.
+
+= How is the duty calculated? =
+The number of distinct tariff lines in the cart multiplied by your per-line amount (3 EUR by default). A parcel of one product type is one line; a parcel spanning several distinct categories counts as several lines.
+
+= Does it work with the Cart and Checkout Blocks? =
+Yes. The duty is added through the native WooCommerce fees API, so it appears in both the classic checkout and the Blocks checkout, and it is HPOS compatible.
+
+= Is the amount exact? =
+It is an estimate based on your settings. Final duties and any national handling fees are determined by customs at import. Keep your per-line amount and threshold up to date with current rules.
+
+= Can I sell in a currency other than EUR? =
+Yes. Set the EUR to store-currency rate in the settings and the duty is converted before it is added.
+
+== Changelog ==
+
+= 0.1.0 =
+* Initial release: EU flat import duty estimated and added as a cart and checkout fee, with configurable per-line amount, threshold, store origin, currency rate, tariff-line basis, label and taxable flag.

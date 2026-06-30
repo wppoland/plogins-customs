@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Customs\Admin;
+namespace Customs\Admin;
 
-use Plogins\Customs\Contract\HasHooks;
-use Plogins\Customs\Geo\EuMembership;
-use Plogins\Customs\Settings\SettingsRepository;
+use Customs\Contract\HasHooks;
+use Customs\Geo\EuMembership;
+use Customs\Settings\SettingsRepository;
 
 defined('ABSPATH') || exit;
 
@@ -34,15 +34,15 @@ final class Settings implements HasHooks
     public function registerHooks(): void
     {
         add_action('admin_menu', [$this, 'registerMenu']);
-        add_filter('plugin_action_links_' . plugin_basename(\Plogins\Customs\PLUGIN_FILE), [$this, 'actionLinks']);
+        add_filter('plugin_action_links_' . plugin_basename(\Customs\PLUGIN_FILE), [$this, 'actionLinks']);
     }
 
     public function registerMenu(): void
     {
         add_submenu_page(
             'woocommerce',
-            __('EU Import Duty', 'plogins-customs'),
-            __('EU Import Duty', 'plogins-customs'),
+            __('EU Import Duty', 'customs'),
+            __('EU Import Duty', 'customs'),
             self::CAPABILITY,
             self::PAGE_SLUG,
             [$this, 'render']
@@ -62,7 +62,7 @@ final class Settings implements HasHooks
         $url = admin_url('admin.php?page=' . self::PAGE_SLUG);
         array_unshift(
             $links,
-            '<a href="' . esc_url($url) . '">' . esc_html__('Settings', 'plogins-customs') . '</a>'
+            '<a href="' . esc_url($url) . '">' . esc_html__('Settings', 'customs') . '</a>'
         );
 
         return $links;
@@ -71,7 +71,7 @@ final class Settings implements HasHooks
     public function render(): void
     {
         if (! current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have permission to manage these settings.', 'plogins-customs'));
+            wp_die(esc_html__('You do not have permission to manage these settings.', 'customs'));
         }
 
         $saved = $this->maybeSave();
@@ -79,13 +79,13 @@ final class Settings implements HasHooks
 
         ?>
         <div class="wrap">
-            <h1><?php echo esc_html__('EU Import Duty', 'plogins-customs'); ?></h1>
+            <h1><?php echo esc_html__('EU Import Duty', 'customs'); ?></h1>
             <p class="description">
-                <?php echo esc_html__('From 1 July 2026 the EU charges a flat customs duty per tariff line on parcels up to the goods-value threshold shipped into the EU from outside it. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
+                <?php echo esc_html__('From 1 July 2026 the EU charges a flat customs duty per tariff line on parcels up to the goods-value threshold shipped into the EU from outside it. This estimate is shown as its own pre-tax line at cart and checkout.', 'customs'); ?>
             </p>
 
             <?php if ($saved) : ?>
-                <div class="notice notice-success is-dismissible"><p><?php echo esc_html__('Settings saved.', 'plogins-customs'); ?></p></div>
+                <div class="notice notice-success is-dismissible"><p><?php echo esc_html__('Settings saved.', 'customs'); ?></p></div>
             <?php endif; ?>
 
             <?php $this->renderOriginHint($s); ?>
@@ -94,45 +94,45 @@ final class Settings implements HasHooks
                 <?php wp_nonce_field(self::NONCE_ACTION, self::NONCE_FIELD); ?>
                 <table class="form-table" role="presentation">
                     <tr>
-                        <th scope="row"><?php echo esc_html__('Enable duty estimate', 'plogins-customs'); ?></th>
+                        <th scope="row"><?php echo esc_html__('Enable duty estimate', 'customs'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="enabled" value="1" <?php checked(! empty($s['enabled'])); ?> />
-                                <?php echo esc_html__('Add the EU import duty line to qualifying carts.', 'plogins-customs'); ?>
+                                <?php echo esc_html__('Add the EU import duty line to qualifying carts.', 'customs'); ?>
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="customs_per_line"><?php echo esc_html__('Duty per tariff line (EUR)', 'plogins-customs'); ?></label></th>
+                        <th scope="row"><label for="customs_per_line"><?php echo esc_html__('Duty per tariff line (EUR)', 'customs'); ?></label></th>
                         <td>
                             <input type="number" step="0.01" min="0" id="customs_per_line" name="per_line" value="<?php echo esc_attr((string) $s['per_line']); ?>" class="small-text" />
-                            <p class="description"><?php echo esc_html__('EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028).', 'plogins-customs'); ?></p>
+                            <p class="description"><?php echo esc_html__('EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028).', 'customs'); ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="customs_threshold"><?php echo esc_html__('Goods-value threshold (EUR)', 'plogins-customs'); ?></label></th>
+                        <th scope="row"><label for="customs_threshold"><?php echo esc_html__('Goods-value threshold (EUR)', 'customs'); ?></label></th>
                         <td>
                             <input type="number" step="0.01" min="0" id="customs_threshold" name="threshold" value="<?php echo esc_attr((string) $s['threshold']); ?>" class="small-text" />
-                            <p class="description"><?php echo esc_html__('The duty applies only when the cart goods value is at or below this amount. EU rule: 150 EUR.', 'plogins-customs'); ?></p>
+                            <p class="description"><?php echo esc_html__('The duty applies only when the cart goods value is at or below this amount. EU rule: 150 EUR.', 'customs'); ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="customs_eur_rate"><?php echo esc_html__('Store currency per 1 EUR', 'plogins-customs'); ?></label></th>
+                        <th scope="row"><label for="customs_eur_rate"><?php echo esc_html__('Store currency per 1 EUR', 'customs'); ?></label></th>
                         <td>
                             <input type="number" step="0.0001" min="0" id="customs_eur_rate" name="eur_rate" value="<?php echo esc_attr((string) $s['eur_rate']); ?>" class="small-text" />
                             <p class="description">
                                 <?php
                                 /* translators: %s: store currency code. */
-                                echo esc_html(sprintf(__('Used to convert the EUR amounts into your store currency (%s). Leave at 1 if you sell in EUR.', 'plogins-customs'), get_woocommerce_currency()));
+                                echo esc_html(sprintf(__('Used to convert the EUR amounts into your store currency (%s). Leave at 1 if you sell in EUR.', 'customs'), get_woocommerce_currency()));
                                 ?>
                             </p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="customs_origin_country"><?php echo esc_html__('Store origin country', 'plogins-customs'); ?></label></th>
+                        <th scope="row"><label for="customs_origin_country"><?php echo esc_html__('Store origin country', 'customs'); ?></label></th>
                         <td>
                             <select id="customs_origin_country" name="origin_country">
-                                <option value=""><?php echo esc_html__('Use WooCommerce base country', 'plogins-customs'); ?></option>
+                                <option value=""><?php echo esc_html__('Use WooCommerce base country', 'customs'); ?></option>
                                 <?php
                                 $current = strtoupper((string) $s['origin_country']);
                                 foreach ($this->countryList() as $code => $name) {
@@ -145,42 +145,42 @@ final class Settings implements HasHooks
                                 }
                                 ?>
                             </select>
-                            <p class="description"><?php echo esc_html__('Where parcels ship from. The duty only applies when this is outside the EU.', 'plogins-customs'); ?></p>
+                            <p class="description"><?php echo esc_html__('Where parcels ship from. The duty only applies when this is outside the EU.', 'customs'); ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><?php echo esc_html__('Tariff line basis', 'plogins-customs'); ?></th>
+                        <th scope="row"><?php echo esc_html__('Tariff line basis', 'customs'); ?></th>
                         <td>
                             <fieldset>
                                 <label>
                                     <input type="radio" name="count_basis" value="<?php echo esc_attr(SettingsRepository::BASIS_CATEGORY); ?>" <?php checked($s['count_basis'], SettingsRepository::BASIS_CATEGORY); ?> />
-                                    <?php echo esc_html__('One line per distinct product category (recommended)', 'plogins-customs'); ?>
+                                    <?php echo esc_html__('One line per distinct product category (recommended)', 'customs'); ?>
                                 </label><br />
                                 <label>
                                     <input type="radio" name="count_basis" value="<?php echo esc_attr(SettingsRepository::BASIS_PRODUCT); ?>" <?php checked($s['count_basis'], SettingsRepository::BASIS_PRODUCT); ?> />
-                                    <?php echo esc_html__('One line per distinct product', 'plogins-customs'); ?>
+                                    <?php echo esc_html__('One line per distinct product', 'customs'); ?>
                                 </label>
-                                <p class="description"><?php echo esc_html__('A tariff code set on a product always overrides this; products sharing a code count as one line.', 'plogins-customs'); ?></p>
+                                <p class="description"><?php echo esc_html__('A tariff code set on a product always overrides this; products sharing a code count as one line.', 'customs'); ?></p>
                             </fieldset>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="customs_label"><?php echo esc_html__('Checkout line label', 'plogins-customs'); ?></label></th>
+                        <th scope="row"><label for="customs_label"><?php echo esc_html__('Checkout line label', 'customs'); ?></label></th>
                         <td>
                             <input type="text" id="customs_label" name="label" value="<?php echo esc_attr((string) $s['label']); ?>" class="regular-text" />
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><?php echo esc_html__('Apply tax to the duty', 'plogins-customs'); ?></th>
+                        <th scope="row"><?php echo esc_html__('Apply tax to the duty', 'customs'); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="taxable" value="1" <?php checked(! empty($s['taxable'])); ?> />
-                                <?php echo esc_html__('Charge tax on the duty fee. Off by default, as customs duty is not normally taxed.', 'plogins-customs'); ?>
+                                <?php echo esc_html__('Charge tax on the duty fee. Off by default, as customs duty is not normally taxed.', 'customs'); ?>
                             </label>
                         </td>
                     </tr>
                 </table>
-                <?php submit_button(__('Save settings', 'plogins-customs')); ?>
+                <?php submit_button(__('Save settings', 'customs')); ?>
             </form>
         </div>
         <?php
@@ -235,7 +235,7 @@ final class Settings implements HasHooks
         $origin = $this->settings->originCountry();
         if ('' === $origin) {
             echo '<div class="notice notice-warning inline"><p>';
-            echo esc_html__('No store origin country is set in WooCommerce, so the duty cannot be applied. Set a base country or choose an origin below.', 'plogins-customs');
+            echo esc_html__('No store origin country is set in WooCommerce, so the duty cannot be applied. Set a base country or choose an origin below.', 'customs');
             echo '</p></div>';
             return;
         }
@@ -243,7 +243,7 @@ final class Settings implements HasHooks
         if ($this->eu->isMember($origin)) {
             echo '<div class="notice notice-info inline"><p>';
             /* translators: %s: ISO country code. */
-            echo esc_html(sprintf(__('Origin %s is inside the EU, so the duty will not be added (intra-EU shipments are excluded).', 'plogins-customs'), $origin));
+            echo esc_html(sprintf(__('Origin %s is inside the EU, so the duty will not be added (intra-EU shipments are excluded).', 'customs'), $origin));
             echo '</p></div>';
         }
     }

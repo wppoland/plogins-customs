@@ -8,15 +8,15 @@
 
 declare(strict_types=1);
 
-use Plogins\Customs\Admin\ProductFields;
-use Plogins\Customs\Admin\Settings;
-use Plogins\Customs\Cart\DutyFeeApplicator;
-use Plogins\Customs\Container;
-use Plogins\Customs\Duty\DutyCalculator;
-use Plogins\Customs\Duty\TariffLineCounter;
-use Plogins\Customs\Geo\EuMembership;
-use Plogins\Customs\Migrator;
-use Plogins\Customs\Settings\SettingsRepository;
+use Customs\Admin\ProductFields;
+use Customs\Admin\Settings;
+use Customs\Cart\DutyFeeApplicator;
+use Customs\Container;
+use Customs\Duty\DutyCalculator;
+use Customs\Duty\TariffLineCounter;
+use Customs\Geo\EuMembership;
+use Customs\Migrator;
+use Customs\Settings\SettingsRepository;
 
 defined('ABSPATH') || exit;
 

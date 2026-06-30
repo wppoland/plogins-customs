@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Customs\Admin;
+namespace Customs\Admin;
 
-use Plogins\Customs\Contract\HasHooks;
-use Plogins\Customs\Duty\TariffLineCounter;
+use Customs\Contract\HasHooks;
+use Customs\Duty\TariffLineCounter;
 
 defined('ABSPATH') || exit;
 
@@ -30,10 +30,10 @@ final class ProductFields implements HasHooks
     {
         woocommerce_wp_text_input([
             'id'          => TariffLineCounter::META_KEY,
-            'label'       => __('Customs tariff code', 'plogins-customs'),
+            'label'       => __('Customs tariff code', 'customs'),
             'desc_tip'    => true,
-            'description' => __('Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category.', 'plogins-customs'),
-            'placeholder' => __('e.g. 6109 (T-shirts)', 'plogins-customs'),
+            'description' => __('Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category.', 'customs'),
+            'placeholder' => __('e.g. 6109 (T-shirts)', 'customs'),
         ]);
     }
 

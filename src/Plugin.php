@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Customs;
+namespace Customs;
 
-use Plogins\Customs\Contract\HasHooks;
+use Customs\Contract\HasHooks;
 
 defined('ABSPATH') || exit;
 

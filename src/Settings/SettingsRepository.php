@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Customs\Settings;
+namespace Plogins\Customs\Settings;
 
 defined('ABSPATH') || exit;
 
@@ -82,7 +82,7 @@ final class SettingsRepository
     {
         $label = trim((string) ($this->settings()['label'] ?? ''));
 
-        return '' !== $label ? $label : __('EU import duty (estimate)', 'customs');
+        return '' !== $label ? $label : __('EU import duty (estimate)', 'plogins-customs');
     }
 
     public function isTaxable(): bool

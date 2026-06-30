@@ -1,10 +1,10 @@
-=== Customs - EU Import Duty for WooCommerce ===
+=== Plogins Customs for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ Yes. Set the EUR to store-currency rate in the settings and the duty is converte
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 0.1.1 =
+* Renamed to Plogins Customs for WooCommerce for a more distinctive plugin name.
 
 = 0.1.0 =
 * Initial release: EU flat import duty estimated and added as a cart and checkout fee, with configurable per-line amount, threshold, store origin, currency rate, tariff-line basis, label and taxable flag.

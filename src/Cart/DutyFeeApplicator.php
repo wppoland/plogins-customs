@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Customs\Cart;
+namespace Plogins\Customs\Cart;
 
-use Customs\Contract\HasHooks;
-use Customs\Duty\DutyCalculator;
-use Customs\Settings\SettingsRepository;
+use Plogins\Customs\Contract\HasHooks;
+use Plogins\Customs\Duty\DutyCalculator;
+use Plogins\Customs\Settings\SettingsRepository;
 
 defined('ABSPATH') || exit;
 

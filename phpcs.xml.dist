@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<ruleset name="Customs">
+<ruleset name="Plogins Customs">
     <description>WordPress Coding Standards - output escaping, nonces, redirects, and SQL placeholder safety. WordPress.org Plugin Check is the full compliance gate.</description>
 
-    <file>customs.php</file>
+    <file>plogins-customs.php</file>
     <file>autoload.php</file>
     <file>src</file>
     <file>config</file>
@@ -33,7 +33,7 @@
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
-                <element value="customs"/>
+                <element value="plogins-customs"/>
             </property>
         </properties>
     </rule>

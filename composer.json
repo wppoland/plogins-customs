@@ -1,5 +1,5 @@
 {
-    "name": "wppoland/customs",
+    "name": "wppoland/plogins-customs",
     "description": "Estimate and add the EU flat import duty as a clear checkout line for parcels shipped into the EU from outside it.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Customs\\": "src/"
+            "Plogins\\Customs\\": "src/"
         }
     },
     "scripts": {

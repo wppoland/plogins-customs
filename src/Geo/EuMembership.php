@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Customs\Geo;
+namespace Plogins\Customs\Geo;
 
 defined('ABSPATH') || exit;
 

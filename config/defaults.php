@@ -5,7 +5,7 @@
  * Amounts and the threshold are expressed in EUR, because the EU rule is
  * defined in EUR (a flat 3 EUR per tariff line, on goods up to 150 EUR). When
  * the store currency is not EUR, `eur_rate` converts those EUR figures into the
- * store currency at calculation time. See Customs\Settings\SettingsRepository.
+ * store currency at calculation time. See Plogins\Customs\Settings\SettingsRepository.
  *
  * @package Customs
  *

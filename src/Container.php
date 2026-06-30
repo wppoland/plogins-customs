@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Customs;
+namespace Plogins\Customs;
 
 defined('ABSPATH') || exit;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Customs\Duty;
+namespace Customs\Duty;
 
-use Plogins\Customs\Geo\EuMembership;
-use Plogins\Customs\Settings\SettingsRepository;
+use Customs\Geo\EuMembership;
+use Customs\Settings\SettingsRepository;
 
 defined('ABSPATH') || exit;
 

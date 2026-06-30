@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Customs;
+namespace Customs;
 
 defined('ABSPATH') || exit;
 
@@ -19,7 +19,7 @@ if (is_readable($customs_composer)) {
 }
 
 spl_autoload_register(static function (string $class): void {
-    $prefix  = 'Plogins\\Customs\\';
+    $prefix  = 'Customs\\';
     $baseDir = __DIR__ . '/src/';
 
     $len = strlen($prefix);

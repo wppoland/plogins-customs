@@ -2,7 +2,7 @@
 /**
  * Boot order: services listed here are resolved from the container and have
  * their registerHooks() called during Plugin::boot(). Each must implement
- * Plogins\Customs\Contract\HasHooks.
+ * Customs\Contract\HasHooks.
  *
  * @package Customs
  *
@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-use Plogins\Customs\Admin\ProductFields;
-use Plogins\Customs\Admin\Settings;
-use Plogins\Customs\Cart\DutyFeeApplicator;
+use Customs\Admin\ProductFields;
+use Customs\Admin\Settings;
+use Customs\Cart\DutyFeeApplicator;
 
 defined('ABSPATH') || exit;
 

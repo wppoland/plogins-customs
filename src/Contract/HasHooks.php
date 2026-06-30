@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Customs\Contract;
+namespace Customs\Contract;
 
 defined('ABSPATH') || exit;
 

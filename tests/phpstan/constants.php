@@ -13,12 +13,12 @@ namespace {
     }
 }
 
-namespace Plogins\Customs {
-    if (! defined('Plogins\\Customs\\VERSION')) {
-        define('Plogins\\Customs\\VERSION', '0.1.1');
+namespace Customs {
+    if (! defined('Customs\\VERSION')) {
+        define('Customs\\VERSION', '0.1.0');
     }
-    if (! defined('Plogins\\Customs\\PLUGIN_FILE')) {
-        define('Plogins\\Customs\\PLUGIN_FILE', '/tmp/plogins-customs/plogins-customs.php');
+    if (! defined('Customs\\PLUGIN_FILE')) {
+        define('Customs\\PLUGIN_FILE', '/tmp/customs/customs.php');
     }
 }
 

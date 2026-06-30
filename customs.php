@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Plogins Customs for WooCommerce
- * Plugin URI:        https://plogins.com/plogins-customs/
+ * Plugin Name:       Customs - EU Import Duty for WooCommerce
+ * Plugin URI:        https://plogins.com/customs/
  * Description:        Estimate and add the EU flat import duty (from 1 July 2026) as a clear checkout line for parcels shipped into the EU from outside it.
- * Version:           0.1.1
+ * Version:           0.1.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
@@ -11,7 +11,7 @@
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       plogins-customs
+ * Text Domain:       customs
  * Domain Path:       /languages
  * WC requires at least: 8.0
  *
@@ -20,11 +20,11 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Customs;
+namespace Customs;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '0.1.1';
+const VERSION     = '0.1.0';
 const PLUGIN_FILE = __FILE__;
 
 define('CUSTOMS_DIR', plugin_dir_path(__FILE__));
@@ -44,7 +44,7 @@ add_action('plugins_loaded', static function (): void {
     if (! class_exists('WooCommerce')) {
         add_action('admin_notices', static function (): void {
             echo '<div class="notice notice-error"><p>';
-            echo esc_html__('Plogins Customs for WooCommerce requires WooCommerce to be active.', 'plogins-customs');
+            echo esc_html__('Customs - EU Import Duty for WooCommerce requires WooCommerce to be active.', 'customs');
             echo '</p></div>';
         });
         return;

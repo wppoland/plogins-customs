@@ -194,7 +194,7 @@ final class Settings implements HasHooks
      */
     private function maybeSave(): bool
     {
-        if ('POST' !== ($_SERVER['REQUEST_METHOD'] ?? '')) {
+        if ('POST' !== sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'] ?? ''))) {
             return false;
         }
 
@@ -211,12 +211,12 @@ final class Settings implements HasHooks
         // canonical type and ignores anything else in the POST.
         $raw = [
             'enabled'        => isset($_POST['enabled']),
-            'per_line'       => isset($_POST['per_line']) ? wc_clean(wp_unslash($_POST['per_line'])) : 0,
-            'threshold'      => isset($_POST['threshold']) ? wc_clean(wp_unslash($_POST['threshold'])) : 0,
-            'eur_rate'       => isset($_POST['eur_rate']) ? wc_clean(wp_unslash($_POST['eur_rate'])) : 1,
-            'origin_country' => isset($_POST['origin_country']) ? wc_clean(wp_unslash($_POST['origin_country'])) : '',
-            'count_basis'    => isset($_POST['count_basis']) ? wc_clean(wp_unslash($_POST['count_basis'])) : SettingsRepository::BASIS_CATEGORY,
-            'label'          => isset($_POST['label']) ? wp_unslash($_POST['label']) : '',
+            'per_line'       => isset($_POST['per_line']) ? sanitize_text_field(wp_unslash($_POST['per_line'])) : 0,
+            'threshold'      => isset($_POST['threshold']) ? sanitize_text_field(wp_unslash($_POST['threshold'])) : 0,
+            'eur_rate'       => isset($_POST['eur_rate']) ? sanitize_text_field(wp_unslash($_POST['eur_rate'])) : 1,
+            'origin_country' => isset($_POST['origin_country']) ? sanitize_text_field(wp_unslash($_POST['origin_country'])) : '',
+            'count_basis'    => isset($_POST['count_basis']) ? sanitize_text_field(wp_unslash($_POST['count_basis'])) : SettingsRepository::BASIS_CATEGORY,
+            'label'          => isset($_POST['label']) ? sanitize_text_field(wp_unslash($_POST['label'])) : '',
             'taxable'        => isset($_POST['taxable']),
         ];
 

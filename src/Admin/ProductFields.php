@@ -55,7 +55,9 @@ final class ProductFields implements HasHooks
             return;
         }
 
-        $raw  = isset($_POST[TariffLineCounter::META_KEY]) ? wp_unslash($_POST[TariffLineCounter::META_KEY]) : '';
+        // woocommerce_process_product_meta fires only after WooCommerce verifies the
+        // product editor nonce and capability; the value is sanitized on the next line.
+        $raw  = isset($_POST[TariffLineCounter::META_KEY]) ? wp_unslash($_POST[TariffLineCounter::META_KEY]) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
         $code = sanitize_text_field(is_string($raw) ? $raw : '');
 
         if ('' === $code) {

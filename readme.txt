@@ -51,6 +51,12 @@ It is an estimate based on your settings. Final duties and any national handling
 = Can I sell in a currency other than EUR? =
 Yes. Set the EUR to store-currency rate in the settings and the duty is converted before it is added.
 
+== Screenshots ==
+
+1. The estimated EU import duty shown as its own line in the cart totals.
+2. The EU Import Duty settings under WooCommerce: per-line amount, threshold, origin country and how tariff lines are counted.
+3. The same duty line in the cart on mobile.
+
 == Changelog ==
 
 = 0.1.0 =

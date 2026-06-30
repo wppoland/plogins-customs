@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: wppoland/workflows/.github/workflows/_release-free.yml@v1
+    with:
+      slug: customs
+      wporg-slug: customs
+      has-js: false
+    secrets:
+      WPORG_SVN_USERNAME: ${{ secrets.WPORG_SVN_USERNAME }}
+      WPORG_SVN_PASSWORD: ${{ secrets.WPORG_SVN_PASSWORD }}

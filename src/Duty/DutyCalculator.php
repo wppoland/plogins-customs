@@ -93,7 +93,11 @@ final class DutyCalculator
      */
     private function destinationCountry(): string
     {
-        $customer = WC()->customer ?? null;
+        if (! function_exists('WC')) {
+            return '';
+        }
+
+        $customer = WC()->customer;
         if (! $customer instanceof \WC_Customer) {
             return '';
         }

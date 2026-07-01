@@ -1,4 +1,4 @@
-=== Plogins Customs for WooCommerce ===
+=== Plogins Customs - EU Import Duty for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5

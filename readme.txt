@@ -59,5 +59,8 @@ Yes. Set the EUR to store-currency rate in the settings and the duty is converte
 
 == Changelog ==
 
+= 0.1.1 =
+* Restored the wp.org-aligned bootstrap file name, text domain and translation template for the `customs` slug.
+
 = 0.1.0 =
 * Initial release: EU flat import duty estimated and added as a cart and checkout fee, with configurable per-line amount, threshold, store origin, currency rate, tariff-line basis, label and taxable flag.

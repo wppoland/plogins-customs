@@ -51,6 +51,11 @@ It is an estimate based on your settings. Final duties and any national handling
 = Can I sell in a currency other than EUR? =
 Yes. Set the EUR to store-currency rate in the settings and the duty is converted before it is added.
 
+
+= Does this plugin work on WordPress Multisite? =
+
+Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data.
+
 == Screenshots ==
 
 1. The estimated EU import duty shown as its own line in the cart totals.

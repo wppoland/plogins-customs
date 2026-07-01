@@ -82,7 +82,7 @@ final class SettingsRepository
     {
         $label = trim((string) ($this->settings()['label'] ?? ''));
 
-        return '' !== $label ? $label : __('EU import duty (estimate)', 'plogins-customs');
+        return '' !== $label ? $label : __('EU import duty (estimate)', 'customs');
     }
 
     public function isTaxable(): bool

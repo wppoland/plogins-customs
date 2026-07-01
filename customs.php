@@ -11,7 +11,7 @@
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       plogins-customs
+ * Text Domain:       customs
  * Domain Path:       /languages
  * WC requires at least: 8.0
  *
@@ -44,7 +44,7 @@ add_action('plugins_loaded', static function (): void {
     if (! class_exists('WooCommerce')) {
         add_action('admin_notices', static function (): void {
             echo '<div class="notice notice-error"><p>';
-            echo esc_html__('Customs - EU Import Duty for WooCommerce requires WooCommerce to be active.', 'plogins-customs');
+            echo esc_html__('Customs - EU Import Duty for WooCommerce requires WooCommerce to be active.', 'customs');
             echo '</p></div>';
         });
         return;

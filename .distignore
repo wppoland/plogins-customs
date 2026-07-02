@@ -17,4 +17,8 @@
 /phpcs.xml
 /phpcs.xml.dist
 /SUBMISSION.md
+/.wordpress-org
+/scripts
+/docs
+/README.md
 .DS_Store

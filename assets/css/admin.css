@@ -1,0 +1,96 @@
+/*
+ * Customs — admin settings screen styles.
+ *
+ * Scoped entirely to the .customs-settings page wrapper so nothing leaks into
+ * the rest of wp-admin or collides with admin colour schemes.
+ *
+ * Accent contrast (WCAG):
+ *   Decorative accent  #2563eb  — borders, rules, lock glyphs (non-text).
+ *   Button/text accent #1e40af  — used behind WHITE button text: 8.7:1 on
+ *                                 white, clears AA (4.5:1) and AAA (7:1).
+ */
+
+.customs-settings {
+	--customs-admin-accent: #2563eb;      /* decorative blue */
+	--customs-admin-accent-text: #1e40af; /* dark blue for white-on-accent CTAs */
+	--customs-pro-muted: #646970;
+	--customs-pro-radius: 8px;
+	--customs-pro-radius-sm: 6px;
+	--customs-pro-gap: 20px;
+	max-width: 60rem;
+}
+
+.customs-settings .description {
+	max-width: 42rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * PRO upsell — dismissible banner, sidebar promo, "what PRO adds"
+ * locked cards. Coming-soon variant: soft CTA, no price, no buy button.
+ * Pure advertising (no disabled inputs), scoped to .customs-settings.
+ * ------------------------------------------------------------------ */
+
+/* Two-column wrapper (form + promo aside); single column on narrow screens. */
+.customs-settings .customs-cols { display: grid; gap: var(--customs-pro-gap); grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 1100px) {
+	.customs-settings .customs-cols { grid-template-columns: minmax(0, 1fr) 300px; }
+}
+
+/* Top banner */
+.customs-settings .customs-pro-banner {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin: 1em 0 var(--customs-pro-gap);
+	padding: 12px 16px;
+	border: 1px solid color-mix(in srgb, var(--customs-admin-accent) 30%, #dcdcde);
+	border-inline-start: 4px solid var(--customs-admin-accent);
+	border-radius: var(--customs-pro-radius);
+	background: color-mix(in srgb, var(--customs-admin-accent) 7%, #fff);
+}
+.customs-settings .customs-pro-banner__tag,
+.customs-settings .customs-pro-card__badge,
+.customs-settings .customs-pro-aside__eyebrow {
+	font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+.customs-settings .customs-pro-banner__tag { flex: 0 0 auto; padding: 2px 8px; border-radius: 999px; color: #fff; background: var(--customs-admin-accent-text); }
+.customs-settings .customs-pro-banner__text { flex: 1 1 auto; margin: 0; color: #1d2327; }
+.customs-settings .customs-pro-banner__sub { margin-inline-start: 4px; color: var(--customs-pro-muted); }
+.customs-settings .customs-pro-banner__price { margin-inline-start: 6px; color: var(--customs-pro-muted); font-weight: 600; white-space: nowrap; }
+.customs-settings .customs-pro-banner__dismiss { flex: 0 0 auto; font-size: 18px; line-height: 1; text-decoration: none; color: var(--customs-pro-muted); padding: 4px; border-radius: 4px; }
+.customs-settings .customs-pro-banner__dismiss:hover { color: #1d2327; background: rgba(0, 0, 0, .05); }
+
+/* Accent CTA buttons (override WP blue with the readable dark accent) */
+.customs-settings .customs-pro-banner__cta.button-primary,
+.customs-settings .customs-pro-aside__cta.button-primary {
+	background: var(--customs-admin-accent-text); border-color: color-mix(in srgb, var(--customs-admin-accent-text) 80%, #000); color: #fff; text-shadow: none; box-shadow: none;
+}
+.customs-settings .customs-pro-banner__cta.button-primary:hover,
+.customs-settings .customs-pro-aside__cta.button-primary:hover { background: color-mix(in srgb, var(--customs-admin-accent-text) 88%, #000); }
+
+/* Sidebar promo card */
+.customs-settings .customs-pro-aside {
+	background: #fff; border: 1px solid #dcdcde; border-top: 3px solid var(--customs-admin-accent); border-radius: var(--customs-pro-radius); padding: 18px 20px; position: sticky; top: 40px;
+}
+.customs-settings .customs-pro-aside__eyebrow { margin: 0 0 4px; color: var(--customs-admin-accent-text); }
+.customs-settings .customs-pro-aside__heading { margin: 0 0 12px; font-size: 16px; line-height: 1.3; }
+.customs-settings .customs-pro-aside__list { margin: 0 0 16px; padding: 0; list-style: none; }
+.customs-settings .customs-pro-aside__list li { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; color: #1d2327; font-size: 13px; }
+.customs-settings .customs-pro-aside__lock::before,
+.customs-settings .customs-pro-card__lock::before { content: "\f160"; font-family: dashicons; font-size: 15px; line-height: 1.2; color: var(--customs-admin-accent); }
+.customs-settings .customs-pro-aside__cta { width: 100%; text-align: center; }
+.customs-settings .customs-pro-aside__price { margin: 10px 0 0; font-size: 12px; color: var(--customs-pro-muted); text-align: center; }
+
+/* "What PRO adds" locked cards */
+.customs-settings .customs-pro-cards { max-width: 60rem; margin: var(--customs-pro-gap) 0 0; }
+.customs-settings .customs-pro-cards__title { font-size: 15px; margin: 0 0 12px; }
+.customs-settings .customs-pro-cards__grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.customs-settings .customs-pro-card { position: relative; padding: 16px; border: 1px solid #dcdcde; border-radius: var(--customs-pro-radius-sm); background: color-mix(in srgb, var(--customs-admin-accent) 3%, #fff); }
+.customs-settings .customs-pro-card__badge { position: absolute; top: 12px; inset-inline-end: 12px; padding: 1px 7px; border-radius: 999px; color: var(--customs-admin-accent-text); border: 1px solid color-mix(in srgb, var(--customs-admin-accent) 40%, #fff); }
+.customs-settings .customs-pro-card__lock { display: inline-block; margin-bottom: 6px; }
+.customs-settings .customs-pro-card__title { margin: 0 0 6px; font-size: 14px; line-height: 1.3; }
+.customs-settings .customs-pro-card__desc { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--customs-pro-muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+	.customs-settings .customs-pro-banner__cta, .customs-settings .customs-pro-aside__cta { transition: background-color .15s ease, border-color .15s ease; }
+}

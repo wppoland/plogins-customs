@@ -17,5 +17,6 @@ rsync -a --exclude-from="${ROOT_DIR}/.distignore" \
 
 find "${STAGE}" -name '.DS_Store' -delete
 
+rm -f /tmp/plogins-customs.zip
 ( cd "${OUT_DIR}" && zip -rqX /tmp/plogins-customs.zip customs -x '*.DS_Store' )
 echo "✓ Built /tmp/plogins-customs.zip from ${STAGE}"

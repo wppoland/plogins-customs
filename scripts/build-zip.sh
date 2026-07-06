@@ -5,7 +5,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT_DIR="${1:-/tmp/customs-build}"
-STAGE="${OUT_DIR}/customs"
+STAGE="${OUT_DIR}/plogins-customs"
 
 rm -rf "${OUT_DIR}"
 mkdir -p "${STAGE}"
@@ -18,5 +18,5 @@ rsync -a --exclude-from="${ROOT_DIR}/.distignore" \
 find "${STAGE}" -name '.DS_Store' -delete
 
 rm -f /tmp/plogins-customs.zip
-( cd "${OUT_DIR}" && zip -rqX /tmp/plogins-customs.zip customs -x '*.DS_Store' )
+( cd "${OUT_DIR}" && zip -rqX /tmp/plogins-customs.zip plogins-customs -x '*.DS_Store' )
 echo "✓ Built /tmp/plogins-customs.zip from ${STAGE}"

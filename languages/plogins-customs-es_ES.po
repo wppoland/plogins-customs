@@ -34,7 +34,7 @@ msgid "Customs - EU Import Duty for WooCommerce requires WooCommerce to be activ
 msgstr "Customs - arancel de importación de la UE para WooCommerce requiere que WooCommerce esté activo."
 
 msgid "Customs tariff code"
-msgstr "Código arancelario de Customs"
+msgstr "Código arancelario"
 
 msgid "Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category."
 msgstr "Opcional. Los productos que comparten un código cuentan como una línea de arancel de importación de la UE. Déjalo vacío para agrupar por categoría."

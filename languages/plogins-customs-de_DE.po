@@ -16,13 +16,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Plogins Customs - EU Import Duty for WooCommerce"
-msgstr "Plogins Customs - EU-Importzoll für WooCommerce"
+msgstr "Plogins Customs - EU-Einfuhrzoll für WooCommerce"
 
 msgid "https://plogins.com/plogins-customs/"
 msgstr "https://plogins.com/de/plogins-customs/"
 
 msgid "Estimate and add the EU flat import duty (from 1 July 2026) as a clear checkout line for parcels shipped into the EU from outside it."
-msgstr "Schätzt den pauschalen EU-Importzoll (ab 1. Juli 2026) und fügt ihn als klare Checkout-Zeile für Pakete hinzu, die von außerhalb in die EU versendet werden."
+msgstr "Schätzt den pauschalen EU-Einfuhrzoll (ab 1. Juli 2026) und fügt ihn als klare Checkout-Zeile für Pakete hinzu, die von außerhalb in die EU versendet werden."
 
 msgid "WPPoland.com"
 msgstr "WPPoland.com"
@@ -31,13 +31,13 @@ msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
 msgid "Customs - EU Import Duty for WooCommerce requires WooCommerce to be active."
-msgstr "Customs - EU-Importzoll für WooCommerce erfordert, dass WooCommerce aktiv ist."
+msgstr "Customs - EU-Einfuhrzoll für WooCommerce erfordert, dass WooCommerce aktiv ist."
 
 msgid "Customs tariff code"
-msgstr "Customs-Tarifcode"
+msgstr "Zolltarifnummer"
 
 msgid "Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category."
-msgstr "Optional. Produkte mit demselben Code zählen als eine EU-Importzollzeile. Leer lassen, um nach Kategorie zu gruppieren."
+msgstr "Optional. Produkte mit demselben Code zählen als eine EU-Einfuhrzollzeile. Leer lassen, um nach Kategorie zu gruppieren."
 
 msgid "e.g. 6109 (T-shirts)"
 msgstr "z. B. 6109 (T-Shirts)"
@@ -82,7 +82,7 @@ msgid "What %s adds"
 msgstr "Was %s hinzufügt"
 
 msgid "EU Import Duty"
-msgstr "EU-Importzoll"
+msgstr "EU-Einfuhrzoll"
 
 msgid "Settings"
 msgstr "Einstellungen"
@@ -100,7 +100,7 @@ msgid "Enable duty estimate"
 msgstr "Zollschätzung aktivieren"
 
 msgid "Add the EU import duty line to qualifying carts."
-msgstr "EU-Importzollzeile zu passenden Warenkörben hinzufügen."
+msgstr "EU-Einfuhrzollzeile zu passenden Warenkörben hinzufügen."
 
 msgid "Duty per tariff line (EUR)"
 msgstr "Zoll pro Tarifzeile (EUR)"
@@ -160,5 +160,5 @@ msgid "Origin %s is inside the EU, so the duty will not be added (intra-EU shipm
 msgstr "Herkunft %s liegt innerhalb der EU, daher wird der Zoll nicht hinzugefügt (Sendungen innerhalb der EU sind ausgeschlossen)."
 
 msgid "EU import duty (estimate)"
-msgstr "EU-Importzoll (Schätzung)"
+msgstr "EU-Einfuhrzoll (Schätzung)"
 

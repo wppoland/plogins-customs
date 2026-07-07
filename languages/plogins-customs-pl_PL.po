@@ -34,7 +34,7 @@ msgid "Customs - EU Import Duty for WooCommerce requires WooCommerce to be activ
 msgstr "Customs - cło importowe UE dla WooCommerce wymaga aktywnej wtyczki WooCommerce."
 
 msgid "Customs tariff code"
-msgstr "Kod taryfowy Customs"
+msgstr "Kod taryfy celnej"
 
 msgid "Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category."
 msgstr "Opcjonalnie. Produkty z tym samym kodem liczą się jako jedna linia cła importowego UE. Pozostaw puste, aby grupować według kategorii."
@@ -91,13 +91,13 @@ msgid "You do not have permission to manage these settings."
 msgstr "Nie masz uprawnień do zarządzania tymi ustawieniami."
 
 msgid "From 1 July 2026 the EU charges a flat customs duty per tariff line on parcels up to the goods-value threshold shipped into the EU from outside it. This estimate is shown as its own pre-tax line at cart and checkout."
-msgstr "Od 1 lipca 2026 r. UE nalicza ryczałtowe cło za linię taryfową dla przesyłek wysyłanych do UE spoza niej, do progu wartości towarów. Ta estymacja jest pokazywana jako osobna pozycja przed opodatkowaniem w koszyku i kasie."
+msgstr "Od 1 lipca 2026 r. UE nalicza ryczałtowe cło za linię taryfową dla przesyłek wysyłanych do UE spoza niej, do progu wartości towarów. Ten szacunek jest pokazywany jako osobna pozycja przed opodatkowaniem w koszyku i kasie."
 
 msgid "Settings saved."
 msgstr "Ustawienia zapisane."
 
 msgid "Enable duty estimate"
-msgstr "Włącz estymację cła"
+msgstr "Włącz szacowanie cła"
 
 msgid "Add the EU import duty line to qualifying carts."
 msgstr "Dodaj pozycję cła importowego UE do kwalifikujących się koszyków."
@@ -160,5 +160,5 @@ msgid "Origin %s is inside the EU, so the duty will not be added (intra-EU shipm
 msgstr "Pochodzenie %s znajduje się w UE, więc cło nie zostanie dodane (przesyłki wewnątrz UE są wykluczone)."
 
 msgid "EU import duty (estimate)"
-msgstr "Cło importowe UE (estymacja)"
+msgstr "Cło importowe UE (szacunek)"
 

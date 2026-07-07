@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 0.1.3 =
+* Added a settings-screen overview of upcoming PRO features (live exchange rates, HS-code classification). No change to the free duty calculation.
 
 = 0.1.2 =
 * Text domain now matches the plugin slug (plogins-customs) across all strings and the translation template, so wp.org language packs work.

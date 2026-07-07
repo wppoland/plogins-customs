@@ -2,21 +2,21 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Plogins Customs - EU Import Duty for WooCommerce 0.1.2\n"
+"Project-Id-Version: Plogins Customs - EU Import Duty for WooCommerce 0.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-customs\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-01T08:53:21+00:00\n"
+"POT-Creation-Date: 2026-07-07T09:59:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: plogins-customs\n"
 
 #. Plugin Name of the plugin
 #: customs.php
-msgid "Plogins Customs for WooCommerce"
+msgid "Plogins Customs - EU Import Duty for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -55,111 +55,167 @@ msgstr ""
 msgid "e.g. 6109 (T-shirts)"
 msgstr ""
 
-#: src/Admin/Settings.php:44
-#: src/Admin/Settings.php:45
-#: src/Admin/Settings.php:82
+#: src/Admin/ProUpsell.php:82
+msgid "Wkrótce"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:82
+msgid "Coming soon"
+msgstr ""
+
+#. translators: %d: yearly price in PLN
+#: src/Admin/ProUpsell.php:87
+msgid "od %d zł/rok"
+msgstr ""
+
+#. translators: 1: currency symbol, 2: yearly price
+#: src/Admin/ProUpsell.php:92
+msgid "from %1$s%2$d/yr"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:101
+msgid "Upgrade to PRO"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:102
+msgid "Powiadom mnie"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:102
+msgid "Get notified"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:132
+msgid "Permission denied."
+msgstr ""
+
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:162
+msgid "Do more with %s"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:169
+msgid "Dismiss this notice"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:186
+msgid "Unlock every PRO feature"
+msgstr ""
+
+#: src/Admin/ProUpsell.php:199
+msgid "one licence, every PRO feature"
+msgstr ""
+
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:218
+msgid "What %s adds"
+msgstr ""
+
+#: src/Admin/Settings.php:56
+#: src/Admin/Settings.php:57
+#: src/Admin/Settings.php:114
 msgid "EU Import Duty"
 msgstr ""
 
-#: src/Admin/Settings.php:65
+#: src/Admin/Settings.php:97
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Settings.php:74
+#: src/Admin/Settings.php:106
 msgid "You do not have permission to manage these settings."
 msgstr ""
 
-#: src/Admin/Settings.php:84
+#: src/Admin/Settings.php:119
 msgid "From 1 July 2026 the EU charges a flat customs duty per tariff line on parcels up to the goods-value threshold shipped into the EU from outside it. This estimate is shown as its own pre-tax line at cart and checkout."
 msgstr ""
 
-#: src/Admin/Settings.php:88
+#: src/Admin/Settings.php:123
 msgid "Settings saved."
 msgstr ""
 
-#: src/Admin/Settings.php:97
+#: src/Admin/Settings.php:133
 msgid "Enable duty estimate"
 msgstr ""
 
-#: src/Admin/Settings.php:101
+#: src/Admin/Settings.php:137
 msgid "Add the EU import duty line to qualifying carts."
 msgstr ""
 
-#: src/Admin/Settings.php:106
+#: src/Admin/Settings.php:142
 msgid "Duty per tariff line (EUR)"
 msgstr ""
 
-#: src/Admin/Settings.php:109
+#: src/Admin/Settings.php:145
 msgid "EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
 msgstr ""
 
-#: src/Admin/Settings.php:113
+#: src/Admin/Settings.php:149
 msgid "Goods-value threshold (EUR)"
 msgstr ""
 
-#: src/Admin/Settings.php:116
+#: src/Admin/Settings.php:152
 msgid "The duty applies only when the cart goods value is at or below this amount. EU rule: 150 EUR."
 msgstr ""
 
-#: src/Admin/Settings.php:120
+#: src/Admin/Settings.php:156
 msgid "Store currency per 1 EUR"
 msgstr ""
 
 #. translators: %s: store currency code.
-#: src/Admin/Settings.php:126
+#: src/Admin/Settings.php:162
 msgid "Used to convert the EUR amounts into your store currency (%s). Leave at 1 if you sell in EUR."
 msgstr ""
 
-#: src/Admin/Settings.php:132
+#: src/Admin/Settings.php:168
 msgid "Store origin country"
 msgstr ""
 
-#: src/Admin/Settings.php:135
+#: src/Admin/Settings.php:171
 msgid "Use WooCommerce base country"
 msgstr ""
 
-#: src/Admin/Settings.php:148
+#: src/Admin/Settings.php:184
 msgid "Where parcels ship from. The duty only applies when this is outside the EU."
 msgstr ""
 
-#: src/Admin/Settings.php:152
+#: src/Admin/Settings.php:188
 msgid "Tariff line basis"
 msgstr ""
 
-#: src/Admin/Settings.php:157
+#: src/Admin/Settings.php:193
 msgid "One line per distinct product category (recommended)"
 msgstr ""
 
-#: src/Admin/Settings.php:161
+#: src/Admin/Settings.php:197
 msgid "One line per distinct product"
 msgstr ""
 
-#: src/Admin/Settings.php:163
+#: src/Admin/Settings.php:199
 msgid "A tariff code set on a product always overrides this; products sharing a code count as one line."
 msgstr ""
 
-#: src/Admin/Settings.php:168
+#: src/Admin/Settings.php:204
 msgid "Checkout line label"
 msgstr ""
 
-#: src/Admin/Settings.php:174
+#: src/Admin/Settings.php:210
 msgid "Apply tax to the duty"
 msgstr ""
 
-#: src/Admin/Settings.php:178
+#: src/Admin/Settings.php:214
 msgid "Charge tax on the duty fee. Off by default, as customs duty is not normally taxed."
 msgstr ""
 
-#: src/Admin/Settings.php:183
+#: src/Admin/Settings.php:219
 msgid "Save settings"
 msgstr ""
 
-#: src/Admin/Settings.php:238
+#: src/Admin/Settings.php:279
 msgid "No store origin country is set in WooCommerce, so the duty cannot be applied. Set a base country or choose an origin below."
 msgstr ""
 
 #. translators: %s: ISO country code.
-#: src/Admin/Settings.php:246
+#: src/Admin/Settings.php:287
 msgid "Origin %s is inside the EU, so the duty will not be added (intra-EU shipments are excluded)."
 msgstr ""
 

@@ -12,153 +12,265 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: plogins-customs\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: plogins-customs\n"
 
+#. Plugin Name of the plugin
+#: customs.php
 msgid "Plogins Customs - EU Import Duty for WooCommerce"
 msgstr "Plogins Customs - arancel de importación de la UE para WooCommerce"
 
+#. Plugin URI of the plugin
+#: customs.php
 msgid "https://plogins.com/plogins-customs/"
 msgstr "https://plogins.com/es/plogins-customs/"
 
-msgid "Estimate and add the EU flat import duty (from 1 July 2026) as a clear checkout line for parcels shipped into the EU from outside it."
-msgstr "Estima y añade el arancel fijo de importación de la UE (desde el 1 de julio de 2026) como una línea clara en el pago para paquetes enviados a la UE desde fuera de ella."
+#. Description of the plugin
+#: customs.php
+msgid ""
+"Estimate and add the EU flat import duty (from 1 July 2026) as a clear "
+"checkout line for parcels shipped into the EU from outside it."
+msgstr ""
+"Estima y añade el arancel fijo de importación de la UE (desde el 1 de julio "
+"de 2026) como una línea clara en el pago para paquetes enviados a la UE "
+"desde fuera de ella."
 
+#. Author of the plugin
+#: customs.php
 msgid "WPPoland.com"
 msgstr "WPPoland.com"
 
+#. Author URI of the plugin
+#: customs.php
 msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
-msgid "Customs - EU Import Duty for WooCommerce requires WooCommerce to be active."
-msgstr "Customs - arancel de importación de la UE para WooCommerce requiere que WooCommerce esté activo."
+#: customs.php:47
+msgid ""
+"Customs - EU Import Duty for WooCommerce requires WooCommerce to be active."
+msgstr ""
+"Customs - arancel de importación de la UE para WooCommerce requiere que "
+"WooCommerce esté activo."
 
+#: src/Admin/ProductFields.php:33
 msgid "Customs tariff code"
 msgstr "Código arancelario"
 
-msgid "Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category."
-msgstr "Opcional. Los productos que comparten un código cuentan como una línea de arancel de importación de la UE. Déjalo vacío para agrupar por categoría."
+#: src/Admin/ProductFields.php:35
+msgid ""
+"Optional. Products sharing a code count as one EU import duty line. Leave "
+"empty to group by category."
+msgstr ""
+"Opcional. Los productos que comparten un código cuentan como una línea de "
+"arancel de importación de la UE. Déjalo vacío para agrupar por categoría."
 
+#: src/Admin/ProductFields.php:36
 msgid "e.g. 6109 (T-shirts)"
 msgstr "p. ej. 6109 (camisetas)"
 
+#: src/Admin/ProUpsell.php:82
 msgid "Wkrótce"
 msgstr "Próximamente"
 
+#: src/Admin/ProUpsell.php:82
 msgid "Coming soon"
 msgstr "Próximamente"
 
+#. translators: %d: yearly price in PLN
+#: src/Admin/ProUpsell.php:87
 msgid "od %d zł/rok"
 msgstr "desde %d PLN/año"
 
+#. translators: 1: currency symbol, 2: yearly price
+#: src/Admin/ProUpsell.php:92
 msgid "from %1$s%2$d/yr"
 msgstr "desde %1$s%2$d/año"
 
+#: src/Admin/ProUpsell.php:101
 msgid "Upgrade to PRO"
 msgstr "Mejorar a PRO"
 
+#: src/Admin/ProUpsell.php:102
 msgid "Powiadom mnie"
 msgstr "Avísame"
 
+#: src/Admin/ProUpsell.php:102
 msgid "Get notified"
 msgstr "Avísame"
 
+#: src/Admin/ProUpsell.php:132
 msgid "Permission denied."
 msgstr "Permiso denegado."
 
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:162
 msgid "Do more with %s"
 msgstr "Haz más con %s"
 
+#: src/Admin/ProUpsell.php:169
 msgid "Dismiss this notice"
 msgstr "Descartar este aviso"
 
+#: src/Admin/ProUpsell.php:186
 msgid "Unlock every PRO feature"
 msgstr "Desbloquea todas las funciones PRO"
 
+#: src/Admin/ProUpsell.php:199
 msgid "one licence, every PRO feature"
 msgstr "una licencia, todas las funciones PRO"
 
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:218
 msgid "What %s adds"
 msgstr "Qué añade %s"
 
+#: src/Admin/Settings.php:56 src/Admin/Settings.php:57
+#: src/Admin/Settings.php:114
 msgid "EU Import Duty"
 msgstr "Arancel de importación de la UE"
 
+#: src/Admin/Settings.php:97
 msgid "Settings"
 msgstr "Ajustes"
 
+#: src/Admin/Settings.php:106
 msgid "You do not have permission to manage these settings."
 msgstr "No tienes permiso para gestionar estos ajustes."
 
-msgid "From 1 July 2026 the EU charges a flat customs duty per tariff line on parcels up to the goods-value threshold shipped into the EU from outside it. This estimate is shown as its own pre-tax line at cart and checkout."
-msgstr "Desde el 1 de julio de 2026, la UE cobra un arancel fijo por línea arancelaria en paquetes hasta el umbral de valor de mercancías enviados a la UE desde fuera de ella. Esta estimación se muestra como una línea propia antes de impuestos en el carrito y en el pago."
+#: src/Admin/Settings.php:119
+msgid ""
+"From 1 July 2026 the EU charges a flat customs duty per tariff line on "
+"parcels up to the goods-value threshold shipped into the EU from outside it."
+" This estimate is shown as its own pre-tax line at cart and checkout."
+msgstr ""
+"Desde el 1 de julio de 2026, la UE cobra un arancel fijo por línea "
+"arancelaria en paquetes hasta el umbral de valor de mercancías enviados a la"
+" UE desde fuera de ella. Esta estimación se muestra como una línea propia "
+"antes de impuestos en el carrito y en el pago."
 
+#: src/Admin/Settings.php:123
 msgid "Settings saved."
 msgstr "Ajustes guardados."
 
+#: src/Admin/Settings.php:133
 msgid "Enable duty estimate"
 msgstr "Activar la estimación del arancel"
 
+#: src/Admin/Settings.php:137
 msgid "Add the EU import duty line to qualifying carts."
-msgstr "Añade la línea de arancel de importación de la UE a los carritos que cumplen los requisitos."
+msgstr ""
+"Añade la línea de arancel de importación de la UE a los carritos que cumplen"
+" los requisitos."
 
+#: src/Admin/Settings.php:142
 msgid "Duty per tariff line (EUR)"
 msgstr "Arancel por línea arancelaria (EUR)"
 
-msgid "EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
-msgstr "Regla de la UE: 3 EUR por línea arancelaria distinta (temporal, hasta el 1 de julio de 2028)."
+#: src/Admin/Settings.php:145
+msgid ""
+"EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
+msgstr ""
+"Regla de la UE: 3 EUR por línea arancelaria distinta (temporal, hasta el 1 "
+"de julio de 2028)."
 
+#: src/Admin/Settings.php:149
 msgid "Goods-value threshold (EUR)"
 msgstr "Umbral de valor de mercancías (EUR)"
 
-msgid "The duty applies only when the cart goods value is at or below this amount. EU rule: 150 EUR."
-msgstr "El arancel se aplica solo cuando el valor de las mercancías del carrito es igual o inferior a este importe. Regla de la UE: 150 EUR."
+#: src/Admin/Settings.php:152
+msgid ""
+"The duty applies only when the cart goods value is at or below this amount. "
+"EU rule: 150 EUR."
+msgstr ""
+"El arancel se aplica solo cuando el valor de las mercancías del carrito es "
+"igual o inferior a este importe. Regla de la UE: 150 EUR."
 
+#: src/Admin/Settings.php:156
 msgid "Store currency per 1 EUR"
 msgstr "Moneda de la tienda por 1 EUR"
 
-msgid "Used to convert the EUR amounts into your store currency (%s). Leave at 1 if you sell in EUR."
-msgstr "Se usa para convertir los importes en EUR a la moneda de tu tienda (%s). Déjalo en 1 si vendes en EUR."
+#. translators: %s: store currency code.
+#: src/Admin/Settings.php:162
+msgid ""
+"Used to convert the EUR amounts into your store currency (%s). Leave at 1 if"
+" you sell in EUR."
+msgstr ""
+"Se usa para convertir los importes en EUR a la moneda de tu tienda (%s). "
+"Déjalo en 1 si vendes en EUR."
 
+#: src/Admin/Settings.php:168
 msgid "Store origin country"
 msgstr "País de origen de la tienda"
 
+#: src/Admin/Settings.php:171
 msgid "Use WooCommerce base country"
 msgstr "Usar el país base de WooCommerce"
 
-msgid "Where parcels ship from. The duty only applies when this is outside the EU."
-msgstr "Desde dónde se envían los paquetes. El arancel solo se aplica cuando está fuera de la UE."
+#: src/Admin/Settings.php:184
+msgid ""
+"Where parcels ship from. The duty only applies when this is outside the EU."
+msgstr ""
+"Desde dónde se envían los paquetes. El arancel solo se aplica cuando está "
+"fuera de la UE."
 
+#: src/Admin/Settings.php:188
 msgid "Tariff line basis"
 msgstr "Base de las líneas arancelarias"
 
+#: src/Admin/Settings.php:193
 msgid "One line per distinct product category (recommended)"
 msgstr "Una línea por categoría de producto distinta (recomendado)"
 
+#: src/Admin/Settings.php:197
 msgid "One line per distinct product"
 msgstr "Una línea por producto distinto"
 
-msgid "A tariff code set on a product always overrides this; products sharing a code count as one line."
-msgstr "Un código arancelario definido en un producto siempre anula esto; los productos que comparten un código cuentan como una línea."
+#: src/Admin/Settings.php:199
+msgid ""
+"A tariff code set on a product always overrides this; products sharing a "
+"code count as one line."
+msgstr ""
+"Un código arancelario definido en un producto siempre anula esto; los "
+"productos que comparten un código cuentan como una línea."
 
+#: src/Admin/Settings.php:204
 msgid "Checkout line label"
 msgstr "Etiqueta de la línea en el pago"
 
+#: src/Admin/Settings.php:210
 msgid "Apply tax to the duty"
 msgstr "Aplicar impuesto al arancel"
 
-msgid "Charge tax on the duty fee. Off by default, as customs duty is not normally taxed."
-msgstr "Cobrar impuesto sobre la cuota del arancel. Desactivado por defecto, porque el arancel aduanero normalmente no se grava."
+#: src/Admin/Settings.php:214
+msgid ""
+"Charge tax on the duty fee. Off by default, as customs duty is not normally "
+"taxed."
+msgstr ""
+"Cobrar impuesto sobre la cuota del arancel. Desactivado por defecto, porque "
+"el arancel aduanero normalmente no se grava."
 
+#: src/Admin/Settings.php:219
 msgid "Save settings"
 msgstr "Guardar ajustes"
 
-msgid "No store origin country is set in WooCommerce, so the duty cannot be applied. Set a base country or choose an origin below."
-msgstr "No se ha definido ningún país de origen de la tienda en WooCommerce, por lo que no se puede aplicar el arancel. Define un país base o elige un origen abajo."
+#: src/Admin/Settings.php:279
+msgid ""
+"No store origin country is set in WooCommerce, so the duty cannot be "
+"applied. Set a base country or choose an origin below."
+msgstr ""
+"No se ha definido ningún país de origen de la tienda en WooCommerce, por lo "
+"que no se puede aplicar el arancel. Define un país base o elige un origen "
+"abajo."
 
-msgid "Origin %s is inside the EU, so the duty will not be added (intra-EU shipments are excluded)."
-msgstr "El origen %s está dentro de la UE, por lo que no se añadirá el arancel (los envíos dentro de la UE están excluidos)."
+#. translators: %s: ISO country code.
+#: src/Admin/Settings.php:287
+msgid ""
+"Origin %s is inside the EU, so the duty will not be added (intra-EU "
+"shipments are excluded)."
+msgstr ""
+"El origen %s está dentro de la UE, por lo que no se añadirá el arancel (los "
+"envíos dentro de la UE están excluidos)."
 
+#: src/Settings/SettingsRepository.php:85
 msgid "EU import duty (estimate)"
 msgstr "Arancel de importación de la UE (estimación)"
-

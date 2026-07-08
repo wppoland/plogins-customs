@@ -12,153 +12,259 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: plogins-customs\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Domain: plogins-customs\n"
 
+#. Plugin Name of the plugin
+#: customs.php
 msgid "Plogins Customs - EU Import Duty for WooCommerce"
 msgstr "Plogins Customs - cło importowe UE dla WooCommerce"
 
+#. Plugin URI of the plugin
+#: customs.php
 msgid "https://plogins.com/plogins-customs/"
 msgstr "https://plogins.com/pl/plogins-customs/"
 
-msgid "Estimate and add the EU flat import duty (from 1 July 2026) as a clear checkout line for parcels shipped into the EU from outside it."
-msgstr "Szacuje i dodaje ryczałtowe cło importowe UE (od 1 lipca 2026 r.) jako czytelną pozycję w kasie dla przesyłek wysyłanych do UE spoza niej."
+#. Description of the plugin
+#: customs.php
+msgid ""
+"Estimate and add the EU flat import duty (from 1 July 2026) as a clear "
+"checkout line for parcels shipped into the EU from outside it."
+msgstr ""
+"Szacuje i dodaje ryczałtowe cło importowe UE (od 1 lipca 2026 r.) jako "
+"czytelną pozycję w kasie dla przesyłek wysyłanych do UE spoza niej."
 
+#. Author of the plugin
+#: customs.php
 msgid "WPPoland.com"
 msgstr "WPPoland.com"
 
+#. Author URI of the plugin
+#: customs.php
 msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
-msgid "Customs - EU Import Duty for WooCommerce requires WooCommerce to be active."
-msgstr "Customs - cło importowe UE dla WooCommerce wymaga aktywnej wtyczki WooCommerce."
+#: customs.php:47
+msgid ""
+"Customs - EU Import Duty for WooCommerce requires WooCommerce to be active."
+msgstr ""
+"Customs - cło importowe UE dla WooCommerce wymaga aktywnej wtyczki "
+"WooCommerce."
 
+#: src/Admin/ProductFields.php:33
 msgid "Customs tariff code"
 msgstr "Kod taryfy celnej"
 
-msgid "Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category."
-msgstr "Opcjonalnie. Produkty z tym samym kodem liczą się jako jedna linia cła importowego UE. Pozostaw puste, aby grupować według kategorii."
+#: src/Admin/ProductFields.php:35
+msgid ""
+"Optional. Products sharing a code count as one EU import duty line. Leave "
+"empty to group by category."
+msgstr ""
+"Opcjonalnie. Produkty z tym samym kodem liczą się jako jedna linia cła "
+"importowego UE. Pozostaw puste, aby grupować według kategorii."
 
+#: src/Admin/ProductFields.php:36
 msgid "e.g. 6109 (T-shirts)"
 msgstr "np. 6109 (T-shirty)"
 
+#: src/Admin/ProUpsell.php:82
 msgid "Wkrótce"
 msgstr "Wkrótce"
 
+#: src/Admin/ProUpsell.php:82
 msgid "Coming soon"
 msgstr "Wkrótce"
 
+#. translators: %d: yearly price in PLN
+#: src/Admin/ProUpsell.php:87
 msgid "od %d zł/rok"
 msgstr "od %d zł/rok"
 
+#. translators: 1: currency symbol, 2: yearly price
+#: src/Admin/ProUpsell.php:92
 msgid "from %1$s%2$d/yr"
 msgstr "od %1$s%2$d/rok"
 
+#: src/Admin/ProUpsell.php:101
 msgid "Upgrade to PRO"
 msgstr "Przejdź na PRO"
 
+#: src/Admin/ProUpsell.php:102
 msgid "Powiadom mnie"
 msgstr "Powiadom mnie"
 
+#: src/Admin/ProUpsell.php:102
 msgid "Get notified"
 msgstr "Powiadom mnie"
 
+#: src/Admin/ProUpsell.php:132
 msgid "Permission denied."
 msgstr "Brak uprawnień."
 
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:162
 msgid "Do more with %s"
 msgstr "Zrób więcej z %s"
 
+#: src/Admin/ProUpsell.php:169
 msgid "Dismiss this notice"
 msgstr "Ukryj ten komunikat"
 
+#: src/Admin/ProUpsell.php:186
 msgid "Unlock every PRO feature"
 msgstr "Odblokuj wszystkie funkcje PRO"
 
+#: src/Admin/ProUpsell.php:199
 msgid "one licence, every PRO feature"
 msgstr "jedna licencja, wszystkie funkcje PRO"
 
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:218
 msgid "What %s adds"
 msgstr "Co dodaje %s"
 
+#: src/Admin/Settings.php:56 src/Admin/Settings.php:57
+#: src/Admin/Settings.php:114
 msgid "EU Import Duty"
 msgstr "Cło importowe UE"
 
+#: src/Admin/Settings.php:97
 msgid "Settings"
 msgstr "Ustawienia"
 
+#: src/Admin/Settings.php:106
 msgid "You do not have permission to manage these settings."
 msgstr "Nie masz uprawnień do zarządzania tymi ustawieniami."
 
-msgid "From 1 July 2026 the EU charges a flat customs duty per tariff line on parcels up to the goods-value threshold shipped into the EU from outside it. This estimate is shown as its own pre-tax line at cart and checkout."
-msgstr "Od 1 lipca 2026 r. UE nalicza ryczałtowe cło za linię taryfową dla przesyłek wysyłanych do UE spoza niej, do progu wartości towarów. Ten szacunek jest pokazywany jako osobna pozycja przed opodatkowaniem w koszyku i kasie."
+#: src/Admin/Settings.php:119
+msgid ""
+"From 1 July 2026 the EU charges a flat customs duty per tariff line on "
+"parcels up to the goods-value threshold shipped into the EU from outside it."
+" This estimate is shown as its own pre-tax line at cart and checkout."
+msgstr ""
+"Od 1 lipca 2026 r. UE nalicza ryczałtowe cło za linię taryfową dla przesyłek"
+" wysyłanych do UE spoza niej, do progu wartości towarów. Ten szacunek jest "
+"pokazywany jako osobna pozycja przed opodatkowaniem w koszyku i kasie."
 
+#: src/Admin/Settings.php:123
 msgid "Settings saved."
 msgstr "Ustawienia zapisane."
 
+#: src/Admin/Settings.php:133
 msgid "Enable duty estimate"
 msgstr "Włącz szacowanie cła"
 
+#: src/Admin/Settings.php:137
 msgid "Add the EU import duty line to qualifying carts."
 msgstr "Dodaj pozycję cła importowego UE do kwalifikujących się koszyków."
 
+#: src/Admin/Settings.php:142
 msgid "Duty per tariff line (EUR)"
 msgstr "Cło za linię taryfową (EUR)"
 
-msgid "EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
-msgstr "Reguła UE: 3 EUR za odrębną linię taryfową (tymczasowo, do 1 lipca 2028 r.)."
+#: src/Admin/Settings.php:145
+msgid ""
+"EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
+msgstr ""
+"Reguła UE: 3 EUR za odrębną linię taryfową (tymczasowo, do 1 lipca 2028 r.)."
 
+#: src/Admin/Settings.php:149
 msgid "Goods-value threshold (EUR)"
 msgstr "Próg wartości towarów (EUR)"
 
-msgid "The duty applies only when the cart goods value is at or below this amount. EU rule: 150 EUR."
-msgstr "Cło ma zastosowanie tylko wtedy, gdy wartość towarów w koszyku jest równa tej kwocie lub niższa. Reguła UE: 150 EUR."
+#: src/Admin/Settings.php:152
+msgid ""
+"The duty applies only when the cart goods value is at or below this amount. "
+"EU rule: 150 EUR."
+msgstr ""
+"Cło ma zastosowanie tylko wtedy, gdy wartość towarów w koszyku jest równa "
+"tej kwocie lub niższa. Reguła UE: 150 EUR."
 
+#: src/Admin/Settings.php:156
 msgid "Store currency per 1 EUR"
 msgstr "Waluta sklepu za 1 EUR"
 
-msgid "Used to convert the EUR amounts into your store currency (%s). Leave at 1 if you sell in EUR."
-msgstr "Używane do przeliczania kwot EUR na walutę sklepu (%s). Pozostaw 1, jeśli sprzedajesz w EUR."
+#. translators: %s: store currency code.
+#: src/Admin/Settings.php:162
+msgid ""
+"Used to convert the EUR amounts into your store currency (%s). Leave at 1 if"
+" you sell in EUR."
+msgstr ""
+"Używane do przeliczania kwot EUR na walutę sklepu (%s). Pozostaw 1, jeśli "
+"sprzedajesz w EUR."
 
+#: src/Admin/Settings.php:168
 msgid "Store origin country"
 msgstr "Kraj pochodzenia sklepu"
 
+#: src/Admin/Settings.php:171
 msgid "Use WooCommerce base country"
 msgstr "Użyj kraju bazowego WooCommerce"
 
-msgid "Where parcels ship from. The duty only applies when this is outside the EU."
-msgstr "Skąd wysyłane są przesyłki. Cło ma zastosowanie tylko wtedy, gdy kraj jest poza UE."
+#: src/Admin/Settings.php:184
+msgid ""
+"Where parcels ship from. The duty only applies when this is outside the EU."
+msgstr ""
+"Skąd wysyłane są przesyłki. Cło ma zastosowanie tylko wtedy, gdy kraj jest "
+"poza UE."
 
+#: src/Admin/Settings.php:188
 msgid "Tariff line basis"
 msgstr "Podstawa linii taryfowych"
 
+#: src/Admin/Settings.php:193
 msgid "One line per distinct product category (recommended)"
 msgstr "Jedna linia na odrębną kategorię produktu (zalecane)"
 
+#: src/Admin/Settings.php:197
 msgid "One line per distinct product"
 msgstr "Jedna linia na odrębny produkt"
 
-msgid "A tariff code set on a product always overrides this; products sharing a code count as one line."
-msgstr "Kod taryfowy ustawiony na produkcie zawsze nadpisuje to ustawienie; produkty z tym samym kodem liczą się jako jedna linia."
+#: src/Admin/Settings.php:199
+msgid ""
+"A tariff code set on a product always overrides this; products sharing a "
+"code count as one line."
+msgstr ""
+"Kod taryfowy ustawiony na produkcie zawsze nadpisuje to ustawienie; produkty"
+" z tym samym kodem liczą się jako jedna linia."
 
+#: src/Admin/Settings.php:204
 msgid "Checkout line label"
 msgstr "Etykieta pozycji w kasie"
 
+#: src/Admin/Settings.php:210
 msgid "Apply tax to the duty"
 msgstr "Nalicz podatek od cła"
 
-msgid "Charge tax on the duty fee. Off by default, as customs duty is not normally taxed."
-msgstr "Nalicz podatek od opłaty celnej. Domyślnie wyłączone, ponieważ cło zwykle nie jest opodatkowane."
+#: src/Admin/Settings.php:214
+msgid ""
+"Charge tax on the duty fee. Off by default, as customs duty is not normally "
+"taxed."
+msgstr ""
+"Nalicz podatek od opłaty celnej. Domyślnie wyłączone, ponieważ cło zwykle "
+"nie jest opodatkowane."
 
+#: src/Admin/Settings.php:219
 msgid "Save settings"
 msgstr "Zapisz ustawienia"
 
-msgid "No store origin country is set in WooCommerce, so the duty cannot be applied. Set a base country or choose an origin below."
-msgstr "W WooCommerce nie ustawiono kraju pochodzenia sklepu, więc cło nie może zostać zastosowane. Ustaw kraj bazowy albo wybierz pochodzenie poniżej."
+#: src/Admin/Settings.php:279
+msgid ""
+"No store origin country is set in WooCommerce, so the duty cannot be "
+"applied. Set a base country or choose an origin below."
+msgstr ""
+"W WooCommerce nie ustawiono kraju pochodzenia sklepu, więc cło nie może "
+"zostać zastosowane. Ustaw kraj bazowy albo wybierz pochodzenie poniżej."
 
-msgid "Origin %s is inside the EU, so the duty will not be added (intra-EU shipments are excluded)."
-msgstr "Pochodzenie %s znajduje się w UE, więc cło nie zostanie dodane (przesyłki wewnątrz UE są wykluczone)."
+#. translators: %s: ISO country code.
+#: src/Admin/Settings.php:287
+msgid ""
+"Origin %s is inside the EU, so the duty will not be added (intra-EU "
+"shipments are excluded)."
+msgstr ""
+"Pochodzenie %s znajduje się w UE, więc cło nie zostanie dodane (przesyłki "
+"wewnątrz UE są wykluczone)."
 
+#: src/Settings/SettingsRepository.php:85
 msgid "EU import duty (estimate)"
 msgstr "Cło importowe UE (szacunek)"
-

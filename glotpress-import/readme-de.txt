@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,10 +33,10 @@ Customs umfasst polnische, deutsche und spanische Übersetzungen für die Plugin
 
 == Installation ==
 
-1. Installieren und aktiviere WooCommerce.
+1. Installiere und aktiviere WooCommerce.
 2. Installiere Customs und aktiviere es.
-3. Öffne WooCommerce und dann EU Import Duty, lege den Betrag pro Zeile und den Schwellenwert fest und bestätige das Herkunftsland Ihres Shops.
-4. Ordne den Produkten Tarifpositionen zu, wenn du eine genauere Kontrolle wünschen. Andernfalls zählt jede einzelne Produktkategorie als eine Zeile.
+3. Öffne WooCommerce und dann EU Import Duty, lege den Betrag pro Zeile und den Schwellenwert fest und bestätige das Herkunftsland deines Shops.
+4. Ordne den Produkten Tarifpositionen zu, wenn du eine genauere Kontrolle möchtest. Andernfalls zählt jede einzelne Produktkategorie als eine Zeile.
 
 == Frequently Asked Questions ==
 
@@ -44,7 +44,7 @@ Customs umfasst polnische, deutsche und spanische Übersetzungen für die Plugin
 Nur für Bestellungen, die von einem Geschäft außerhalb der EU in ein EU-Land versandt werden und deren Warenwert deinem Schwellenwert oder darunter entspricht (standardmäßig 150 EUR). Bestellungen innerhalb der EU sind ausgeschlossen.
 
 = How is the duty calculated? =
-Die Anzahl der einzelnen Tarifzeilen im Warenkorb multipliziert mit deinem Betrag pro Zeile (standardmäßig 3 EUR). Ein Paket eines Produkttyps ist eine Linie; Ein Paket, das mehrere unterschiedliche Kategorien umfasst, zählt als mehrere Linien.
+Die Anzahl der einzelnen Tarifzeilen im Warenkorb multipliziert mit deinem Betrag pro Zeile (standardmäßig 3 EUR). Ein Paket eines Produkttyps ist eine Zeile; ein Paket, das mehrere unterschiedliche Kategorien umfasst, zählt als mehrere Zeilen.
 
 = Does it work with the Cart and Checkout Blocks? =
 Ja. Die Gebühr wird über die native WooCommerce-Gebühren-API hinzugefügt, sodass sie sowohl im klassischen Checkout als auch im Blocks-Checkout angezeigt wird und HPOS-kompatibel ist.
@@ -64,9 +64,12 @@ Ja. Dieses Plugin ist mit WordPress Multisite kompatibel. Aktiviere es im Netzwe
 
 1. Der geschätzte EU-Einfuhrzoll wird als eigene Zeile in den Warenkorbsummen angezeigt.
 2. Die EU-Einfuhrzolleinstellungen unter WooCommerce: Betrag pro Zeile, Schwellenwert, Ursprungsland und Art und Weise, wie Zollpositionen gezählt werden.
-3. Die gleiche Dienstzeile im Warenkorb auf dem Handy.
+3. Dieselbe Zollzeile im Warenkorb auf dem Handy.
 
 == Changelog ==
+
+= 1.0.3 =
+* Gebündelte polnische, deutsche und spanische Übersetzungen für die Plugin-Schnittstelle hinzugefügt.
 
 = 1.0.2 =
 * Die polnischen, deutschen und spanischen Übersetzungen wurden korrigiert (Zollterminologie: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel).

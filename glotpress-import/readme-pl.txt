@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,15 +58,18 @@ Tak. Ustaw w ustawieniach kurs waluty EUR do przechowywania, a cło zostanie prz
 
 = Does this plugin work on WordPress Multisite? =
 
-Tak. Ta wtyczka jest kompatybilna z WordPress Multisite. Aktywuj go w sieci lub aktywuj na poszczególnych stronach; każda witryna przechowuje własne ustawienia i dane.
+Tak. Ta wtyczka jest kompatybilna z WordPress Multisite. Włącz ją dla całej sieci lub na poszczególnych stronach; każda witryna przechowuje własne ustawienia i dane.
 
 == Screenshots ==
 
 1. Szacunkowe cło importowe UE pokazane jako osobna pozycja w sumie koszyka.
 2. Ustawienia ceł importowych UE w WooCommerce: kwota w wierszu, próg, kraj pochodzenia i sposób liczenia linii taryfowych.
-3. Ten sam zakres obowiązków w wózku na telefonie komórkowym.
+3. Ta sama pozycja cła w koszyku na telefonie komórkowym.
 
 == Changelog ==
+
+= 1.0.3 =
+* Dodano dołączone tłumaczenia na język polski, niemiecki i hiszpański dla interfejsu wtyczki.
 
 = 1.0.2 =
 * Poprawiono tłumaczenia na język polski, niemiecki i hiszpański (terminologia celna: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel).

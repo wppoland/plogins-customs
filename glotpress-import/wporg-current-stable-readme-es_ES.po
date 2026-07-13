@@ -9,19 +9,19 @@ msgstr ""
 "X-Generator: plogins-i18n\n"
 
 msgid "Estimate and add the EU flat import duty as a clear checkout line for parcels shipped into the EU from outside it. WooCommerce ready."
-msgstr "Calcule y añade el derecho fijo de importación de la UE como una línea de pago clara para los paquetes enviados a la UE desde fuera de ella. Listo para WooCommerce."
+msgstr "Calcula y añade el derecho fijo de importación de la UE como una línea de pago clara para los paquetes enviados a la UE desde fuera de ella. Listo para WooCommerce."
 
 msgid "From 1 July 2026 the EU removes the 150 EUR duty-free threshold for low-value imports and applies a flat customs duty per tariff line on consignments up to 150 EUR shipped into the EU from outside it. Customs estimates that duty and shows it to the shopper as its own line at cart and checkout, so there are no surprise charges on delivery."
-msgstr "A partir del 1 de julio de 2026, la UE elimina el umbral libre de derechos de 150 EUR para las importaciones de bajo valor y aplica un derecho de aduana fijo por línea arancelaria a envíos de hasta 150 EUR enviados a la UE desde fuera de ella. La Aduana calcula ese impuesto y se lo muestra al comprador como su propia línea en el carrito y en la caja, por lo que no hay cargos sorpresa en la entrega."
+msgstr "A partir del 1 de julio de 2026, la UE elimina el umbral libre de derechos de 150 EUR para las importaciones de bajo valor y aplica un derecho de aduana fijo por línea arancelaria a envíos de hasta 150 EUR enviados a la UE desde fuera de ella. Customs calcula ese arancel y se lo muestra al comprador como su propia línea en el carrito y en la caja, por lo que no hay cargos sorpresa en la entrega."
 
 msgid "It only adds the duty when all of these are true: the feature is enabled, the store ships from outside the EU, the destination is an EU country, and the cart goods value is at or below your threshold. Intra-EU orders and orders over the threshold are left untouched."
-msgstr "Solo añade el deber cuando todo esto es cierto: la función está habilitada, la tienda realiza envíos desde fuera de la UE, el destino es un país de la UE y el valor de los productos del carrito está en o por debajo de su umbral. Los pedidos dentro de la UE y los pedidos que superan el umbral no se modifican."
+msgstr "Solo añade el arancel cuando todo esto es cierto: la función está habilitada, la tienda realiza envíos desde fuera de la UE, el destino es un país de la UE y el valor de los productos del carrito está en o por debajo de su umbral. Los pedidos dentro de la UE y los pedidos que superan el umbral no se modifican."
 
 msgid "What it does:"
 msgstr "Qué hace:"
 
 msgid "* Adds an \"EU import duty (estimate)\" fee at cart and checkout using the native WooCommerce fees API\n* Calculates the duty as the number of distinct tariff lines in the cart multiplied by your per-line amount\n* Counts tariff lines from a per-product tariff code, falling back to the product category, then the product\n* Works in the classic checkout and the Cart and Checkout Blocks, and is HPOS compatible\n* Per-line amount, threshold, store origin country, EUR conversion rate, tariff-line basis, fee label and taxable flag are all configurable\n* Adds taxes on top: the duty is shown as its own line in addition to VAT"
-msgstr "* Añade una tarifa de \"derechos de importación de la UE (estimación)\" en el carrito y en el momento del pago utilizando la API de tarifas nativa de WooCommerce\n* Calcula el arancel como el número de líneas arancelarias distintas en el carrito multiplicado por el monto por línea\n* Cuenta las líneas arancelarias de un código arancelario por producto, volviendo a la categoría de producto y luego al producto.\n* Funciona en la caja clásica y en los bloques Carrito y Caja, y es compatible con HPOS\n* El monto por línea, el umbral, el país de origen de la tienda, la tasa de conversión de EUR, la base de la línea arancelaria, la etiqueta de tarifa y la bandera imponible son todos configurables.\n* Añade impuestos encima: el impuesto se muestra como una línea propia además del IVA"
+msgstr "* Añade una tarifa de «derechos de importación de la UE (estimación)» en el carrito y en el momento del pago utilizando la API de tarifas nativa de WooCommerce\n* Calcula el arancel como el número de líneas arancelarias distintas en el carrito multiplicado por el importe por línea\n* Cuenta las líneas arancelarias de un código arancelario por producto, volviendo a la categoría de producto y luego al producto.\n* Funciona en la caja clásica y en los bloques Carrito y Caja, y es compatible con HPOS\n* El importe por línea, el umbral, el país de origen de la tienda, la tasa de conversión de EUR, la base de la línea arancelaria, la etiqueta de tarifa y la bandera imponible son todos configurables.\n* Añade impuestos encima: el arancel se muestra como una línea propia además del IVA"
 
 msgid "This is the WooCommerce equivalent of the import duty handling that hosted platforms add at checkout, without a monthly subscription."
 msgstr "Este es el equivalente en WooCommerce del manejo de derechos de importación que las plataformas alojadas agregan al finalizar la compra, sin una suscripción mensual."
@@ -30,10 +30,10 @@ msgid "Customs includes Polish, German and Spanish translations for the plugin i
 msgstr "Customs incluye traducciones al polaco, alemán y español para la interfaz del complemento. El dominio de texto es `plogins-customs`, por lo que los paquetes de idioma de WordPress.org también pueden anular o ampliar estas traducciones empaquetadas."
 
 msgid "1. Install and activate WooCommerce.\n2. Install Customs and activate it.\n3. Open WooCommerce and then EU Import Duty, set your per-line amount and threshold, and confirm your store origin country.\n4. Assign tariff lines to products if you want finer control, otherwise each distinct product category counts as one line."
-msgstr "1. Instale y active WooCommerce.\n2. Instale Aduana y actívelo.\n3. Abra WooCommerce y luego los derechos de importación de la UE, establezca el monto y el umbral por línea y confirme el país de origen de su tienda.\n4. Asigne líneas arancelarias a los productos si desea un control más preciso; de lo contrario, cada categoría de producto distinta cuenta como una línea."
+msgstr "1. Instala y activa WooCommerce.\n2. Instala Customs y actívalo.\n3. Abre WooCommerce y luego los derechos de importación de la UE, establece el importe y el umbral por línea y confirma el país de origen de tu tienda.\n4. Asigna líneas arancelarias a los productos si quieres un control más preciso; de lo contrario, cada categoría de producto distinta cuenta como una línea."
 
 msgid "Only for orders shipping to an EU country from a store based outside the EU, with a goods value at or below your threshold (150 EUR by default). Intra-EU orders are excluded."
-msgstr "Solo para pedidos enviados a un país de la UE desde una tienda ubicada fuera de la UE, con un valor de mercancía igual o inferior a su umbral (150 EUR por defecto). Se excluyen los pedidos dentro de la UE."
+msgstr "Solo para pedidos enviados a un país de la UE desde una tienda ubicada fuera de la UE, con un valor de mercancía igual o inferior a tu umbral (150 EUR por defecto). Se excluyen los pedidos dentro de la UE."
 
 msgid "The number of distinct tariff lines in the cart multiplied by your per-line amount (3 EUR by default). A parcel of one product type is one line; a parcel spanning several distinct categories counts as several lines."
 msgstr "El número de líneas arancelarias distintas en el carrito multiplicado por el importe por línea (3 EUR de forma predeterminada). Un paquete de un tipo de producto es una línea; un paquete que abarca varias categorías distintas cuenta como varias líneas."
@@ -42,16 +42,19 @@ msgid "Yes. The duty is added through the native WooCommerce fees API, so it app
 msgstr "Sí. El impuesto se añade a través de la API de tarifas nativa de WooCommerce, por lo que aparece tanto en el pago clásico como en el pago de Bloques, y es compatible con HPOS."
 
 msgid "It is an estimate based on your settings. Final duties and any national handling fees are determined by customs at import. Keep your per-line amount and threshold up to date with current rules."
-msgstr "Es una estimación basada en tu configuración. Los derechos finales y cualquier tarifa de manipulación nacional los determina la aduana en el momento de la importación. Mantenga su monto por línea y su umbral actualizados con las reglas actuales."
+msgstr "Es una estimación basada en tu configuración. Los derechos finales y cualquier tarifa de manipulación nacional los determina la aduana en el momento de la importación. Mantén tu importe por línea y tu umbral actualizados según las reglas actuales."
 
 msgid "Yes. Set the EUR to store-currency rate in the settings and the duty is converted before it is added."
-msgstr "Sí. Establezca el tipo de cambio de EUR a la moneda de la tienda en la configuración y el impuesto se convertirá antes de agregarlo."
+msgstr "Sí. Establece el tipo de cambio de EUR a la moneda de la tienda en los ajustes y el arancel se convertirá antes de añadirlo."
 
 msgid "Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data."
-msgstr "Sí. Este complemento es compatible con WordPress Multisite. Activarlo en red o activarlo en sitios individuales; Cada sitio mantiene su propia configuración y datos."
+msgstr "Sí. Este complemento es compatible con WordPress Multisite. Actívalo en red o en sitios concretos; cada sitio mantiene sus propios ajustes y datos."
 
 msgid "1. The estimated EU import duty shown as its own line in the cart totals.\n2. The EU Import Duty settings under WooCommerce: per-line amount, threshold, origin country and how tariff lines are counted.\n3. The same duty line in the cart on mobile."
-msgstr "1. El derecho de importación estimado de la UE se muestra como su propia línea en los totales del carrito.\n2. La configuración de los derechos de importación de la UE en WooCommerce: monto por línea, umbral, país de origen y cómo se cuentan las líneas arancelarias.\n3. La misma línea de trabajo en el carrito del móvil."
+msgstr "1. El derecho de importación estimado de la UE se muestra como su propia línea en los totales del carrito.\n2. La configuración de los derechos de importación de la UE en WooCommerce: monto por línea, umbral, país de origen y cómo se cuentan las líneas arancelarias.\n3. La misma línea de arancel en el carrito del móvil."
+
+msgid "* Added bundled Polish, German and Spanish translations for the plugin interface."
+msgstr "* Se añadieron traducciones integradas en polaco, alemán y español para la interfaz del complemento."
 
 msgid "* Corrected the Polish, German and Spanish translations (customs terminology: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel)."
 msgstr "* Corregidas las traducciones al polaco, alemán y español (terminología aduanera: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel)."
@@ -60,10 +63,10 @@ msgid "* First stable release."
 msgstr "* Primera versión estable."
 
 msgid "* Added bundled Polish, German and Spanish translations for the plugin interface.\n* Refreshed the translation template for the current text domain and settings strings."
-msgstr "* Se agregaron traducciones integradas en polaco, alemán y español para la interfaz del complemento.\n* Se actualizó la plantilla de traducción para el dominio de texto actual y las cadenas de configuración."
+msgstr "* Se añadieron traducciones integradas en polaco, alemán y español para la interfaz del complemento.\n* Se actualizó la plantilla de traducción para el dominio de texto actual y las cadenas de configuración."
 
 msgid "* Added a settings-screen overview of upcoming PRO features (live exchange rates, HS-code classification). No change to the free duty calculation."
-msgstr "* Se agregó una descripción general de la pantalla de configuración de las próximas funciones PRO (tipos de cambio en vivo, clasificación de códigos HS). No hay cambios en el cálculo del derecho libre."
+msgstr "* Se añadió una descripción general en la pantalla de ajustes de las próximas funciones PRO (tipos de cambio en vivo, clasificación de códigos HS). No hay cambios en el cálculo del arancel gratuito."
 
 msgid "* Text domain now matches the plugin slug (plogins-customs) across all strings and the translation template, so wp.org language packs work."
 msgstr "* El dominio de texto ahora coincide con el complemento (plogins-customs) en todas las cadenas y la plantilla de traducción, por lo que los paquetes de idioma de wp.org funcionan."
@@ -72,5 +75,5 @@ msgid "* Restored the wp.org-aligned bootstrap file name, text domain and transl
 msgstr "* Se restauró el nombre del archivo de arranque, el dominio de texto y la plantilla de traducción alineados con wp.org para el slug `customs`."
 
 msgid "* Initial release: EU flat import duty estimated and added as a cart and checkout fee, with configurable per-line amount, threshold, store origin, currency rate, tariff-line basis, label and taxable flag."
-msgstr "* Lanzamiento inicial: impuesto de importación fijo de la UE estimado y agregado como carrito y tarifa de pago, con monto por línea configurable, umbral, origen de la tienda, tipo de cambio, base de línea arancelaria, etiqueta y bandera imponible."
+msgstr "* Lanzamiento inicial: arancel de importación fijo de la UE estimado y añadido como tarifa de carrito y pago, con importe por línea configurable, umbral, origen de la tienda, tipo de cambio, base de línea arancelaria, etiqueta y bandera imponible."
 

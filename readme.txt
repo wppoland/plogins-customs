@@ -1,10 +1,10 @@
-=== Plogins Customs - EU Import Duty for WooCommerce ===
+=== Customs - EU Import Duty for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.0.4 =
+* Shortened display name (dropped the Plogins prefix; slug unchanged).
 
 = 1.0.3 =
 * Added bundled Polish, German and Spanish translations for the plugin interface.

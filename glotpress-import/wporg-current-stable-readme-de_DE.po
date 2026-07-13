@@ -30,13 +30,13 @@ msgid "Customs includes Polish, German and Spanish translations for the plugin i
 msgstr "Customs umfasst polnische, deutsche und spanische Übersetzungen für die Plugin-Schnittstelle. Die Textdomäne ist „plogins-customs“, sodass WordPress.org-Sprachpakete diese gebündelten Übersetzungen auch überschreiben oder erweitern können."
 
 msgid "1. Install and activate WooCommerce.\n2. Install Customs and activate it.\n3. Open WooCommerce and then EU Import Duty, set your per-line amount and threshold, and confirm your store origin country.\n4. Assign tariff lines to products if you want finer control, otherwise each distinct product category counts as one line."
-msgstr "1. Installieren und aktiviere WooCommerce.\n2. Installiere Customs und aktiviere es.\n3. Öffne WooCommerce und dann EU Import Duty, lege den Betrag pro Zeile und den Schwellenwert fest und bestätige das Herkunftsland Ihres Shops.\n4. Ordne den Produkten Tarifpositionen zu, wenn du eine genauere Kontrolle wünschen. Andernfalls zählt jede einzelne Produktkategorie als eine Zeile."
+msgstr "1. Installiere und aktiviere WooCommerce.\n2. Installiere Customs und aktiviere es.\n3. Öffne WooCommerce und dann EU Import Duty, lege den Betrag pro Zeile und den Schwellenwert fest und bestätige das Herkunftsland deines Shops.\n4. Ordne den Produkten Tarifpositionen zu, wenn du eine genauere Kontrolle möchtest. Andernfalls zählt jede einzelne Produktkategorie als eine Zeile."
 
 msgid "Only for orders shipping to an EU country from a store based outside the EU, with a goods value at or below your threshold (150 EUR by default). Intra-EU orders are excluded."
 msgstr "Nur für Bestellungen, die von einem Geschäft außerhalb der EU in ein EU-Land versandt werden und deren Warenwert deinem Schwellenwert oder darunter entspricht (standardmäßig 150 EUR). Bestellungen innerhalb der EU sind ausgeschlossen."
 
 msgid "The number of distinct tariff lines in the cart multiplied by your per-line amount (3 EUR by default). A parcel of one product type is one line; a parcel spanning several distinct categories counts as several lines."
-msgstr "Die Anzahl der einzelnen Tarifzeilen im Warenkorb multipliziert mit deinem Betrag pro Zeile (standardmäßig 3 EUR). Ein Paket eines Produkttyps ist eine Linie; Ein Paket, das mehrere unterschiedliche Kategorien umfasst, zählt als mehrere Linien."
+msgstr "Die Anzahl der einzelnen Tarifzeilen im Warenkorb multipliziert mit deinem Betrag pro Zeile (standardmäßig 3 EUR). Ein Paket eines Produkttyps ist eine Zeile; ein Paket, das mehrere unterschiedliche Kategorien umfasst, zählt als mehrere Zeilen."
 
 msgid "Yes. The duty is added through the native WooCommerce fees API, so it appears in both the classic checkout and the Blocks checkout, and it is HPOS compatible."
 msgstr "Ja. Die Gebühr wird über die native WooCommerce-Gebühren-API hinzugefügt, sodass sie sowohl im klassischen Checkout als auch im Blocks-Checkout angezeigt wird und HPOS-kompatibel ist."
@@ -51,7 +51,10 @@ msgid "Yes. This plugin is compatible with WordPress Multisite. Network activate
 msgstr "Ja. Dieses Plugin ist mit WordPress Multisite kompatibel. Aktiviere es im Netzwerk oder auf einzelnen Websites. Jede Site behält ihre eigenen Einstellungen und Daten."
 
 msgid "1. The estimated EU import duty shown as its own line in the cart totals.\n2. The EU Import Duty settings under WooCommerce: per-line amount, threshold, origin country and how tariff lines are counted.\n3. The same duty line in the cart on mobile."
-msgstr "1. Der geschätzte EU-Einfuhrzoll wird als eigene Zeile in den Warenkorbsummen angezeigt.\n2. Die EU-Einfuhrzolleinstellungen unter WooCommerce: Betrag pro Zeile, Schwellenwert, Ursprungsland und Art und Weise, wie Zollpositionen gezählt werden.\n3. Die gleiche Dienstzeile im Warenkorb auf dem Handy."
+msgstr "1. Der geschätzte EU-Einfuhrzoll wird als eigene Zeile in den Warenkorbsummen angezeigt.\n2. Die EU-Einfuhrzolleinstellungen unter WooCommerce: Betrag pro Zeile, Schwellenwert, Ursprungsland und Art und Weise, wie Zollpositionen gezählt werden.\n3. Dieselbe Zollzeile im Warenkorb auf dem Handy."
+
+msgid "* Added bundled Polish, German and Spanish translations for the plugin interface."
+msgstr "* Gebündelte polnische, deutsche und spanische Übersetzungen für die Plugin-Schnittstelle hinzugefügt."
 
 msgid "* Corrected the Polish, German and Spanish translations (customs terminology: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel)."
 msgstr "* Die polnischen, deutschen und spanischen Übersetzungen wurden korrigiert (Zollterminologie: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel)."

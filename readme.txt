@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,13 @@ What it does:
 * Adds taxes on top: the duty is shown as its own line in addition to VAT
 
 This is the WooCommerce equivalent of the import duty handling that hosted platforms add at checkout, without a monthly subscription.
+
+= Documentation and links =
+
+* **Documentation** - [plogins.com/plogins-customs/docs/](https://plogins.com/plogins-customs/docs/)
+* **Plugin page** - [plogins.com/plogins-customs/](https://plogins.com/plogins-customs/)
+* **Source code** - [github.com/wppoland/plogins-customs](https://github.com/wppoland/plogins-customs)
+* **Bug reports and feature requests** - [GitHub issues](https://github.com/wppoland/plogins-customs/issues)
 
 == Translations ==
 
@@ -67,6 +74,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.0.5 =
+* Documentation: readme links are now labelled links.
 
 = 1.0.4 =
 * Shortened display name (dropped the Plogins prefix; slug unchanged).

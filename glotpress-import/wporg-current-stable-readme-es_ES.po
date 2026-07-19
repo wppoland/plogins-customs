@@ -1,23 +1,220 @@
-# wp.org Stable Readme translation (es_ES)
+# Translation of Plugins - Customs &#8211; EU Import Duty for WooCommerce - Stable Readme (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Customs &#8211; EU Import Duty for WooCommerce - Stable Readme (latest release) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: customs Stable Readme\n"
-"Last-Translator: wppoland.com <hello@wppoland.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"Project-Id-Version: Plugins - Customs &#8211; EU Import Duty for WooCommerce - Stable Readme (latest release)\n"
+"PO-Revision-Date: +0000\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: plogins-i18n\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
 
+#. Short description.
+#, gp-priority: high
 msgid ""
 "Estimate and add the EU flat import duty as a clear checkout line for "
 "parcels shipped into the EU from outside it. WooCommerce ready."
 msgstr ""
-"Estima y añade el arancel fijo de importación de la UE como una línea clara "
-"en el pago para los paquetes enviados a la UE desde fuera de ella. Listo "
-"para WooCommerce."
+"Estima y añade el arancel de importación plano de la UE como una línea clara"
+" en el pago para paquetes enviados a la UE desde fuera de ella. Listo para "
+"WooCommerce."
 
+#. Plugin name.
+#, gp-priority: high
+msgid "Customs - EU Import Duty for WooCommerce"
+msgstr "Customs - Arancel de importación de la UE para WooCommerce"
+
+#. Found in description list item.
+msgid ""
+"<strong>Bug reports and feature requests</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-customs/issues\">GitHub "
+"issues</a>"
+msgstr ""
+"<strong>Informes de errores y solicitudes de funciones</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-customs/issues\">issues de "
+"GitHub</a>"
+
+#. Found in description list item.
+msgid ""
+"<strong>Source code</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-"
+"customs\">github.com/wppoland/plogins-customs</a>"
+msgstr ""
+"<strong>Código fuente</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-"
+"customs\">github.com/wppoland/plogins-customs</a>"
+
+#. Found in description list item.
+msgid ""
+"<strong>Plugin page</strong> - <a href=\"https://plogins.com/plogins-"
+"customs/\">plogins.com/plogins-customs/</a>"
+msgstr ""
+"<strong>Página del plugin</strong> - <a href=\"https://plogins.com/plogins-"
+"customs/\">plogins.com/plogins-customs/</a>"
+
+#. Found in description list item.
+msgid ""
+"<strong>Documentation</strong> - <a href=\"https://plogins.com/plogins-"
+"customs/docs/\">plogins.com/plogins-customs/docs/</a>"
+msgstr ""
+"<strong>Documentación</strong> - <a href=\"https://plogins.com/plogins-"
+"customs/docs/\">plogins.com/plogins-customs/docs/</a>"
+
+#. Found in description header.
+msgid "Documentation and links"
+msgstr "Documentación y enlaces"
+
+#. Found in description paragraph.
+msgid ""
+"Customs includes Polish, German and Spanish translations for the plugin "
+"interface. The text domain is <code>plogins-customs</code>, so WordPress.org"
+" language packs can also override or extend these bundled translations."
+msgstr ""
+"Customs incluye traducciones al polaco, alemán y español para la interfaz "
+"del plugin. El dominio de texto es <code>plogins-customs</code>, por lo que "
+"los paquetes de idioma de WordPress.org también pueden sobrescribir o "
+"ampliar estas traducciones incluidas."
+
+#. Found in description header.
+msgid "Translations"
+msgstr "Traducciones"
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. This plugin is compatible with WordPress Multisite. Network activate it"
+" or activate it on individual sites; each site keeps its own settings and "
+"data."
+msgstr ""
+"Sí. Este plugin es compatible con WordPress Multisite. Actívelo en red o "
+"actívelo en sitios individuales; cada sitio conserva sus propios ajustes y "
+"datos."
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. Set the EUR to store-currency rate in the settings and the duty is "
+"converted before it is added."
+msgstr ""
+"Sí. Establezca en los ajustes la tasa de conversión de EUR a la moneda de la"
+" tienda y el arancel se convierte antes de añadirse."
+
+#. Found in faq paragraph.
+msgid ""
+"It is an estimate based on your settings. Final duties and any national "
+"handling fees are determined by customs at import. Keep your per-line amount"
+" and threshold up to date with current rules."
+msgstr ""
+"Es una estimación basada en sus ajustes. Los aranceles finales y cualquier "
+"tasa de gestión nacional los determina la aduana en el momento de la "
+"importación. Mantenga actualizados su importe por línea y su umbral con las "
+"reglas vigentes."
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. The duty is added through the native WooCommerce fees API, so it "
+"appears in both the classic checkout and the Blocks checkout, and it is HPOS"
+" compatible."
+msgstr ""
+"Sí. El arancel se añade a través de la API de comisiones nativa de "
+"WooCommerce, por lo que aparece tanto en el pago clásico como en el pago con"
+" bloques, y es compatible con HPOS."
+
+#. Found in faq paragraph.
+msgid ""
+"The number of distinct tariff lines in the cart multiplied by your per-line "
+"amount (3 EUR by default). A parcel of one product type is one line; a "
+"parcel spanning several distinct categories counts as several lines."
+msgstr ""
+"El número de líneas arancelarias distintas en el carrito multiplicado por su"
+" importe por línea (3 EUR por defecto). Un paquete de un solo tipo de "
+"producto es una línea; un paquete que abarca varias categorías distintas "
+"cuenta como varias líneas."
+
+#. Found in faq paragraph.
+msgid ""
+"Only for orders shipping to an EU country from a store based outside the EU,"
+" with a goods value at or below your threshold (150 EUR by default). Intra-"
+"EU orders are excluded."
+msgstr ""
+"Solo para pedidos que se envían a un país de la UE desde una tienda ubicada "
+"fuera de la UE, con un valor de la mercancía igual o inferior a su umbral "
+"(150 EUR por defecto). Los pedidos dentro de la UE quedan excluidos."
+
+#. Found in faq header.
+msgid "Does this plugin work on WordPress Multisite?"
+msgstr "¿Funciona este plugin en WordPress Multisite?"
+
+#. Found in faq header.
+msgid "Can I sell in a currency other than EUR?"
+msgstr "¿Puedo vender en una moneda distinta del EUR?"
+
+#. Found in faq header.
+msgid "Is the amount exact?"
+msgstr "¿Es exacto el importe?"
+
+#. Found in faq header.
+msgid "Does it work with the Cart and Checkout Blocks?"
+msgstr "¿Funciona con los bloques de carrito y pago?"
+
+#. Found in faq header.
+msgid "How is the duty calculated?"
+msgstr "¿Cómo se calcula el arancel?"
+
+#. Found in faq header.
+msgid "When does the duty apply?"
+msgstr "¿Cuándo se aplica el arancel?"
+
+#. Found in installation list item.
+msgid ""
+"Assign tariff lines to products if you want finer control, otherwise each "
+"distinct product category counts as one line."
+msgstr ""
+"Asigne líneas arancelarias a los productos si quiere un control más preciso;"
+" de lo contrario, cada categoría de producto distinta cuenta como una línea."
+
+#. Found in installation list item.
+msgid ""
+"Open WooCommerce and then EU Import Duty, set your per-line amount and "
+"threshold, and confirm your store origin country."
+msgstr ""
+"Abra WooCommerce y luego Arancel de importación de la UE, establezca su "
+"importe por línea y su umbral, y confirme el país de origen de su tienda."
+
+#. Found in installation list item.
+msgid "Install Customs and activate it."
+msgstr "Instale Customs y actívelo."
+
+#. Found in installation list item.
+msgid "Install and activate WooCommerce."
+msgstr "Instale y active WooCommerce."
+
+#. Found in description paragraph.
+msgid ""
+"This is the WooCommerce equivalent of the import duty handling that hosted "
+"platforms add at checkout, without a monthly subscription."
+msgstr ""
+"Es el equivalente en WooCommerce de la gestión de aranceles de importación "
+"que las plataformas alojadas añaden en el pago, sin una suscripción mensual."
+
+#. Found in description paragraph.
+msgid "What it does:"
+msgstr "Qué hace:"
+
+#. Found in description paragraph.
+msgid ""
+"It only adds the duty when all of these are true: the feature is enabled, "
+"the store ships from outside the EU, the destination is an EU country, and "
+"the cart goods value is at or below your threshold. Intra-EU orders and "
+"orders over the threshold are left untouched."
+msgstr ""
+"Solo añade el arancel cuando se cumplen todas estas condiciones: la función "
+"está activada, la tienda envía desde fuera de la UE, el destino es un país "
+"de la UE y el valor de la mercancía del carrito es igual o inferior a su "
+"umbral. Los pedidos dentro de la UE y los pedidos que superan el umbral no "
+"se modifican."
+
+#. Found in description paragraph.
 msgid ""
 "From 1 July 2026 the EU removes the 150 EUR duty-free threshold for low-"
 "value imports and applies a flat customs duty per tariff line on "
@@ -25,187 +222,161 @@ msgid ""
 "estimates that duty and shows it to the shopper as its own line at cart and "
 "checkout, so there are no surprise charges on delivery."
 msgstr ""
-"A partir del 1 de julio de 2026, la UE elimina el umbral libre de derechos "
-"de 150 EUR para las importaciones de bajo valor y aplica un derecho de "
-"aduana fijo por línea arancelaria a envíos de hasta 150 EUR enviados a la UE"
-" desde fuera de ella. Customs calcula ese arancel y se lo muestra al "
-"comprador como su propia línea en el carrito y en la caja, por lo que no hay"
-" cargos sorpresa en la entrega."
+"A partir del 1 de julio de 2026, la UE elimina el umbral de exención de "
+"aranceles de 150 EUR para las importaciones de bajo valor y aplica un "
+"arancel aduanero plano por línea arancelaria a los envíos de hasta 150 EUR "
+"que entran en la UE desde fuera de ella. Customs estima ese arancel y lo "
+"muestra al comprador como su propia línea en el carrito y en el pago, de "
+"modo que no hay cargos sorpresa en la entrega."
 
+#. Found in description list item.
 msgid ""
-"It only adds the duty when all of these are true: the feature is enabled, "
-"the store ships from outside the EU, the destination is an EU country, and "
-"the cart goods value is at or below your threshold. Intra-EU orders and "
-"orders over the threshold are left untouched."
+"Adds taxes on top: the duty is shown as its own line in addition to VAT"
 msgstr ""
-"Solo añade el arancel cuando todo esto es cierto: la función está "
-"habilitada, la tienda realiza envíos desde fuera de la UE, el destino es un "
-"país de la UE y el valor de los productos del carrito está en o por debajo "
-"de su umbral. Los pedidos dentro de la UE y los pedidos que superan el "
-"umbral no se modifican."
+"Añade impuestos por encima: el arancel se muestra como su propia línea "
+"además del IVA"
 
-msgid "What it does:"
-msgstr "Qué hace:"
-
+#. Found in description list item.
 msgid ""
-"* Adds an \"EU import duty (estimate)\" fee at cart and checkout using the native WooCommerce fees API\n"
-"* Calculates the duty as the number of distinct tariff lines in the cart multiplied by your per-line amount\n"
-"* Counts tariff lines from a per-product tariff code, falling back to the product category, then the product\n"
-"* Works in the classic checkout and the Cart and Checkout Blocks, and is HPOS compatible\n"
-"* Per-line amount, threshold, store origin country, EUR conversion rate, tariff-line basis, fee label and taxable flag are all configurable\n"
-"* Adds taxes on top: the duty is shown as its own line in addition to VAT"
+"Per-line amount, threshold, store origin country, EUR conversion rate, "
+"tariff-line basis, fee label and taxable flag are all configurable"
 msgstr ""
-"* Añade una tarifa «Arancel de importación de la UE (estimación)» en el carrito y en el momento del pago utilizando la API de tarifas nativa de WooCommerce\n"
-"* Calcula el arancel como el número de líneas arancelarias distintas en el carrito multiplicado por el importe por línea\n"
-"* Cuenta las líneas arancelarias de un código arancelario por producto, volviendo a la categoría de producto y luego al producto.\n"
-"* Funciona en la caja clásica y en los bloques Carrito y Caja, y es compatible con HPOS\n"
-"* El importe por línea, el umbral, el país de origen de la tienda, la tasa de conversión de EUR, la base de la línea arancelaria, la etiqueta de tarifa y el indicador imponible son todos configurables.\n"
-"* Añade impuestos encima: el arancel se muestra como una línea propia además del IVA"
+"El importe por línea, el umbral, el país de origen de la tienda, la tasa de "
+"conversión del EUR, la base de líneas arancelarias, la etiqueta de la "
+"comisión y el indicador de imponible son todos configurables"
 
+#. Found in description list item.
 msgid ""
-"This is the WooCommerce equivalent of the import duty handling that hosted "
-"platforms add at checkout, without a monthly subscription."
+"Works in the classic checkout and the Cart and Checkout Blocks, and is HPOS "
+"compatible"
 msgstr ""
-"Este es el equivalente en WooCommerce de la gestión del arancel de "
-"importación que las plataformas alojadas añaden al finalizar la compra, sin "
-"una suscripción mensual."
+"Funciona en el pago clásico y en los bloques de carrito y pago, y es "
+"compatible con HPOS"
 
+#. Found in description list item.
 msgid ""
-"Customs includes Polish, German and Spanish translations for the plugin "
-"interface. The text domain is `plogins-customs`, so WordPress.org language "
-"packs can also override or extend these bundled translations."
+"Counts tariff lines from a per-product tariff code, falling back to the "
+"product category, then the product"
 msgstr ""
-"Customs incluye traducciones al polaco, alemán y español para la interfaz "
-"del complemento. El dominio de texto es `plogins-customs`, por lo que los "
-"paquetes de idioma de WordPress.org también pueden anular o ampliar estas "
-"traducciones empaquetadas."
+"Cuenta las líneas arancelarias a partir de un código arancelario por "
+"producto, recurriendo a la categoría del producto y luego al producto"
 
+#. Found in description list item.
 msgid ""
-"1. Install and activate WooCommerce.\n"
-"2. Install Customs and activate it.\n"
-"3. Open WooCommerce and then EU Import Duty, set your per-line amount and threshold, and confirm your store origin country.\n"
-"4. Assign tariff lines to products if you want finer control, otherwise each distinct product category counts as one line."
+"Calculates the duty as the number of distinct tariff lines in the cart "
+"multiplied by your per-line amount"
 msgstr ""
-"1. Instala y activa WooCommerce.\n"
-"2. Instala Customs y actívalo.\n"
-"3. Abre WooCommerce y luego los derechos de importación de la UE, establece el importe y el umbral por línea y confirma el país de origen de tu tienda.\n"
-"4. Asigna líneas arancelarias a los productos si quieres un control más preciso; de lo contrario, cada categoría de producto distinta cuenta como una línea."
+"Calcula el arancel como el número de líneas arancelarias distintas en el "
+"carrito multiplicado por su importe por línea"
 
+#. Found in description list item.
 msgid ""
-"Only for orders shipping to an EU country from a store based outside the EU,"
-" with a goods value at or below your threshold (150 EUR by default). Intra-"
-"EU orders are excluded."
+"Adds an \"EU import duty (estimate)\" fee at cart and checkout using the "
+"native WooCommerce fees API"
 msgstr ""
-"Solo para pedidos enviados a un país de la UE desde una tienda ubicada fuera"
-" de la UE, con un valor de mercancía igual o inferior a tu umbral (150 EUR "
-"por defecto). Se excluyen los pedidos dentro de la UE."
+"Añade una comisión «arancel de importación de la UE (estimación)» en el "
+"carrito y en el pago usando la API de comisiones nativa de WooCommerce"
 
-msgid ""
-"The number of distinct tariff lines in the cart multiplied by your per-line "
-"amount (3 EUR by default). A parcel of one product type is one line; a "
-"parcel spanning several distinct categories counts as several lines."
-msgstr ""
-"El número de líneas arancelarias distintas en el carrito multiplicado por el"
-" importe por línea (3 EUR de forma predeterminada). Un paquete de un tipo de"
-" producto es una línea; un paquete que abarca varias categorías distintas "
-"cuenta como varias líneas."
+#. Screenshot description.
+msgid "The same duty line in the cart on mobile."
+msgstr "La misma línea de arancel en el carrito en móvil."
 
+#. Screenshot description.
 msgid ""
-"Yes. The duty is added through the native WooCommerce fees API, so it "
-"appears in both the classic checkout and the Blocks checkout, and it is HPOS"
-" compatible."
+"The EU Import Duty settings under WooCommerce: per-line amount, threshold, "
+"origin country and how tariff lines are counted."
 msgstr ""
-"Sí. El arancel se añade a través de la API de tarifas nativa de WooCommerce,"
-" por lo que aparece tanto en el pago clásico como en el pago de Bloques, y "
-"es compatible con HPOS."
+"Los ajustes de Arancel de importación de la UE en WooCommerce: importe por "
+"línea, umbral, país de origen y cómo se cuentan las líneas arancelarias."
 
-msgid ""
-"It is an estimate based on your settings. Final duties and any national "
-"handling fees are determined by customs at import. Keep your per-line amount"
-" and threshold up to date with current rules."
+#. Screenshot description.
+msgid "The estimated EU import duty shown as its own line in the cart totals."
 msgstr ""
-"Es una estimación basada en tu configuración. Los derechos finales y "
-"cualquier tarifa de manipulación nacional los determina la aduana en el "
-"momento de la importación. Mantén tu importe por línea y tu umbral "
-"actualizados según las reglas actuales."
+"El arancel de importación de la UE estimado mostrado como su propia línea en"
+" los totales del carrito."
 
-msgid ""
-"Yes. Set the EUR to store-currency rate in the settings and the duty is "
-"converted before it is added."
-msgstr ""
-"Sí. Establece el tipo de cambio de EUR a la moneda de la tienda en los "
-"ajustes y el arancel se convertirá antes de añadirlo."
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Documentation: readme links are now labelled links."
+msgstr "Documentación: los enlaces del readme ahora son enlaces etiquetados."
 
-msgid ""
-"Yes. This plugin is compatible with WordPress Multisite. Network activate it"
-" or activate it on individual sites; each site keeps its own settings and "
-"data."
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Shortened display name (dropped the Plogins prefix; slug unchanged)."
 msgstr ""
-"Sí. Este complemento es compatible con WordPress Multisite. Actívalo en red "
-"o en sitios concretos; cada sitio mantiene sus propios ajustes y datos."
+"Se acortó el nombre visible (se eliminó el prefijo Plogins; slug sin "
+"cambios)."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"1. The estimated EU import duty shown as its own line in the cart totals.\n"
-"2. The EU Import Duty settings under WooCommerce: per-line amount, threshold, origin country and how tariff lines are counted.\n"
-"3. The same duty line in the cart on mobile."
+"Corrected the Polish, German and Spanish translations (customs terminology: "
+"Einfuhrzoll, Zolltarifnummer, cło importowe, arancel)."
 msgstr ""
-"1. El arancel de importación estimado de la UE se muestra como su propia línea en los totales del carrito.\n"
-"2. La configuración de Arancel de importación de la UE en WooCommerce: importe por línea, umbral, país de origen y cómo se cuentan las líneas arancelarias.\n"
-"3. La misma línea de arancel en el carrito del móvil."
-
-msgid ""
-"* Added bundled Polish, German and Spanish translations for the plugin "
-"interface."
-msgstr ""
-"* Se añadieron traducciones integradas en polaco, alemán y español para la "
-"interfaz del complemento."
-
-msgid ""
-"* Corrected the Polish, German and Spanish translations (customs "
-"terminology: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel)."
-msgstr ""
-"* Corregidas las traducciones al polaco, alemán y español (terminología "
+"Se corrigieron las traducciones al polaco, alemán y español (terminología "
 "aduanera: Einfuhrzoll, Zolltarifnummer, cło importowe, arancel)."
 
-msgid "* First stable release."
-msgstr "* Primera versión estable."
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "First stable release."
+msgstr "Primera versión estable."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* Added bundled Polish, German and Spanish translations for the plugin interface.\n"
-"* Refreshed the translation template for the current text domain and settings strings."
+"Refreshed the translation template for the current text domain and settings "
+"strings."
 msgstr ""
-"* Se añadieron traducciones integradas en polaco, alemán y español para la interfaz del complemento.\n"
-"* Se actualizó la plantilla de traducción para el dominio de texto actual y las cadenas de configuración."
+"Se actualizó la plantilla de traducción para el dominio de texto actual y "
+"las cadenas de ajustes."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* Added a settings-screen overview of upcoming PRO features (live exchange "
-"rates, HS-code classification). No change to the free duty calculation."
+"Added bundled Polish, German and Spanish translations for the plugin "
+"interface."
 msgstr ""
-"* Se añadió una descripción general en la pantalla de ajustes de las "
-"próximas funciones PRO (tipos de cambio en vivo, clasificación de códigos "
-"HS). No hay cambios en el cálculo del arancel gratuito."
+"Se añadieron traducciones incluidas al polaco, alemán y español para la "
+"interfaz del plugin."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* Text domain now matches the plugin slug (plogins-customs) across all "
-"strings and the translation template, so wp.org language packs work."
-msgstr ""
-"* El dominio de texto ahora coincide con el complemento (plogins-customs) en"
-" todas las cadenas y la plantilla de traducción, por lo que los paquetes de "
-"idioma de wp.org funcionan."
-
-msgid ""
-"* Restored the wp.org-aligned bootstrap file name, text domain and "
-"translation template for the `customs` slug."
-msgstr ""
-"* Se restauró el nombre del archivo de arranque, el dominio de texto y la "
-"plantilla de traducción alineados con wp.org para el slug `customs`."
-
-msgid ""
-"* Initial release: EU flat import duty estimated and added as a cart and "
+"Initial release: EU flat import duty estimated and added as a cart and "
 "checkout fee, with configurable per-line amount, threshold, store origin, "
 "currency rate, tariff-line basis, label and taxable flag."
 msgstr ""
-"* Lanzamiento inicial: arancel de importación fijo de la UE estimado y "
-"añadido como tarifa de carrito y pago, con importe por línea configurable, "
-"umbral, origen de la tienda, tipo de cambio, base de línea arancelaria, "
-"etiqueta y bandera imponible."
+"Versión inicial: arancel de importación plano de la UE estimado y añadido "
+"como una comisión de carrito y pago, con importe por línea, umbral, origen "
+"de la tienda, tasa de moneda, base de líneas arancelarias, etiqueta e "
+"indicador de imponible configurables."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"Restored the wp.org-aligned bootstrap file name, text domain and translation"
+" template for the <code>customs</code> slug."
+msgstr ""
+"Se restauró el nombre del archivo de arranque alineado con wp.org, el "
+"dominio de texto y la plantilla de traducción para el slug "
+"<code>customs</code>."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"Text domain now matches the plugin slug (plogins-customs) across all strings"
+" and the translation template, so wp.org language packs work."
+msgstr ""
+"El dominio de texto ahora coincide con el slug del plugin (plogins-customs) "
+"en todas las cadenas y en la plantilla de traducción, por lo que funcionan "
+"los paquetes de idioma de wp.org."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"Added a settings-screen overview of upcoming PRO features (live exchange "
+"rates, HS-code classification). No change to the free duty calculation."
+msgstr ""
+"Se añadió a la pantalla de ajustes una descripción general de las próximas "
+"funciones PRO (tasas de cambio en vivo, clasificación de códigos HS). Sin "
+"cambios en el cálculo del arancel gratuito."

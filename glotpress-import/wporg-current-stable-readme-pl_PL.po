@@ -4,6 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Customs &#8211; EU Import Duty for WooCommerce - Stable Readme (latest release)\n"
 "PO-Revision-Date: 2026-07-14 16:52:13+0000\n"
+"Last-Translator: wppoland.com <hello@wppoland.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -187,7 +189,7 @@ msgstr "Zainstaluj dodatek „Customs” i go włącz."
 
 #. Found in installation list item.
 msgid "Install and activate WooCommerce."
-msgstr "Zainstaluj i aktywuj WooCommerce."
+msgstr "Zainstaluj i włącz WooCommerce."
 
 #. Found in description paragraph.
 msgid ""

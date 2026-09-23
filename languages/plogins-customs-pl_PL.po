@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: customs.php
 msgid "Customs - EU Import Duty for WooCommerce"
-msgstr ""
+msgstr "Customs - Cło importowe UE dla WooCommerce"
 
 #. Plugin URI of the plugin
 #: customs.php
@@ -174,7 +174,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:200
 msgid "Count a subcategory under the category it sits in"
-msgstr ""
+msgstr "Licz podkategorię w ramach kategorii nadrzędnej"
 
 #: src/Admin/Settings.php:204
 msgid ""
@@ -183,7 +183,7 @@ msgid ""
 "one is right depends on what your categories mean, so it is a choice rather "
 "than a rule. Give the products a tariff code and neither setting applies to "
 "them."
-msgstr ""
+msgstr "Wyłączone: Inne produkty > Koraliki i Inne produkty > Obrazy liczą się jako dwie pozycje. Włączone: Książki > Zdrowie i Książki > Rozwój osobisty liczą się jako jedna. To, które ustawienie jest właściwe, zależy od znaczenia Twoich kategorii, więc jest to wybór, a nie reguła. Nadaj produktom kod taryfowy, a żadne z tych ustawień ich nie dotyczy."
 
 #: src/Admin/Settings.php:211
 msgid "Checkout line label"
@@ -193,7 +193,7 @@ msgstr "Etykieta pozycji w kasie"
 msgid ""
 "Leave empty to use the translated default shown in the field, so the line "
 "reads in the language of each shop."
-msgstr ""
+msgstr "Zostaw puste, aby użyć przetłumaczonej wartości domyślnej widocznej w polu, dzięki czemu pozycja wyświetli się w języku każdego sklepu."
 
 #: src/Admin/Settings.php:218
 msgid "Apply tax to the duty"
@@ -215,7 +215,7 @@ msgstr "Zapisz ustawienia"
 #: src/Admin/Settings.php:321
 #, php-format
 msgid "Tariff codes found on %1$d of %2$d published products."
-msgstr ""
+msgstr "Kody taryfowe znaleziono w %1$d z %2$d opublikowanych produktów."
 
 #: src/Admin/Settings.php:331
 msgid ""
@@ -223,7 +223,7 @@ msgid ""
 "tariff code\" and sits on the product's Shipping tab, which WooCommerce "
 "hides for products marked Virtual, and a code held in another plugin's field "
 "is not read here."
-msgstr ""
+msgstr "Reszta korzysta z reguły kategorii powyżej. Pole nazywa się \"Kod taryfy celnej\" i znajduje się w zakładce Wysyłka produktu, którą WooCommerce ukrywa dla produktów oznaczonych jako Wirtualne, a kod zapisany w polu innej wtyczki nie jest tu odczytywany."
 
 #: src/Admin/Settings.php:346
 msgid ""

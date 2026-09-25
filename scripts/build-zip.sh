@@ -29,5 +29,7 @@ rsync -a --exclude-from="${ROOT_DIR}/.distignore" \
 find "${STAGE}" -name '.DS_Store' -delete
 
 rm -f /tmp/plogins-customs.zip
+# zip -r adds to an existing archive, so a stale one keeps files the build no longer ships.
+rm -f /tmp/plogins-customs.zip
 ( cd "${OUT_DIR}" && zip -rqX /tmp/plogins-customs.zip plogins-customs -x '*.DS_Store' )
 echo "✓ Built /tmp/plogins-customs.zip from ${STAGE}"

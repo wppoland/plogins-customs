@@ -44,8 +44,12 @@ final class ProductFields implements HasHooks
     {
         $post_id = (int) $post_id;
 
-        // woocommerce_process_product_meta runs after WooCommerce has verified
-        // the product editor nonce and the user's edit_product capability.
+        // The product editor's own nonce field is verified here, before any
+        // field is read.
+        if (! isset($_POST['woocommerce_meta_nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['woocommerce_meta_nonce'])), 'woocommerce_save_data')) {
+            return;
+        }
+
         if (! current_user_can('edit_product', $post_id)) {
             return;
         }
@@ -55,10 +59,9 @@ final class ProductFields implements HasHooks
             return;
         }
 
-        // woocommerce_process_product_meta fires only after WooCommerce verifies the
-        // product editor nonce and capability; the value is sanitized on the next line.
-        $raw  = isset($_POST[TariffLineCounter::META_KEY]) ? wp_unslash($_POST[TariffLineCounter::META_KEY]) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-        $code = sanitize_text_field(is_string($raw) ? $raw : '');
+        $code = isset($_POST[TariffLineCounter::META_KEY]) && is_string($_POST[TariffLineCounter::META_KEY])
+            ? sanitize_text_field(wp_unslash($_POST[TariffLineCounter::META_KEY]))
+            : '';
 
         if ('' === $code) {
             $product->delete_meta_data(TariffLineCounter::META_KEY);

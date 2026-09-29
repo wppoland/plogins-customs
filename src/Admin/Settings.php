@@ -226,6 +226,14 @@ final class Settings implements HasHooks
                 </table>
                 <?php submit_button(__('Save settings', 'plogins-customs')); ?>
             </form>
+
+            <?php
+            /**
+             * Fires below the settings form, inside the page wrapper, so an
+             * add-on can render its own section in the same look.
+             */
+            do_action('customs/settings_after_form');
+            ?>
         </div>
         <?php
     }

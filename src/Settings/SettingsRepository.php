@@ -53,8 +53,20 @@ final class SettingsRepository
     public function eurRate(): float
     {
         $rate = (float) ($this->settings()['eur_rate'] ?? 1.0);
+        $rate = $rate > 0 ? $rate : 1.0;
 
-        return $rate > 0 ? $rate : 1.0;
+        /**
+         * Filters the store-currency units per 1 EUR used to convert the duty.
+         *
+         * Receives the rate typed on the settings screen. Customs Pro replaces
+         * it with the ECB reference rate and hands this value back when it has
+         * no rate of its own.
+         *
+         * @param float $rate Store-currency units per 1 EUR, always above 0.
+         */
+        $filtered = (float) apply_filters('customs/eur_rate', $rate);
+
+        return $filtered > 0 ? $filtered : $rate;
     }
 
     /**

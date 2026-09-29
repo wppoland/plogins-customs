@@ -29,6 +29,11 @@ function get_ancestors(int $id, string $taxonomy, string $type = ''): array
     return $out;
 }
 
+function __(string $text, string $domain = 'default'): string
+{
+    return $text;
+}
+
 function apply_filters(string $hook, $value, ...$args)
 {
     return $value;
@@ -137,6 +142,7 @@ class WC_Cart
     }
 }
 
+require __DIR__ . '/../src/Service/Texts.php';
 require __DIR__ . '/../src/Settings/SettingsRepository.php';
 require __DIR__ . '/../src/Duty/TariffLineCounter.php';
 

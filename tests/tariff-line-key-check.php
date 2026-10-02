@@ -91,6 +91,7 @@ abstract class WC_Product_Stub
         private array $categories = [],
         private string $code = '',
         private int $parent = 0,
+        private bool $ships = true,
     ) {
         global $product_stubs;
         if (! isset($product_stubs)) {
@@ -118,6 +119,11 @@ abstract class WC_Product_Stub
     public function get_category_ids(): array
     {
         return $this->categories;
+    }
+
+    public function needs_shipping(): bool
+    {
+        return $this->ships;
     }
 
     public function get_meta(string $key, bool $single = false): string
@@ -322,3 +328,26 @@ $assert(
 );
 
 echo "all user-scenario and normalisation checks passed\n";
+
+echo "\n--- virtual and downloadable products are not in the parcel ---\n";
+
+// Found in the live review of 1.0.17: a cart holding only a virtual product,
+// shipping nothing, was charged one tariff line of duty at checkout.
+$assert(
+    'a cart of only virtual products has no tariff line',
+    $counter->count(new WC_Cart([
+        new WC_Product(301, [11], '', 0, false),
+    ])),
+    0,
+);
+
+$assert(
+    'a virtual product in another category adds no line to a shipped one',
+    $counter->count(new WC_Cart([
+        new WC_Product(302, [11]),
+        new WC_Product(303, [21], '', 0, false),
+    ])),
+    1,
+);
+
+echo "all virtual-product checks passed\n";

@@ -53,6 +53,13 @@ final class TariffLineCounter
                 continue;
             }
 
+            // A virtual or downloadable product never travels in the parcel, so
+            // it is no tariff line. A cart of only such products counts zero and
+            // DutyCalculator adds no duty at all.
+            if (! $product->needs_shipping()) {
+                continue;
+            }
+
             $keys[$this->lineKey($product, $basis)] = true;
         }
 

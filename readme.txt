@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.17
+Stable tag: 1.0.18
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.0.18 =
+* Fixed: a cart holding only virtual or downloadable products, with nothing to ship, was charged the EU import duty. Products that do not need shipping are no longer counted as tariff lines, so they add no duty line of their own.
 
 = 1.0.17 =
 * Added: a `customs/eur_rate` filter on the store-currency rate per 1 EUR, and a `customs/settings_after_form` action below the settings form, so an add-on can supply a live exchange rate and show it on the same screen. Nothing changes for a shop without one.

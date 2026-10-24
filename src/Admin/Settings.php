@@ -114,7 +114,7 @@ final class Settings implements HasHooks
             <h1><?php echo esc_html__('EU Import Duty', 'plogins-customs'); ?></h1>
 
             <p class="description">
-                <?php echo esc_html__('From 1 July 2026 the EU charges a flat customs duty per tariff line on parcels up to the goods-value threshold shipped into the EU from outside it. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
+                <?php echo esc_html__('From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty of 3 EUR per item on IOSS and postal consignments up to the goods-value threshold shipped into the EU from outside it. A courier parcel imported without IOSS is not covered. The plugin counts one item per distinct tariff line, following European Commission guidance. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
             </p>
 
             <?php if ($saved) : ?>
@@ -139,7 +139,7 @@ final class Settings implements HasHooks
                         <th scope="row"><label for="customs_per_line"><?php echo esc_html__('Duty per tariff line (EUR)', 'plogins-customs'); ?></label></th>
                         <td>
                             <input type="number" step="0.01" min="0" id="customs_per_line" name="per_line" value="<?php echo esc_attr((string) $s['per_line']); ?>" class="small-text" />
-                            <p class="description"><?php echo esc_html__('EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028).', 'plogins-customs'); ?></p>
+                            <p class="description"><?php echo esc_html__('EU rule: 3 EUR per item (temporary, until 1 July 2028). The plugin treats each distinct tariff line as one item.', 'plogins-customs'); ?></p>
                         </td>
                     </tr>
                     <tr>

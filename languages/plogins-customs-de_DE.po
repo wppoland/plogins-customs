@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plogins Customs - EU Import Duty for WooCommerce 0.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-customs\n"
-"POT-Creation-Date: 2026-09-08T13:42:43+00:00\n"
+"POT-Creation-Date: 2026-10-24T10:19:14+00:00\n"
 "PO-Revision-Date: 2026-07-07 00:00+0000\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
@@ -83,14 +83,13 @@ msgstr "Du hast keine Berechtigung, diese Einstellungen zu verwalten."
 
 #: src/Admin/Settings.php:117
 msgid ""
-"From 1 July 2026 the EU charges a flat customs duty per tariff line on "
-"parcels up to the goods-value threshold shipped into the EU from outside it. "
-"This estimate is shown as its own pre-tax line at cart and checkout."
+"From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty "
+"of 3 EUR per item on IOSS and postal consignments up to the goods-value "
+"threshold shipped into the EU from outside it. A courier parcel imported "
+"without IOSS is not covered. The plugin counts one item per distinct tariff "
+"line, following European Commission guidance. This estimate is shown as its "
+"own pre-tax line at cart and checkout."
 msgstr ""
-"Ab dem 1. Juli 2026 erhebt die EU einen pauschalen Zoll pro Tarifzeile für "
-"Pakete bis zum Warenwertschwellenwert, die von außerhalb in die EU versendet "
-"werden. Diese Schätzung wird im Warenkorb und Checkout als eigene Zeile vor "
-"Steuern angezeigt."
 
 #: src/Admin/Settings.php:121
 msgid "Settings saved."
@@ -109,9 +108,10 @@ msgid "Duty per tariff line (EUR)"
 msgstr "Zoll pro Tarifzeile (EUR)"
 
 #: src/Admin/Settings.php:142
-msgid "EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
+msgid ""
+"EU rule: 3 EUR per item (temporary, until 1 July 2028). The plugin treats "
+"each distinct tariff line as one item."
 msgstr ""
-"EU-Regel: 3 EUR pro eigener Tarifzeile (vorübergehend bis 1. Juli 2028)."
 
 #: src/Admin/Settings.php:146
 msgid "Goods-value threshold (EUR)"
@@ -214,12 +214,12 @@ msgid "Save settings"
 msgstr "Einstellungen speichern"
 
 #. translators: 1: products carrying a tariff code, 2: published products
-#: src/Admin/Settings.php:321
+#: src/Admin/Settings.php:329
 #, php-format
 msgid "Tariff codes found on %1$d of %2$d published products."
 msgstr ""
 
-#: src/Admin/Settings.php:331
+#: src/Admin/Settings.php:339
 msgid ""
 "The rest fall back to the category rule above. The field is called \"Customs "
 "tariff code\" and sits on the product's Shipping tab, which WooCommerce "
@@ -227,7 +227,7 @@ msgid ""
 "is not read here."
 msgstr ""
 
-#: src/Admin/Settings.php:346
+#: src/Admin/Settings.php:354
 msgid ""
 "No store origin country is set in WooCommerce, so the duty cannot be "
 "applied. Set a base country or choose an origin below."
@@ -237,7 +237,7 @@ msgstr ""
 "Herkunft aus."
 
 #. translators: %s: ISO country code.
-#: src/Admin/Settings.php:354
+#: src/Admin/Settings.php:362
 #, php-format
 msgid ""
 "Origin %s is inside the EU, so the duty will not be added (intra-EU "
@@ -249,6 +249,21 @@ msgstr ""
 #: src/Service/Texts.php:34
 msgid "EU import duty (estimate)"
 msgstr "EU-Einfuhrzoll (Schätzung)"
+
+#~ msgid ""
+#~ "From 1 July 2026 the EU charges a flat customs duty per tariff line on "
+#~ "parcels up to the goods-value threshold shipped into the EU from outside "
+#~ "it. This estimate is shown as its own pre-tax line at cart and checkout."
+#~ msgstr ""
+#~ "Ab dem 1. Juli 2026 erhebt die EU einen pauschalen Zoll pro Tarifzeile "
+#~ "für Pakete bis zum Warenwertschwellenwert, die von außerhalb in die EU "
+#~ "versendet werden. Diese Schätzung wird im Warenkorb und Checkout als "
+#~ "eigene Zeile vor Steuern angezeigt."
+
+#~ msgid ""
+#~ "EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
+#~ msgstr ""
+#~ "EU-Regel: 3 EUR pro eigener Tarifzeile (vorübergehend bis 1. Juli 2028)."
 
 #~ msgid "Plogins Customs - EU Import Duty for WooCommerce"
 #~ msgstr "Plogins Customs - EU-Einfuhrzoll für WooCommerce"

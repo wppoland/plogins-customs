@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.18
+Stable tag: 1.0.19
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,10 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.0.19 =
+* Fixed: the 150 EUR threshold now compares the goods value after coupon discounts, as the customs value is the price actually paid. A cart pushed under 150 EUR by a coupon was still treated as over it and charged no duty.
+* New: `customs/intrinsic_goods_value` filter to adjust the goods value before the threshold check.
 
 = 1.0.18 =
 * Fixed: a cart holding only virtual or downloadable products, with nothing to ship, was charged the EU import duty. Products that do not need shipping are no longer counted as tariff lines, so they add no duty line of their own.

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Customs &#8211; EU Import Duty for WooCommerce "
 "- Stable (latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-customs\n"
-"POT-Creation-Date: 2026-09-08T13:42:43+00:00\n"
+"POT-Creation-Date: 2026-10-24T10:19:14+00:00\n"
 "PO-Revision-Date: 2026-07-15 08:46:52+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -82,13 +82,13 @@ msgstr "Nie masz uprawnień do zarządzania tymi ustawieniami."
 
 #: src/Admin/Settings.php:117
 msgid ""
-"From 1 July 2026 the EU charges a flat customs duty per tariff line on "
-"parcels up to the goods-value threshold shipped into the EU from outside it. "
-"This estimate is shown as its own pre-tax line at cart and checkout."
+"From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty "
+"of 3 EUR per item on IOSS and postal consignments up to the goods-value "
+"threshold shipped into the EU from outside it. A courier parcel imported "
+"without IOSS is not covered. The plugin counts one item per distinct tariff "
+"line, following European Commission guidance. This estimate is shown as its "
+"own pre-tax line at cart and checkout."
 msgstr ""
-"Od 1 lipca 2026 r. UE nalicza ryczałtowe cło za linię taryfową dla przesyłek "
-"wysyłanych do UE spoza niej, do progu wartości towarów. Ten szacunek jest "
-"pokazywany jako osobna pozycja przed opodatkowaniem w koszyku i kasie."
 
 #: src/Admin/Settings.php:121
 msgid "Settings saved."
@@ -107,9 +107,10 @@ msgid "Duty per tariff line (EUR)"
 msgstr "Cło za linię taryfową (EUR)"
 
 #: src/Admin/Settings.php:142
-msgid "EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
+msgid ""
+"EU rule: 3 EUR per item (temporary, until 1 July 2028). The plugin treats "
+"each distinct tariff line as one item."
 msgstr ""
-"Reguła UE: 3 EUR za odrębną linię taryfową (tymczasowo, do 1 lipca 2028 r.)."
 
 #: src/Admin/Settings.php:146
 msgid "Goods-value threshold (EUR)"
@@ -183,7 +184,12 @@ msgid ""
 "one is right depends on what your categories mean, so it is a choice rather "
 "than a rule. Give the products a tariff code and neither setting applies to "
 "them."
-msgstr "Wyłączone: Inne produkty > Koraliki i Inne produkty > Obrazy liczą się jako dwie pozycje. Włączone: Książki > Zdrowie i Książki > Rozwój osobisty liczą się jako jedna. To, które ustawienie jest właściwe, zależy od znaczenia Twoich kategorii, więc jest to wybór, a nie reguła. Nadaj produktom kod taryfowy, a żadne z tych ustawień ich nie dotyczy."
+msgstr ""
+"Wyłączone: Inne produkty > Koraliki i Inne produkty > Obrazy liczą się jako "
+"dwie pozycje. Włączone: Książki > Zdrowie i Książki > Rozwój osobisty liczą "
+"się jako jedna. To, które ustawienie jest właściwe, zależy od znaczenia "
+"Twoich kategorii, więc jest to wybór, a nie reguła. Nadaj produktom kod "
+"taryfowy, a żadne z tych ustawień ich nie dotyczy."
 
 #: src/Admin/Settings.php:211
 msgid "Checkout line label"
@@ -193,7 +199,9 @@ msgstr "Etykieta pozycji w kasie"
 msgid ""
 "Leave empty to use the translated default shown in the field, so the line "
 "reads in the language of each shop."
-msgstr "Zostaw puste, aby użyć przetłumaczonej wartości domyślnej widocznej w polu, dzięki czemu pozycja wyświetli się w języku każdego sklepu."
+msgstr ""
+"Zostaw puste, aby użyć przetłumaczonej wartości domyślnej widocznej w polu, "
+"dzięki czemu pozycja wyświetli się w języku każdego sklepu."
 
 #: src/Admin/Settings.php:218
 msgid "Apply tax to the duty"
@@ -212,20 +220,24 @@ msgid "Save settings"
 msgstr "Zapisz ustawienia"
 
 #. translators: 1: products carrying a tariff code, 2: published products
-#: src/Admin/Settings.php:321
+#: src/Admin/Settings.php:329
 #, php-format
 msgid "Tariff codes found on %1$d of %2$d published products."
 msgstr "Kody taryfowe znaleziono w %1$d z %2$d opublikowanych produktów."
 
-#: src/Admin/Settings.php:331
+#: src/Admin/Settings.php:339
 msgid ""
 "The rest fall back to the category rule above. The field is called \"Customs "
 "tariff code\" and sits on the product's Shipping tab, which WooCommerce "
 "hides for products marked Virtual, and a code held in another plugin's field "
 "is not read here."
-msgstr "Reszta korzysta z reguły kategorii powyżej. Pole nazywa się \"Kod taryfy celnej\" i znajduje się w zakładce Wysyłka produktu, którą WooCommerce ukrywa dla produktów oznaczonych jako Wirtualne, a kod zapisany w polu innej wtyczki nie jest tu odczytywany."
+msgstr ""
+"Reszta korzysta z reguły kategorii powyżej. Pole nazywa się \"Kod taryfy "
+"celnej\" i znajduje się w zakładce Wysyłka produktu, którą WooCommerce "
+"ukrywa dla produktów oznaczonych jako Wirtualne, a kod zapisany w polu innej "
+"wtyczki nie jest tu odczytywany."
 
-#: src/Admin/Settings.php:346
+#: src/Admin/Settings.php:354
 msgid ""
 "No store origin country is set in WooCommerce, so the duty cannot be "
 "applied. Set a base country or choose an origin below."
@@ -234,7 +246,7 @@ msgstr ""
 "zostać zastosowane. Ustaw kraj bazowy albo wybierz pochodzenie poniżej."
 
 #. translators: %s: ISO country code.
-#: src/Admin/Settings.php:354
+#: src/Admin/Settings.php:362
 #, php-format
 msgid ""
 "Origin %s is inside the EU, so the duty will not be added (intra-EU "
@@ -246,6 +258,22 @@ msgstr ""
 #: src/Service/Texts.php:34
 msgid "EU import duty (estimate)"
 msgstr "Cło importowe UE (szacunek)"
+
+#~ msgid ""
+#~ "From 1 July 2026 the EU charges a flat customs duty per tariff line on "
+#~ "parcels up to the goods-value threshold shipped into the EU from outside "
+#~ "it. This estimate is shown as its own pre-tax line at cart and checkout."
+#~ msgstr ""
+#~ "Od 1 lipca 2026 r. UE nalicza ryczałtowe cło za linię taryfową dla "
+#~ "przesyłek wysyłanych do UE spoza niej, do progu wartości towarów. Ten "
+#~ "szacunek jest pokazywany jako osobna pozycja przed opodatkowaniem w "
+#~ "koszyku i kasie."
+
+#~ msgid ""
+#~ "EU rule: 3 EUR per distinct tariff line (temporary, until 1 July 2028)."
+#~ msgstr ""
+#~ "Reguła UE: 3 EUR za odrębną linię taryfową (tymczasowo, do 1 lipca 2028 "
+#~ "r.)."
 
 #~ msgid "Plogins Customs - EU Import Duty for WooCommerce"
 #~ msgstr "Plogins Customs - cło importowe UE dla WooCommerce"

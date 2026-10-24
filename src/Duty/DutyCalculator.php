@@ -58,11 +58,27 @@ final class DutyCalculator
         }
 
         $rate = $this->settings->eurRate();
+        if ($rate <= 0.0) {
+            return 0.0;
+        }
 
-        // Intrinsic goods value, excluding shipping, tax and fees. get_subtotal()
-        // is the ex-tax sum of line subtotals. Compared in EUR via the rate.
-        $goodsValueEur = (float) $cart->get_subtotal() / $rate;
-        if ($goodsValueEur > $this->settings->thresholdEur()) {
+        // Intrinsic goods value: net discounted item total (after coupons, excluding
+        // VAT, shipping, insurance, and fees) per UCC Art. 1(42) / IOSS rules.
+        // Falls back to get_subtotal() if cart totals have not been calculated yet.
+        $goodsValue = (float) $cart->get_cart_contents_total();
+        if ($goodsValue <= 0.0) {
+            $goodsValue = (float) $cart->get_subtotal();
+        }
+
+        /**
+         * Filters the intrinsic goods value in store currency before the threshold check.
+         *
+         * @param float    $goodsValue Intrinsic goods value in store currency.
+         * @param \WC_Cart $cart       The cart being evaluated.
+         */
+        $goodsValue = (float) apply_filters('customs/intrinsic_goods_value', $goodsValue, $cart);
+
+        if (($goodsValue / $rate) > $this->settings->thresholdEur()) {
             return 0.0;
         }
 

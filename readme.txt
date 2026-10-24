@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.18
+Stable tag: 1.0.20
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,9 +12,11 @@ Estimate and add the EU flat import duty as a clear checkout line for parcels sh
 
 == Description ==
 
-From 1 July 2026 the EU removes the 150 EUR duty-free threshold for low-value imports and applies a flat customs duty per tariff line on consignments up to 150 EUR shipped into the EU from outside it. Customs estimates that duty and shows it to the shopper as its own line at cart and checkout, so there are no surprise charges on delivery.
+From 1 July 2026 the EU removes the 150 EUR duty-free threshold for low-value imports. Until 1 July 2028 it charges instead a temporary customs duty of 3 EUR per item on consignments with an intrinsic value up to 150 EUR, where the goods are imported under the IOSS scheme or arrive as a postal consignment (Council Regulation (EU) 2026/382, Article 2). Customs estimates that duty and shows it to the shopper as its own line at cart and checkout, so there are no surprise charges on delivery.
 
 It only adds the duty when all of these are true: the feature is enabled, the store ships from outside the EU, the destination is an EU country, and the cart goods value is at or below your threshold. Intra-EU orders and orders over the threshold are left untouched.
+
+The plugin cannot see how a parcel will be declared, so it assumes an IOSS or postal consignment. A courier parcel imported without IOSS falls outside the 3 EUR rule; if that is how you ship, leave the estimate off.
 
 What it does:
 
@@ -50,10 +52,12 @@ Customs is fully translatable and ships the `plogins-customs.pot` template. Tran
 == Frequently Asked Questions ==
 
 = When does the duty apply? =
-Only for orders shipping to an EU country from a store based outside the EU, with a goods value at or below your threshold (150 EUR by default). Intra-EU orders are excluded.
+From 1 July 2026 until 1 July 2028, only for orders shipping to an EU country from a store based outside the EU, with a goods value at or below your threshold (150 EUR by default). Intra-EU orders are excluded.
 
 = How is the duty calculated? =
 The number of distinct tariff lines in the cart multiplied by your per-line amount (3 EUR by default). A parcel of one product type is one line; a parcel spanning several distinct categories counts as several lines. Whether a subcategory counts on its own or under its parent is a setting, and a tariff code overrides both.
+
+The regulation charges per item and does not define the word. European Commission guidance treats goods that share one tariff classification as one item, so the plugin counts one item per distinct tariff line. That is the plugin's working assumption, not legal advice.
 
 = Does it work with the Cart and Checkout Blocks? =
 Yes. The duty is added through the native WooCommerce fees API, so it appears in both the classic checkout and the Blocks checkout, and it is HPOS compatible.
@@ -76,6 +80,13 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.0.20 =
+* Changed: the description and settings now say what Regulation (EU) 2026/382 actually covers: 3 EUR per item until 1 July 2028, only for IOSS or postal consignments. Counting one item per tariff line is labelled as the plugin's reading of Commission guidance, since the regulation does not define an item.
+
+= 1.0.19 =
+* Fixed: the 150 EUR threshold now compares the goods value after coupon discounts, as the customs value is the price actually paid. A cart pushed under 150 EUR by a coupon was still treated as over it and charged no duty.
+* New: `customs/intrinsic_goods_value` filter to adjust the goods value before the threshold check.
 
 = 1.0.18 =
 * Fixed: a cart holding only virtual or downloadable products, with nothing to ship, was charged the EU import duty. Products that do not need shipping are no longer counted as tariff lines, so they add no duty line of their own.

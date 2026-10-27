@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.20
+Stable tag: 1.0.21
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,11 +12,13 @@ Estimate and add the EU flat import duty as a clear checkout line for parcels sh
 
 == Description ==
 
-From 1 July 2026 the EU removes the 150 EUR duty-free threshold for low-value imports. Until 1 July 2028 it charges instead a temporary customs duty of 3 EUR per item on consignments with an intrinsic value up to 150 EUR, where the goods are imported under the IOSS scheme or arrive as a postal consignment (Council Regulation (EU) 2026/382, Article 2). Customs estimates that duty and shows it to the shopper as its own line at cart and checkout, so there are no surprise charges on delivery.
+From 1 July 2026 the EU removes the 150 EUR customs duty relief for low-value imports (Council Regulation (EU) 2026/382, Article 1). Until 1 July 2028 it charges instead a temporary customs duty of 3 EUR per item in a consignment with an intrinsic value up to 150 EUR, where the goods are imported under the IOSS scheme or are goods in postal consignment (Article 2). Since 1 July 2026 that term means goods in a consignment up to 150 EUR sold in a distance sale to an EU customer, excluding IOSS goods and goods that benefit from preferential measures (Delegated Regulation (EU) 2015/2446, Article 1(24), as replaced by Delegated Regulation (EU) 2026/1022). Together the two cover every distance sale up to 150 EUR, with or without IOSS; it turns on the sale, not on who carries the parcel. Customs estimates that duty and shows it to the shopper as its own line at cart and checkout, so there are no surprise charges on delivery.
 
 It only adds the duty when all of these are true: the feature is enabled, the store ships from outside the EU, the destination is an EU country, and the cart goods value is at or below your threshold. Intra-EU orders and orders over the threshold are left untouched.
 
-The plugin cannot see how a parcel will be declared, so it assumes an IOSS or postal consignment. A courier parcel imported without IOSS falls outside the 3 EUR rule; if that is how you ship, leave the estimate off.
+The plugin cannot see how a parcel will be declared, so it assumes a distance sale to a consumer. Goods imported without IOSS that claim a preferential tariff, for example under a trade agreement with their country of origin, are outside the 3 EUR rule; if that is how you ship, leave the estimate off.
+
+Separately, from 1 November 2026 customs charge a Union handling fee of 2 EUR per item on goods sold in distance sales, at any consignment value (Regulation (EU) 2026/2108, Article 20(2); Delegated Regulation (EU) 2026/2152, Articles 1 and 2). Customs does not add this fee.
 
 What it does:
 
@@ -57,13 +59,13 @@ From 1 July 2026 until 1 July 2028, only for orders shipping to an EU country fr
 = How is the duty calculated? =
 The number of distinct tariff lines in the cart multiplied by your per-line amount (3 EUR by default). A parcel of one product type is one line; a parcel spanning several distinct categories counts as several lines. Whether a subcategory counts on its own or under its parent is a setting, and a tariff code overrides both.
 
-The regulation charges per item and does not define the word. European Commission guidance treats goods that share one tariff classification as one item, so the plugin counts one item per distinct tariff line. That is the plugin's working assumption, not legal advice.
+An item is one or more goods in a consignment sharing the same tariff classification, description and, where the declaration requires it, origin (Delegated Regulation (EU) 2015/2446, Article 1(61), added by Delegated Regulation (EU) 2026/1022; Regulation (EU) 2026/2108, Article 5(78)). Several units of one product are therefore one item. The plugin counts one item per distinct tariff code, or per category or product when no code is set. That matches the tariff classification part of the definition only: two products with the same code but a different description or origin are two items at customs and one line here, so the estimate can be lower than the duty charged. It is the plugin's working assumption, not legal advice.
 
 = Does it work with the Cart and Checkout Blocks? =
 Yes. The duty is added through the native WooCommerce fees API, so it appears in both the classic checkout and the Blocks checkout, and it is HPOS compatible.
 
 = Is the amount exact? =
-It is an estimate based on your settings. Final duties and any national handling fees are determined by customs at import. Keep your per-line amount and threshold up to date with current rules.
+It is an estimate based on your settings. Final duties are determined by customs at import, and the 2 EUR per item Union handling fee from 1 November 2026 is not included. Keep your per-line amount and threshold up to date with current rules.
 
 = Can I sell in a currency other than EUR? =
 Yes. Set the EUR to store-currency rate in the settings and the duty is converted before it is added.
@@ -80,6 +82,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.0.21 =
+* Changed: the description and settings now follow the primary texts. Since 1 July 2026 the 3 EUR duty covers every distance sale to an EU customer in a consignment up to 150 EUR, with or without IOSS, except non-IOSS goods that claim a preferential tariff (Delegated Regulation (EU) 2026/1022). A courier parcel is no longer described as outside the rule. The legal definition of an item is quoted, with what the tariff-line count matches and what it misses, and the readme notes the 2 EUR Union handling fee from 1 November 2026, which the plugin does not add.
 
 = 1.0.20 =
 * Changed: the description and settings now say what Regulation (EU) 2026/382 actually covers: 3 EUR per item until 1 July 2028, only for IOSS or postal consignments. Counting one item per tariff line is labelled as the plugin's reading of Commission guidance, since the regulation does not define an item.

@@ -114,7 +114,7 @@ final class Settings implements HasHooks
             <h1><?php echo esc_html__('EU Import Duty', 'plogins-customs'); ?></h1>
 
             <p class="description">
-                <?php echo esc_html__('From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty of 3 EUR per item on IOSS and postal consignments up to the goods-value threshold shipped into the EU from outside it. A courier parcel imported without IOSS is not covered. The plugin counts one item per distinct tariff line, following European Commission guidance. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
+                <?php echo esc_html__('From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty of 3 EUR per item on goods sold in distance sales and shipped into the EU from outside it, in consignments up to the goods-value threshold, with or without IOSS. Goods imported without IOSS that claim a preferential tariff are not covered. An item is goods sharing the same tariff classification, description and origin; the plugin counts one item per distinct tariff line. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
             </p>
 
             <?php if ($saved) : ?>

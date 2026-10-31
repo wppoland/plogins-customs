@@ -114,7 +114,7 @@ final class Settings implements HasHooks
             <h1><?php echo esc_html__('EU Import Duty', 'plogins-customs'); ?></h1>
 
             <p class="description">
-                <?php echo esc_html__('From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty of 3 EUR per item on goods sold in distance sales and shipped into the EU from outside it, in consignments up to the goods-value threshold, with or without IOSS. Goods imported without IOSS that claim a preferential tariff are not covered; tick "Outside the 3 EUR duty" on those products. An item is goods sharing the same tariff classification, description and origin; the plugin counts one item per distinct tariff line. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
+                <?php echo esc_html__('From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty of 3 EUR per item on goods sold in distance sales and shipped into the EU from outside it, in consignments up to the goods-value threshold, with or without IOSS. Goods imported without IOSS that claim a preferential tariff are not covered; tick "Outside the 3 EUR duty" on those products. An item is goods sharing the same tariff classification, description and origin; the plugin counts one item per distinct tariff line and country of origin. How the estimate reaches the shopper is set under "Who pays the duty".', 'plogins-customs'); ?>
             </p>
 
             <?php if ($saved) : ?>
@@ -143,6 +143,29 @@ final class Settings implements HasHooks
                                 <?php echo esc_html__('Only apply the duty between 1 July 2026 and 1 July 2028', 'plogins-customs'); ?>
                             </label>
                             <p class="description"><?php echo esc_html__('Council Regulation (EU) 2026/382, Article 2 sets this period, so outside it no duty line is added. Untick only if the period is extended.', 'plogins-customs'); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php echo esc_html__('Who pays the duty', 'plogins-customs'); ?></th>
+                        <td>
+                            <fieldset>
+                                <?php
+                                $modes = [
+                                    SettingsRepository::MODE_CHARGE   => __('Charge it at checkout (DDP): the duty is added to the order total as its own pre-tax line.', 'plogins-customs'),
+                                    SettingsRepository::MODE_ESTIMATE => __('Show it as an estimate only (DAP): the shopper sees the amount but it is not added to the total, because it is paid on delivery.', 'plogins-customs'),
+                                    SettingsRepository::MODE_ABSORB   => __('Absorb it: the shopper sees and pays nothing extra, and the amount is recorded on the order for your records.', 'plogins-customs'),
+                                ];
+                                foreach ($modes as $value => $text) {
+                                    printf(
+                                        '<label><input type="radio" name="duty_mode" value="%s" %s /> %s</label><br />',
+                                        esc_attr($value),
+                                        checked((string) $s['duty_mode'], $value, false),
+                                        esc_html($text)
+                                    );
+                                }
+                                ?>
+                                <p class="description"><?php echo esc_html__('In the Cart and Checkout Blocks an estimate is shown on the order confirmation and in the order emails, not in the cart.', 'plogins-customs'); ?></p>
+                            </fieldset>
                         </td>
                     </tr>
                     <tr>
@@ -189,6 +212,26 @@ final class Settings implements HasHooks
                                 ?>
                             </select>
                             <p class="description"><?php echo esc_html__('Where parcels ship from. The duty only applies when this is outside the EU customs territory. Ceuta and Melilla are outside it: a Spanish store address in the province of Ceuta or Melilla, or with a postcode starting 51 or 52, counts as outside the EU.', 'plogins-customs'); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="customs_goods_origin"><?php echo esc_html__('Default country of origin', 'plogins-customs'); ?></label></th>
+                        <td>
+                            <select id="customs_goods_origin" name="goods_origin">
+                                <option value=""><?php echo esc_html__('Not set', 'plogins-customs'); ?></option>
+                                <?php
+                                $currentOrigin = strtoupper((string) $s['goods_origin']);
+                                foreach ($this->countryList() as $code => $name) {
+                                    printf(
+                                        '<option value="%s" %s>%s</option>',
+                                        esc_attr($code),
+                                        selected($currentOrigin, $code, false),
+                                        esc_html($name)
+                                    );
+                                }
+                                ?>
+                            </select>
+                            <p class="description"><?php echo esc_html__('Where your goods are made, for products without their own "Country of origin" on the Shipping tab. Under Delegated Regulation (EU) 2015/2446, Article 1(61), goods with the same tariff classification but a different declared origin are separate items, so the plugin counts each tariff line once per country of origin.', 'plogins-customs'); ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -281,6 +324,8 @@ final class Settings implements HasHooks
             'label'          => isset($_POST['label']) ? sanitize_text_field(wp_unslash($_POST['label'])) : '',
             'taxable'        => isset($_POST['taxable']),
             'enforce_dates'  => isset($_POST['enforce_dates']),
+            'duty_mode'      => isset($_POST['duty_mode']) ? sanitize_text_field(wp_unslash($_POST['duty_mode'])) : SettingsRepository::MODE_CHARGE,
+            'goods_origin'   => isset($_POST['goods_origin']) ? sanitize_text_field(wp_unslash($_POST['goods_origin'])) : '',
             // Every checkbox on this form has to be listed here or it can never
             // be saved: normalize() reads this array, not $_POST, so a key that
             // is missing reads as false and is written back over whatever was

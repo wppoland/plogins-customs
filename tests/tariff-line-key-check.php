@@ -80,6 +80,7 @@ function get_option(string $name, $default = false)
     return [
         'count_basis'         => 'category',
         'group_subcategories' => $GLOBALS['group_subcategories'],
+        'goods_origin'        => $GLOBALS['goods_origin'] ?? '',
     ];
 }
 
@@ -385,3 +386,51 @@ $assert(
 );
 
 echo "all exemption checks passed\n";
+
+echo "\n--- country of origin: same tariff line, different origin = two items (Reg. 2015/2446 Art. 1(61)) ---\n";
+
+$GLOBALS['product_meta'][301] = ['_customs_origin' => 'CN'];
+$GLOBALS['product_meta'][302] = ['_customs_origin' => 'VN'];
+$assert(
+    'same tariff code, origins CN and VN = 2 lines',
+    $counter->count(new WC_Cart([
+        new WC_Product(301, [11], '6109'),
+        new WC_Product(302, [11], '6109'),
+    ])),
+    2,
+);
+
+$GLOBALS['product_meta'][303] = ['_customs_origin' => 'CN'];
+$assert(
+    'same tariff code, same origin = 1 line',
+    $counter->count(new WC_Cart([
+        new WC_Product(301, [11], '6109'),
+        new WC_Product(303, [11], '6109'),
+    ])),
+    1,
+);
+
+$GLOBALS['goods_origin'] = 'CN';
+$assert(
+    'a product without origin takes the store default, so it joins the CN line',
+    $counter->count(new WC_Cart([
+        new WC_Product(301, [11], '6109'),
+        new WC_Product(304, [11], '6109'),
+    ])),
+    1,
+);
+$GLOBALS['goods_origin'] = '';
+
+$GLOBALS['product_meta'][305] = ['_customs_origin' => 'VN'];
+$GLOBALS['goods_origin']       = 'CN';
+$assert(
+    'a variation takes its parent origin over the store default',
+    $counter->count(new WC_Cart([
+        new WC_Product(301, [11], '6109'),
+        new WC_Product(306, [], '6109', 305),
+    ])),
+    2,
+);
+$GLOBALS['goods_origin'] = '';
+
+echo "all origin checks passed\n";

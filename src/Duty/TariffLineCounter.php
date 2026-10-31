@@ -32,6 +32,9 @@ final class TariffLineCounter
     /** Product flag: goods outside the 3 EUR duty, never counted as a line. */
     public const EXEMPT_META_KEY = '_customs_exempt';
 
+    /** Product country of origin (ISO alpha-2). */
+    public const ORIGIN_META_KEY = '_customs_origin';
+
     public function __construct(private readonly SettingsRepository $settings)
     {
     }
@@ -102,11 +105,35 @@ final class TariffLineCounter
     }
 
     /**
+     * Country of origin set on the product or the variable product a variation
+     * belongs to, else the store default, else ''.
+     */
+    private function origin(\WC_Product $product): string
+    {
+        foreach (array_filter([$product->get_id(), $product->get_parent_id()]) as $id) {
+            $origin = SettingsRepository::sanitizeCountry((string) get_post_meta($id, self::ORIGIN_META_KEY, true));
+            if ('' !== $origin) {
+                return $origin;
+            }
+        }
+
+        return $this->settings->goodsOrigin();
+    }
+
+    /**
      * Resolve a stable grouping key for a single product line.
      */
     private function lineKey(\WC_Product $product, string $basis): string
     {
         $key = $this->resolveKey($product, $basis);
+
+        // An item is goods sharing the same tariff classification, description
+        // and, where declared, origin (Delegated Regulation (EU) 2015/2446,
+        // Art. 1(61)), so one tariff line made in two countries is two items.
+        $origin = $this->origin($product);
+        if ('' !== $origin) {
+            $key .= '|origin:' . $origin;
+        }
 
         /**
          * Filters the grouping key for a single cart line.

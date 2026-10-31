@@ -22,7 +22,7 @@
         "cs": "phpcs --standard=phpcs.xml.dist",
         "cs:fix": "phpcbf --standard=phpcs.xml.dist",
         "analyse": "phpstan analyse -c phpstan.neon.dist --memory-limit=2G",
-        "test": "php tests/settings-save-check.php && php tests/tariff-line-key-check.php && php tests/duty-calculator-check.php && php tests/ceuta-melilla-check.php"
+        "test": "php tests/settings-save-check.php && php tests/duty-mode-check.php && php tests/tariff-line-key-check.php && php tests/duty-calculator-check.php && php tests/ceuta-melilla-check.php"
     },
     "config": {
         "allow-plugins": {

@@ -51,4 +51,12 @@ return [
     // Charge only inside the period Council Regulation (EU) 2026/382, Article 2
     // sets: from 1 July 2026 until 1 July 2028. Untick if that period is extended.
     'enforce_dates'  => true,
+    // Who pays the duty. 'charge' adds it to the order total (DDP). 'estimate'
+    // shows it to the shopper without charging it, for parcels where the
+    // carrier collects it on delivery (DAP). 'absorb' charges nothing and only
+    // records the amount on the order, for a store that pays it itself.
+    'duty_mode'      => 'charge',
+    // Default country of origin of the goods (ISO-3166 alpha-2), used for any
+    // product without its own. Empty means no origin is counted.
+    'goods_origin'   => '',
 ];

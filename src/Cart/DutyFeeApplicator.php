@@ -85,21 +85,15 @@ final class DutyFeeApplicator implements HasHooks
     /**
      * Classic checkout: the order is saved right after this hook.
      *
+     * A failed payment retry reuses the same order, so a record from an earlier
+     * attempt is cleared when this attempt has no estimate (new address, or the
+     * mode is now charge), or the shopper would see a stale row next to a fee.
+     *
      * @param \WC_Order $order
      */
     public function recordOnOrder($order): void
     {
-        if (! $order instanceof \WC_Order || SettingsRepository::MODE_CHARGE === $this->settings->dutyMode() || ! function_exists('WC')) {
-            return;
-        }
-
-        $duty = $this->duty(WC()->cart);
-        if ($duty <= 0) {
-            return;
-        }
-
-        $order->update_meta_data(self::META_AMOUNT, (string) $duty);
-        $order->update_meta_data(self::META_MODE, $this->settings->dutyMode());
+        $this->record($order);
     }
 
     /**
@@ -109,10 +103,46 @@ final class DutyFeeApplicator implements HasHooks
      */
     public function recordOnStoreApiOrder($order): void
     {
-        $this->recordOnOrder($order);
-        if ($order instanceof \WC_Order && '' !== (string) $order->get_meta(self::META_MODE)) {
+        if ($this->record($order)) {
             $order->save();
         }
+    }
+
+    /**
+     * Write or clear the estimate on the order. Returns whether the meta changed.
+     *
+     * @param mixed $order
+     */
+    private function record($order): bool
+    {
+        if (! $order instanceof \WC_Order || ! function_exists('WC')) {
+            return false;
+        }
+
+        // The Store API also fires its hook when paying an existing order
+        // (order-pay), with a session cart that is not this order's goods.
+        $cart = WC()->cart;
+        if (! $cart instanceof \WC_Cart || $cart->is_empty() || $order->get_cart_hash() !== $cart->get_cart_hash()) {
+            return false;
+        }
+
+        $mode = $this->settings->dutyMode();
+        $duty = SettingsRepository::MODE_CHARGE === $mode ? 0.0 : $this->duty($cart);
+
+        if ($duty <= 0) {
+            if ('' === (string) $order->get_meta(self::META_MODE)) {
+                return false;
+            }
+            $order->delete_meta_data(self::META_AMOUNT);
+            $order->delete_meta_data(self::META_MODE);
+
+            return true;
+        }
+
+        $order->update_meta_data(self::META_AMOUNT, (string) $duty);
+        $order->update_meta_data(self::META_MODE, $mode);
+
+        return true;
     }
 
     /**

@@ -55,12 +55,39 @@ namespace {
         {
             $this->fees[] = $amount;
         }
+
+        public function is_empty(): bool
+        {
+            return false;
+        }
+
+        public function get_cart_hash(): string
+        {
+            return 'cart-a';
+        }
     }
 
     class WC_Order
     {
         /** @var array<string, string> */
         public array $meta = [];
+
+        public string $cartHash = 'cart-a';
+
+        public function get_cart_hash(): string
+        {
+            return $this->cartHash;
+        }
+
+        public function delete_meta_data(string $key): void
+        {
+            unset($this->meta[$key]);
+        }
+
+        public function save(): int
+        {
+            return 1;
+        }
 
         public function update_meta_data(string $key, $value): void
         {
@@ -130,6 +157,23 @@ namespace {
         $rows = $applicator->addOrderTotalsRow([], $order);
         $check("{$mode}: shopper sees an estimate row only in estimate mode", isset($rows['customs_duty_estimate']) === ('estimate' === $mode));
     }
+
+    // A payment retry reuses the order: an estimate from the first attempt must
+    // not survive once the mode is charge, or the shopper sees it next to the fee.
+    $GLOBALS['mode'] = 'estimate';
+    $GLOBALS['wc']   = (object) ['cart' => new WC_Cart()];
+    $order           = new WC_Order();
+    $applicator->recordOnOrder($order);
+    $GLOBALS['mode'] = 'charge';
+    $applicator->recordOnOrder($order);
+    $check('retry in charge mode clears the earlier estimate', [] === $order->meta);
+
+    // Store API order-pay fires the same hook with an unrelated session cart.
+    $GLOBALS['mode']  = 'estimate';
+    $order            = new WC_Order();
+    $order->cartHash  = 'other-order';
+    $applicator->recordOnStoreApiOrder($order);
+    $check('paying an existing order does not take the session cart estimate', [] === $order->meta);
 
     $GLOBALS['mode'] = 'bogus';
     $check('an unknown stored mode falls back to charge', (new SettingsRepository())->dutyMode() === 'charge');

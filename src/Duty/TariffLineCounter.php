@@ -29,6 +29,9 @@ final class TariffLineCounter
 {
     public const META_KEY = '_customs_tariff_code';
 
+    /** Product flag: goods outside the 3 EUR duty, never counted as a line. */
+    public const EXEMPT_META_KEY = '_customs_exempt';
+
     public function __construct(private readonly SettingsRepository $settings)
     {
     }
@@ -60,6 +63,12 @@ final class TariffLineCounter
                 continue;
             }
 
+            // Goods the merchant marked as outside the 3 EUR duty, for example
+            // goods that claim a preferential tariff, are no tariff line either.
+            if ($this->isExempt($product)) {
+                continue;
+            }
+
             $keys[$this->lineKey($product, $basis)] = true;
         }
 
@@ -75,6 +84,21 @@ final class TariffLineCounter
         $count = (int) apply_filters('customs/tariff_line_count', $count, $cart, $basis);
 
         return max(0, $count);
+    }
+
+    /**
+     * Whether the product, or the variable product a variation belongs to, is
+     * flagged as outside the 3 EUR duty.
+     */
+    private function isExempt(\WC_Product $product): bool
+    {
+        foreach (array_filter([$product->get_id(), $product->get_parent_id()]) as $id) {
+            if ('yes' === get_post_meta($id, self::EXEMPT_META_KEY, true)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

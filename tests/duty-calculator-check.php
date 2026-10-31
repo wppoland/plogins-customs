@@ -62,6 +62,18 @@ namespace Customs\Settings {
         public float $rate = 1.0;
         public float $threshold = 150.0;
         public float $perLine = 10.0;
+        public bool $enforceDates = false;
+        public string $originPostcode = '';
+
+        public function enforceDates(): bool
+        {
+            return $this->enforceDates;
+        }
+
+        public function originPostcode(): string
+        {
+            return $this->originPostcode;
+        }
 
         public function isEnabled(): bool
         {
@@ -190,4 +202,37 @@ namespace Customs\Duty {
     $assert('customs/intrinsic_goods_value filter modifies goods value', $calculator->calculate($cartFiltered, 'DE'), 10.0);
 
     echo "all duty calculator checks passed\n";
+
+    echo "\n--- legal period: 1 July 2026 until 1 July 2028 (Regulation (EU) 2026/382, Art. 2) ---\n";
+
+    $GLOBALS['wp_filters'] = [];
+    $cart = new MockCart(subtotal: 100.0, cartContentsTotal: 100.0);
+    $at   = static fn (string $when): \Closure => static fn (): int => (new \DateTimeImmutable($when, new \DateTimeZone('Europe/Brussels')))->getTimestamp();
+    $settings->enforceDates = true;
+
+    $assert('no duty one second before 1 July 2026', (new DutyCalculator($settings, $eu, $counter, $at('2026-06-30 23:59:59')))->calculate($cart, 'DE'), 0.0);
+    $assert('duty from 1 July 2026 00:00 Brussels', (new DutyCalculator($settings, $eu, $counter, $at('2026-07-01 00:00:00')))->calculate($cart, 'DE'), 10.0);
+    $assert('duty on the last second of the period', (new DutyCalculator($settings, $eu, $counter, $at('2028-06-30 23:59:59')))->calculate($cart, 'DE'), 10.0);
+    $assert('no duty from 1 July 2028', (new DutyCalculator($settings, $eu, $counter, $at('2028-07-01 00:00:00')))->calculate($cart, 'DE'), 0.0);
+
+    $settings->enforceDates = false;
+    $assert('override: duty after 1 July 2028 when the period check is off', (new DutyCalculator($settings, $eu, $counter, $at('2028-09-01 12:00:00')))->calculate($cart, 'DE'), 10.0);
+
+    echo "all legal-period checks passed\n";
+
+    echo "\n--- Ceuta and Melilla are outside the EU customs territory (Regulation (EU) No 952/2013, Art. 4(1)) ---\n";
+
+    $assert('US to mainland Spain is charged', $calculator->calculate($cart, 'ES', '28001'), 10.0);
+    $assert('US to Ceuta (51001) is not charged', $calculator->calculate($cart, 'ES', '51001'), 0.0);
+    $assert('US to Melilla (52006) is not charged', $calculator->calculate($cart, 'ES', '52006'), 0.0);
+
+    $settings->origin         = 'ES';
+    $settings->originPostcode = '51001';
+    $assert('Ceuta store to mainland Spain is charged', $calculator->calculate($cart, 'ES', '28001'), 10.0);
+    $assert('Ceuta store to Germany is charged', $calculator->calculate($cart, 'DE'), 10.0);
+
+    $settings->originPostcode = '28001';
+    $assert('Madrid store to Germany is not charged', $calculator->calculate($cart, 'DE'), 0.0);
+
+    echo "all Ceuta and Melilla checks passed\n";
 }

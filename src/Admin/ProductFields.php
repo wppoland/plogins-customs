@@ -10,7 +10,8 @@ use Customs\Duty\TariffLineCounter;
 defined('ABSPATH') || exit;
 
 /**
- * Adds an optional "Customs tariff code" field to the product editor.
+ * Adds an optional "Customs tariff code" field and an "Outside the 3 EUR duty"
+ * checkbox to the product editor.
  *
  * The code is a free-text hint (a short HS heading or any grouping label) that,
  * when set, overrides the category/product grouping used to count tariff lines.
@@ -34,6 +35,12 @@ final class ProductFields implements HasHooks
             'desc_tip'    => true,
             'description' => __('Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category.', 'plogins-customs'),
             'placeholder' => __('e.g. 6109 (T-shirts)', 'plogins-customs'),
+        ]);
+
+        woocommerce_wp_checkbox([
+            'id'          => TariffLineCounter::EXEMPT_META_KEY,
+            'label'       => __('Outside the 3 EUR duty', 'plogins-customs'),
+            'description' => __('Tick for goods that claim a preferential tariff, for example under a trade agreement, and are not imported under IOSS. They add no duty line. Their value still counts toward the goods-value threshold.', 'plogins-customs'),
         ]);
     }
 
@@ -67,6 +74,12 @@ final class ProductFields implements HasHooks
             $product->delete_meta_data(TariffLineCounter::META_KEY);
         } else {
             $product->update_meta_data(TariffLineCounter::META_KEY, $code);
+        }
+
+        if (isset($_POST[TariffLineCounter::EXEMPT_META_KEY])) {
+            $product->update_meta_data(TariffLineCounter::EXEMPT_META_KEY, 'yes');
+        } else {
+            $product->delete_meta_data(TariffLineCounter::EXEMPT_META_KEY);
         }
 
         $product->save();

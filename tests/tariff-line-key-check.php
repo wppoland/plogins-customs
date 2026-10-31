@@ -351,3 +351,37 @@ $assert(
 );
 
 echo "all virtual-product checks passed\n";
+
+echo "\n--- goods flagged outside the 3 EUR duty (preferential tariff) ---\n";
+
+$GLOBALS['product_meta'][401] = ['_customs_exempt' => 'yes'];
+$assert(
+    'a product flagged outside the duty adds no line',
+    $counter->count(new WC_Cart([
+        new WC_Product(401, [11]),
+        new WC_Product(402, [21]),
+    ])),
+    1,
+);
+
+// The flag sits on the variable product; the cart holds its variation.
+$GLOBALS['product_meta'][410] = ['_customs_exempt' => 'yes'];
+new WC_Product(410, [11]);
+$assert(
+    'a variation inherits the flag from its parent',
+    $counter->count(new WC_Cart([
+        new WC_Product(411, [], '', 410),
+    ])),
+    0,
+);
+
+$assert(
+    'an unflagged product in the same category still counts',
+    $counter->count(new WC_Cart([
+        new WC_Product(401, [11]),
+        new WC_Product(403, [11]),
+    ])),
+    1,
+);
+
+echo "all exemption checks passed\n";

@@ -114,7 +114,7 @@ final class Settings implements HasHooks
             <h1><?php echo esc_html__('EU Import Duty', 'plogins-customs'); ?></h1>
 
             <p class="description">
-                <?php echo esc_html__('From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty of 3 EUR per item on goods sold in distance sales and shipped into the EU from outside it, in consignments up to the goods-value threshold, with or without IOSS. Goods imported without IOSS that claim a preferential tariff are not covered. An item is goods sharing the same tariff classification, description and origin; the plugin counts one item per distinct tariff line. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
+                <?php echo esc_html__('From 1 July 2026 until 1 July 2028 the EU charges a temporary customs duty of 3 EUR per item on goods sold in distance sales and shipped into the EU from outside it, in consignments up to the goods-value threshold, with or without IOSS. Goods imported without IOSS that claim a preferential tariff are not covered; tick "Outside the 3 EUR duty" on those products. An item is goods sharing the same tariff classification, description and origin; the plugin counts one item per distinct tariff line. This estimate is shown as its own pre-tax line at cart and checkout.', 'plogins-customs'); ?>
             </p>
 
             <?php if ($saved) : ?>
@@ -133,6 +133,16 @@ final class Settings implements HasHooks
                                 <input type="checkbox" name="enabled" value="1" <?php checked(! empty($s['enabled'])); ?> />
                                 <?php echo esc_html__('Add the EU import duty line to qualifying carts.', 'plogins-customs'); ?>
                             </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php echo esc_html__('Legal period', 'plogins-customs'); ?></th>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="enforce_dates" value="1" <?php checked(! empty($s['enforce_dates'])); ?> />
+                                <?php echo esc_html__('Only apply the duty between 1 July 2026 and 1 July 2028', 'plogins-customs'); ?>
+                            </label>
+                            <p class="description"><?php echo esc_html__('Council Regulation (EU) 2026/382, Article 2 sets this period, so outside it no duty line is added. Untick only if the period is extended.', 'plogins-customs'); ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -178,7 +188,7 @@ final class Settings implements HasHooks
                                 }
                                 ?>
                             </select>
-                            <p class="description"><?php echo esc_html__('Where parcels ship from. The duty only applies when this is outside the EU.', 'plogins-customs'); ?></p>
+                            <p class="description"><?php echo esc_html__('Where parcels ship from. The duty only applies when this is outside the EU customs territory. Ceuta and Melilla are outside it: a Spanish store address with a postcode starting 51 or 52 counts as outside the EU.', 'plogins-customs'); ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -270,6 +280,7 @@ final class Settings implements HasHooks
             'count_basis'    => isset($_POST['count_basis']) ? sanitize_text_field(wp_unslash($_POST['count_basis'])) : SettingsRepository::BASIS_CATEGORY,
             'label'          => isset($_POST['label']) ? sanitize_text_field(wp_unslash($_POST['label'])) : '',
             'taxable'        => isset($_POST['taxable']),
+            'enforce_dates'  => isset($_POST['enforce_dates']),
             // Every checkbox on this form has to be listed here or it can never
             // be saved: normalize() reads this array, not $_POST, so a key that
             // is missing reads as false and is written back over whatever was
@@ -356,7 +367,7 @@ final class Settings implements HasHooks
             return;
         }
 
-        if ($this->eu->isMember($origin)) {
+        if ($this->eu->isMember($origin, $this->settings->originPostcode())) {
             echo '<div class="notice notice-info inline"><p>';
             /* translators: %s: ISO country code. */
             echo esc_html(sprintf(__('Origin %s is inside the EU, so the duty will not be added (intra-EU shipments are excluded).', 'plogins-customs'), $origin));

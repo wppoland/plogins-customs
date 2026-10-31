@@ -113,6 +113,45 @@ final class SettingsRepository
     }
 
     /**
+     * Whether the duty is charged only inside its legal period (1 July 2026
+     * until 1 July 2028). Off is the override for an extended period.
+     */
+    public function enforceDates(): bool
+    {
+        return (bool) ($this->settings()['enforce_dates'] ?? true);
+    }
+
+    /**
+     * Store postcode, but only when the origin is the WooCommerce base country,
+     * so a Ceuta or Melilla store address can be told apart from mainland Spain.
+     * An origin picked on the settings screen that differs from the base
+     * country has no postcode the plugin knows.
+     */
+    public function originPostcode(): string
+    {
+        return $this->originIsBase() && function_exists('WC') && WC()->countries instanceof \WC_Countries
+            ? (string) WC()->countries->get_base_postcode()
+            : '';
+    }
+
+    /**
+     * Store state code (ES:CE is Ceuta, ES:ML is Melilla), on the same terms as
+     * originPostcode(). The store postcode is optional in WooCommerce, the
+     * province is what a Ceuta or Melilla store picks with its country.
+     */
+    public function originState(): string
+    {
+        return $this->originIsBase() ? (string) (wc_get_base_location()['state'] ?? '') : '';
+    }
+
+    private function originIsBase(): bool
+    {
+        $base = wc_get_base_location();
+
+        return strtoupper((string) ($base['country'] ?? '')) === $this->originCountry();
+    }
+
+    /**
      * Settings array merged over packaged defaults, resolved for RENDERING.
      *
      * Texts::apply() only fills what the merchant left empty, and only here, on
@@ -177,6 +216,7 @@ final class SettingsRepository
             'group_subcategories' => ! empty($raw['group_subcategories']),
             'label'          => sanitize_text_field((string) ($raw['label'] ?? '')),
             'taxable'        => ! empty($raw['taxable']),
+            'enforce_dates'  => ! empty($raw['enforce_dates']),
         ];
     }
 }

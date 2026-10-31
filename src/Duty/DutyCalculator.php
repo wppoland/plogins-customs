@@ -14,6 +14,8 @@ defined('ABSPATH') || exit;
  *
  * The duty applies only when every condition holds:
  *   - the feature is enabled;
+ *   - today falls between 1 July 2026 and 1 July 2028 (Council Regulation (EU)
+ *     2026/382, Article 2), unless the merchant switched that check off;
  *   - the store origin country is OUTSIDE the EU;
  *   - the destination (shipping) country is INSIDE the EU; and
  *   - the intrinsic goods value is at or below the threshold (150 EUR).
@@ -25,11 +27,36 @@ defined('ABSPATH') || exit;
  */
 final class DutyCalculator
 {
+    /** 1 July 2026 00:00 Brussels time, when the 3 EUR duty starts. */
+    public const WINDOW_START = '2026-07-01 00:00:00';
+
+    /** 1 July 2028 00:00 Brussels time, when it ends (exclusive). */
+    public const WINDOW_END = '2028-07-01 00:00:00';
+
+    /** @var \Closure(): int */
+    private \Closure $clock;
+
+    /**
+     * @param \Closure(): int|null $clock Unix time source, injectable for tests.
+     */
     public function __construct(
         private readonly SettingsRepository $settings,
         private readonly EuMembership $eu,
         private readonly TariffLineCounter $counter,
+        ?\Closure $clock = null,
     ) {
+        $this->clock = $clock ?? static fn (): int => time();
+    }
+
+    /**
+     * Whether a Unix time falls inside the legal period of the 3 EUR duty.
+     */
+    public static function inWindow(int $now): bool
+    {
+        $tz = new \DateTimeZone('Europe/Brussels');
+
+        return $now >= (new \DateTimeImmutable(self::WINDOW_START, $tz))->getTimestamp()
+            && $now < (new \DateTimeImmutable(self::WINDOW_END, $tz))->getTimestamp();
     }
 
     /**
@@ -37,23 +64,35 @@ final class DutyCalculator
      *
      * @param \WC_Cart    $cart
      * @param string|null $destination ISO alpha-2 destination country. When null
-     *                                 it is resolved from the current customer.
+     *                                 it is resolved from the current customer,
+     *                                 with the postcode.
+     * @param string      $postcode    Destination postcode, when $destination is
+     *                                 given.
+     * @param string      $state       Destination WooCommerce state code, when
+     *                                 $destination is given.
      */
-    public function calculate(\WC_Cart $cart, ?string $destination = null): float
+    public function calculate(\WC_Cart $cart, ?string $destination = null, string $postcode = '', string $state = ''): float
     {
         if (! $this->settings->isEnabled()) {
             return 0.0;
         }
 
-        // Origin must be outside the EU (parcels shipped INTO the EU from
-        // outside it, the UK included). An unknown origin cannot qualify.
-        $origin = $this->settings->originCountry();
-        if ('' === $origin || $this->eu->isMember($origin)) {
+        if ($this->settings->enforceDates() && ! self::inWindow(($this->clock)())) {
             return 0.0;
         }
 
-        $destination ??= $this->destinationCountry();
-        if ('' === $destination || ! $this->eu->isMember($destination)) {
+        // Origin must be outside the EU customs territory (parcels shipped INTO
+        // it from outside, the UK, Ceuta and Melilla included). An unknown
+        // origin cannot qualify.
+        $origin = $this->settings->originCountry();
+        if ('' === $origin || $this->eu->isMember($origin, $this->settings->originPostcode(), $this->settings->originState())) {
+            return 0.0;
+        }
+
+        if (null === $destination) {
+            [$destination, $postcode, $state] = $this->destination();
+        }
+        if ('' === $destination || ! $this->eu->isMember($destination, $postcode, $state)) {
             return 0.0;
         }
 
@@ -104,25 +143,31 @@ final class DutyCalculator
     }
 
     /**
-     * Resolve the destination country from the current customer, preferring the
-     * shipping country and falling back to billing.
+     * Resolve the destination country, postcode and state from the current
+     * customer, preferring the shipping address and falling back to billing.
+     *
+     * @return array{0: string, 1: string, 2: string}
      */
-    private function destinationCountry(): string
+    private function destination(): array
     {
         if (! function_exists('WC')) {
-            return '';
+            return ['', '', ''];
         }
 
         $customer = WC()->customer;
         if (! $customer instanceof \WC_Customer) {
-            return '';
+            return ['', '', ''];
         }
 
-        $country = (string) $customer->get_shipping_country();
+        $country  = (string) $customer->get_shipping_country();
+        $postcode = (string) $customer->get_shipping_postcode();
+        $state    = (string) $customer->get_shipping_state();
         if ('' === $country) {
-            $country = (string) $customer->get_billing_country();
+            $country  = (string) $customer->get_billing_country();
+            $postcode = (string) $customer->get_billing_postcode();
+            $state    = (string) $customer->get_billing_state();
         }
 
-        return strtoupper(trim($country));
+        return [strtoupper(trim($country)), $postcode, $state];
     }
 }

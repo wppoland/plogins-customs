@@ -48,4 +48,7 @@ return [
     // Whether WooCommerce should apply tax on top of the duty fee. The duty is
     // a customs charge, so the default is off (added as its own untaxed line).
     'taxable'        => false,
+    // Charge only inside the period Council Regulation (EU) 2026/382, Article 2
+    // sets: from 1 July 2026 until 1 July 2028. Untick if that period is extended.
+    'enforce_dates'  => true,
 ];

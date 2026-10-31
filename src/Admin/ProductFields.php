@@ -6,6 +6,7 @@ namespace Customs\Admin;
 
 use Customs\Contract\HasHooks;
 use Customs\Duty\TariffLineCounter;
+use Customs\Settings\SettingsRepository;
 
 defined('ABSPATH') || exit;
 
@@ -35,6 +36,16 @@ final class ProductFields implements HasHooks
             'desc_tip'    => true,
             'description' => __('Optional. Products sharing a code count as one EU import duty line. Leave empty to group by category.', 'plogins-customs'),
             'placeholder' => __('e.g. 6109 (T-shirts)', 'plogins-customs'),
+        ]);
+
+        $countries = function_exists('WC') && WC()->countries instanceof \WC_Countries ? WC()->countries->get_countries() : [];
+
+        woocommerce_wp_select([
+            'id'          => TariffLineCounter::ORIGIN_META_KEY,
+            'label'       => __('Country of origin', 'plogins-customs'),
+            'desc_tip'    => true,
+            'description' => __('Where the goods were made. Products with the same tariff line but a different origin count as separate duty lines. Leave on the store default to use the one set under WooCommerce, EU Import Duty.', 'plogins-customs'),
+            'options'     => ['' => __('Store default', 'plogins-customs')] + (is_array($countries) ? $countries : []),
         ]);
 
         woocommerce_wp_checkbox([
@@ -74,6 +85,16 @@ final class ProductFields implements HasHooks
             $product->delete_meta_data(TariffLineCounter::META_KEY);
         } else {
             $product->update_meta_data(TariffLineCounter::META_KEY, $code);
+        }
+
+        $origin = isset($_POST[TariffLineCounter::ORIGIN_META_KEY]) && is_string($_POST[TariffLineCounter::ORIGIN_META_KEY])
+            ? SettingsRepository::sanitizeCountry(sanitize_text_field(wp_unslash($_POST[TariffLineCounter::ORIGIN_META_KEY])))
+            : '';
+
+        if ('' === $origin) {
+            $product->delete_meta_data(TariffLineCounter::ORIGIN_META_KEY);
+        } else {
+            $product->update_meta_data(TariffLineCounter::ORIGIN_META_KEY, $origin);
         }
 
         if (isset($_POST[TariffLineCounter::EXEMPT_META_KEY])) {

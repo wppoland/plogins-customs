@@ -25,6 +25,10 @@ final class SettingsRepository
     public const BASIS_CATEGORY = 'category';
     public const BASIS_PRODUCT  = 'product';
 
+    public const MODE_CHARGE   = 'charge';
+    public const MODE_ESTIMATE = 'estimate';
+    public const MODE_ABSORB   = 'absorb';
+
     public function isEnabled(): bool
     {
         return (bool) ($this->settings()['enabled'] ?? false);
@@ -98,6 +102,37 @@ final class SettingsRepository
         $basis = (string) ($this->settings()['count_basis'] ?? self::BASIS_CATEGORY);
 
         return self::BASIS_PRODUCT === $basis ? self::BASIS_PRODUCT : self::BASIS_CATEGORY;
+    }
+
+    /**
+     * Who pays the duty: charge, estimate or absorb.
+     */
+    public function dutyMode(): string
+    {
+        return self::sanitizeMode((string) ($this->settings()['duty_mode'] ?? self::MODE_CHARGE));
+    }
+
+    /**
+     * Default country of origin of the goods, or '' when none is set.
+     */
+    public function goodsOrigin(): string
+    {
+        return self::sanitizeCountry((string) ($this->settings()['goods_origin'] ?? ''));
+    }
+
+    /**
+     * An ISO alpha-2 code in upper case, or '' when the value is not one.
+     */
+    public static function sanitizeCountry(string $value): string
+    {
+        $code = strtoupper(preg_replace('/[^A-Za-z]/', '', $value) ?? '');
+
+        return strlen($code) === 2 ? $code : '';
+    }
+
+    private static function sanitizeMode(string $mode): string
+    {
+        return in_array($mode, [self::MODE_ESTIMATE, self::MODE_ABSORB], true) ? $mode : self::MODE_CHARGE;
     }
 
     public function label(): string
@@ -199,11 +234,6 @@ final class SettingsRepository
             $basis = self::BASIS_CATEGORY;
         }
 
-        $origin = strtoupper(preg_replace('/[^A-Za-z]/', '', (string) ($raw['origin_country'] ?? '')) ?? '');
-        if (strlen($origin) !== 2) {
-            $origin = '';
-        }
-
         $rate = (float) ($raw['eur_rate'] ?? 1.0);
 
         return [
@@ -211,12 +241,14 @@ final class SettingsRepository
             'per_line'       => max(0.0, (float) ($raw['per_line'] ?? 0.0)),
             'threshold'      => max(0.0, (float) ($raw['threshold'] ?? 0.0)),
             'eur_rate'       => $rate > 0 ? $rate : 1.0,
-            'origin_country' => $origin,
+            'origin_country' => self::sanitizeCountry((string) ($raw['origin_country'] ?? '')),
             'count_basis'    => $basis,
             'group_subcategories' => ! empty($raw['group_subcategories']),
             'label'          => sanitize_text_field((string) ($raw['label'] ?? '')),
             'taxable'        => ! empty($raw['taxable']),
             'enforce_dates'  => ! empty($raw['enforce_dates']),
+            'duty_mode'      => self::sanitizeMode((string) ($raw['duty_mode'] ?? self::MODE_CHARGE)),
+            'goods_origin'   => self::sanitizeCountry((string) ($raw['goods_origin'] ?? '')),
         ];
     }
 }

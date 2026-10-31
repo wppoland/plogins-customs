@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,8 @@ What it does:
 * Works in the classic checkout and the Cart and Checkout Blocks, and is HPOS compatible
 * Per-line amount, threshold, store origin country, EUR conversion rate, tariff-line basis, fee label and taxable flag are all configurable
 * Adds taxes on top: the duty is shown as its own line in addition to VAT
+* Who pays the duty is your choice: charge it at checkout (DDP), show it as an estimate outside the total because the carrier collects it on delivery (DAP), or absorb it and only record the amount on the order
+* Counts the same tariff line from two countries of origin as two lines, with a country of origin per product and a store default
 
 This is the WooCommerce equivalent of the import duty handling that hosted platforms add at checkout, without a monthly subscription.
 
@@ -63,10 +65,13 @@ From 1 July 2026 until 1 July 2028, only for orders shipping to an EU country fr
 = How is the duty calculated? =
 The number of distinct tariff lines in the cart multiplied by your per-line amount (3 EUR by default). A parcel of one product type is one line; a parcel spanning several distinct categories counts as several lines. Whether a subcategory counts on its own or under its parent is a setting, and a tariff code overrides both.
 
-An item is one or more goods in a consignment sharing the same tariff classification, description and, where the declaration requires it, origin (Delegated Regulation (EU) 2015/2446, Article 1(61), added by Delegated Regulation (EU) 2026/1022; Regulation (EU) 2026/2108, Article 5(78)). Several units of one product are therefore one item. The plugin counts one item per distinct tariff code, or per category or product when no code is set. That matches the tariff classification part of the definition only: two products with the same code but a different description or origin are two items at customs and one line here, so the estimate can be lower than the duty charged. It is the plugin's working assumption, not legal advice.
+An item is one or more goods in a consignment sharing the same tariff classification, description and, where the declaration requires it, origin (Delegated Regulation (EU) 2015/2446, Article 1(61), added by Delegated Regulation (EU) 2026/1022; Regulation (EU) 2026/2108, Article 5(78)). Several units of one product are therefore one item. The plugin counts one item per distinct tariff code, or per category or product when no code is set, and per country of origin when one is set on the product or as the store default. That matches the tariff classification and origin parts of the definition: two products with the same code and origin but a different description are two items at customs and one line here, so the estimate can be lower than the duty charged. It is the plugin's working assumption, not legal advice.
 
 = Does it work with the Cart and Checkout Blocks? =
 Yes. The duty is added through the native WooCommerce fees API, so it appears in both the classic checkout and the Blocks checkout, and it is HPOS compatible.
+
+= My carrier collects the duty on delivery. Will the shopper pay it twice? =
+No, if you set "Who pays the duty" to "Show it as an estimate only". The duty is then not added to the total. The classic cart and checkout show it as a row below the total, and the order confirmation, My account and the order emails show it on the order, in the Blocks checkout too. "Absorb it" charges and shows nothing to the shopper and records the amount on the order for you.
 
 = Is the amount exact? =
 It is an estimate based on your settings. Final duties are determined by customs at import, and the 2 EUR per item Union handling fee from 1 November 2026 is not included. Keep your per-line amount and threshold up to date with current rules.
@@ -86,6 +91,10 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.2.0 =
+* Added: "Who pays the duty" setting. Charge it at checkout (the old behaviour and the default), show it as an estimate that is not added to the total for parcels where the carrier collects the duty on delivery, or absorb it. In the last two modes the amount is recorded on the order and shown on the order screen.
+* Added: a "Country of origin" field on the product's Shipping tab and a default country of origin in the settings. The same tariff line made in two countries now counts as two lines, as an item is goods sharing the same tariff classification, description and origin (Delegated Regulation (EU) 2015/2446, Article 1(61)). Shops that set no origin count exactly as before.
 
 = 1.1.0 =
 * Added: the duty is only added between 1 July 2026 and 1 July 2028 (Council Regulation (EU) 2026/382, Article 2), Brussels time. Before, it would have kept charging after the duty ends. A new setting switches the check off in case the period is extended.

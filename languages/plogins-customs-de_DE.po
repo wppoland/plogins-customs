@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plogins Customs - EU Import Duty for WooCommerce 0.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-customs\n"
-"POT-Creation-Date: 2026-10-27T11:00:56+00:00\n"
+"POT-Creation-Date: 2026-10-31T12:20:02+00:00\n"
 "PO-Revision-Date: 2026-07-07 00:00+0000\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
@@ -52,11 +52,11 @@ msgstr ""
 "Customs - EU-Einfuhrzoll für WooCommerce erfordert, dass WooCommerce aktiv "
 "ist."
 
-#: src/Admin/ProductFields.php:33
+#: src/Admin/ProductFields.php:35
 msgid "Customs tariff code"
 msgstr "Zolltarifnummer"
 
-#: src/Admin/ProductFields.php:35
+#: src/Admin/ProductFields.php:37
 msgid ""
 "Optional. Products sharing a code count as one EU import duty line. Leave "
 "empty to group by category."
@@ -64,9 +64,35 @@ msgstr ""
 "Optional. Produkte mit demselben Code zählen als eine EU-Einfuhrzollzeile. "
 "Leer lassen, um nach Kategorie zu gruppieren."
 
-#: src/Admin/ProductFields.php:36
+#: src/Admin/ProductFields.php:38
 msgid "e.g. 6109 (T-shirts)"
 msgstr "z. B. 6109 (T-Shirts)"
+
+#: src/Admin/ProductFields.php:45
+msgid "Country of origin"
+msgstr ""
+
+#: src/Admin/ProductFields.php:47
+msgid ""
+"Where the goods were made. Products with the same tariff line but a "
+"different origin count as separate duty lines. Leave on the store default to "
+"use the one set under WooCommerce, EU Import Duty."
+msgstr ""
+
+#: src/Admin/ProductFields.php:48
+msgid "Store default"
+msgstr ""
+
+#: src/Admin/ProductFields.php:53
+msgid "Outside the 3 EUR duty"
+msgstr ""
+
+#: src/Admin/ProductFields.php:54
+msgid ""
+"Tick for goods that claim a preferential tariff, for example under a trade "
+"agreement, and are not imported under IOSS. They add no duty line. Their "
+"value still counts toward the goods-value threshold."
+msgstr ""
 
 #: src/Admin/Settings.php:52 src/Admin/Settings.php:53
 #: src/Admin/Settings.php:114
@@ -87,9 +113,10 @@ msgid ""
 "of 3 EUR per item on goods sold in distance sales and shipped into the EU "
 "from outside it, in consignments up to the goods-value threshold, with or "
 "without IOSS. Goods imported without IOSS that claim a preferential tariff "
-"are not covered. An item is goods sharing the same tariff classification, "
-"description and origin; the plugin counts one item per distinct tariff line. "
-"This estimate is shown as its own pre-tax line at cart and checkout."
+"are not covered; tick \"Outside the 3 EUR duty\" on those products. An item "
+"is goods sharing the same tariff classification, description and origin; the "
+"plugin counts one item per distinct tariff line and country of origin. How "
+"the estimate reaches the shopper is set under \"Who pays the duty\"."
 msgstr ""
 
 #: src/Admin/Settings.php:121
@@ -105,20 +132,62 @@ msgid "Add the EU import duty line to qualifying carts."
 msgstr "EU-Einfuhrzollzeile zu passenden Warenkörben hinzufügen."
 
 #: src/Admin/Settings.php:139
+msgid "Legal period"
+msgstr ""
+
+#: src/Admin/Settings.php:143
+msgid "Only apply the duty between 1 July 2026 and 1 July 2028"
+msgstr ""
+
+#: src/Admin/Settings.php:145
+msgid ""
+"Council Regulation (EU) 2026/382, Article 2 sets this period, so outside it "
+"no duty line is added. Untick only if the period is extended."
+msgstr ""
+
+#: src/Admin/Settings.php:149
+msgid "Who pays the duty"
+msgstr ""
+
+#: src/Admin/Settings.php:154
+msgid ""
+"Charge it at checkout (DDP): the duty is added to the order total as its own "
+"pre-tax line."
+msgstr ""
+
+#: src/Admin/Settings.php:155
+msgid ""
+"Show it as an estimate only (DAP): the shopper sees the amount but it is not "
+"added to the total, because it is paid on delivery."
+msgstr ""
+
+#: src/Admin/Settings.php:156
+msgid ""
+"Absorb it: the shopper sees and pays nothing extra, and the amount is "
+"recorded on the order for your records."
+msgstr ""
+
+#: src/Admin/Settings.php:167
+msgid ""
+"In the Cart and Checkout Blocks an estimate is shown on the order "
+"confirmation and in the order emails, not in the cart."
+msgstr ""
+
+#: src/Admin/Settings.php:172
 msgid "Duty per tariff line (EUR)"
 msgstr "Zoll pro Tarifzeile (EUR)"
 
-#: src/Admin/Settings.php:142
+#: src/Admin/Settings.php:175
 msgid ""
 "EU rule: 3 EUR per item (temporary, until 1 July 2028). The plugin treats "
 "each distinct tariff line as one item."
 msgstr ""
 
-#: src/Admin/Settings.php:146
+#: src/Admin/Settings.php:179
 msgid "Goods-value threshold (EUR)"
 msgstr "Warenwertschwelle (EUR)"
 
-#: src/Admin/Settings.php:149
+#: src/Admin/Settings.php:182
 msgid ""
 "The duty applies only when the cart goods value is at or below this amount. "
 "EU rule: 150 EUR."
@@ -126,12 +195,12 @@ msgstr ""
 "Der Zoll gilt nur, wenn der Warenwert im Warenkorb diesen Betrag nicht "
 "überschreitet. EU-Regel: 150 EUR."
 
-#: src/Admin/Settings.php:153
+#: src/Admin/Settings.php:186
 msgid "Store currency per 1 EUR"
 msgstr "Shop-Währung pro 1 EUR"
 
 #. translators: %s: store currency code.
-#: src/Admin/Settings.php:159
+#: src/Admin/Settings.php:192
 #, php-format
 msgid ""
 "Used to convert the EUR amounts into your store currency (%s). Leave at 1 if "
@@ -140,34 +209,52 @@ msgstr ""
 "Wird verwendet, um EUR-Beträge in deine Shop-Währung (%s) umzurechnen. Bei "
 "Verkauf in EUR auf 1 lassen."
 
-#: src/Admin/Settings.php:165
+#: src/Admin/Settings.php:198
 msgid "Store origin country"
 msgstr "Herkunftsland des Shops"
 
-#: src/Admin/Settings.php:168
+#: src/Admin/Settings.php:201
 msgid "Use WooCommerce base country"
 msgstr "WooCommerce-Basisland verwenden"
 
-#: src/Admin/Settings.php:181
+#: src/Admin/Settings.php:214
 msgid ""
-"Where parcels ship from. The duty only applies when this is outside the EU."
+"Where parcels ship from. The duty only applies when this is outside the EU "
+"customs territory. Ceuta and Melilla are outside it: a Spanish store address "
+"in the province of Ceuta or Melilla, or with a postcode starting 51 or 52, "
+"counts as outside the EU."
 msgstr ""
-"Von wo Pakete versendet werden. Der Zoll gilt nur, wenn dieses Land "
-"außerhalb der EU liegt."
 
-#: src/Admin/Settings.php:185
+#: src/Admin/Settings.php:218
+msgid "Default country of origin"
+msgstr ""
+
+#: src/Admin/Settings.php:221
+msgid "Not set"
+msgstr ""
+
+#: src/Admin/Settings.php:234
+msgid ""
+"Where your goods are made, for products without their own \"Country of "
+"origin\" on the Shipping tab. Under Delegated Regulation (EU) 2015/2446, "
+"Article 1(61), goods with the same tariff classification but a different "
+"declared origin are separate items, so the plugin counts each tariff line "
+"once per country of origin."
+msgstr ""
+
+#: src/Admin/Settings.php:238
 msgid "Tariff line basis"
 msgstr "Grundlage der Tarifzeilen"
 
-#: src/Admin/Settings.php:190
+#: src/Admin/Settings.php:243
 msgid "One line per distinct product category (recommended)"
 msgstr "Eine Zeile pro eigener Produktkategorie (empfohlen)"
 
-#: src/Admin/Settings.php:194
+#: src/Admin/Settings.php:247
 msgid "One line per distinct product"
 msgstr "Eine Zeile pro eigenem Produkt"
 
-#: src/Admin/Settings.php:196
+#: src/Admin/Settings.php:249
 msgid ""
 "A tariff code set on a product always overrides this; products sharing a "
 "code count as one line."
@@ -175,11 +262,11 @@ msgstr ""
 "Ein am Produkt gesetzter Tarifcode überschreibt dies immer; Produkte mit "
 "demselben Code zählen als eine Zeile."
 
-#: src/Admin/Settings.php:200
+#: src/Admin/Settings.php:253
 msgid "Count a subcategory under the category it sits in"
 msgstr ""
 
-#: src/Admin/Settings.php:204
+#: src/Admin/Settings.php:257
 msgid ""
 "Off: Other Products > Beads and Other Products > Pictures count as two "
 "lines. On: Books > Health and Books > Self improvement count as one. Which "
@@ -188,21 +275,21 @@ msgid ""
 "them."
 msgstr ""
 
-#: src/Admin/Settings.php:211
+#: src/Admin/Settings.php:264
 msgid "Checkout line label"
 msgstr "Bezeichnung der Checkout-Zeile"
 
-#: src/Admin/Settings.php:214
+#: src/Admin/Settings.php:267
 msgid ""
 "Leave empty to use the translated default shown in the field, so the line "
 "reads in the language of each shop."
 msgstr ""
 
-#: src/Admin/Settings.php:218
+#: src/Admin/Settings.php:271
 msgid "Apply tax to the duty"
 msgstr "Steuer auf den Zoll anwenden"
 
-#: src/Admin/Settings.php:222
+#: src/Admin/Settings.php:275
 msgid ""
 "Charge tax on the duty fee. Off by default, as customs duty is not normally "
 "taxed."
@@ -210,17 +297,17 @@ msgstr ""
 "Steuer auf die Zollgebühr berechnen. Standardmäßig aus, da Zoll "
 "normalerweise nicht besteuert wird."
 
-#: src/Admin/Settings.php:227
+#: src/Admin/Settings.php:280
 msgid "Save settings"
 msgstr "Einstellungen speichern"
 
 #. translators: 1: products carrying a tariff code, 2: published products
-#: src/Admin/Settings.php:329
+#: src/Admin/Settings.php:385
 #, php-format
 msgid "Tariff codes found on %1$d of %2$d published products."
 msgstr ""
 
-#: src/Admin/Settings.php:339
+#: src/Admin/Settings.php:395
 msgid ""
 "The rest fall back to the category rule above. The field is called \"Customs "
 "tariff code\" and sits on the product's Shipping tab, which WooCommerce "
@@ -228,7 +315,7 @@ msgid ""
 "is not read here."
 msgstr ""
 
-#: src/Admin/Settings.php:354
+#: src/Admin/Settings.php:410
 msgid ""
 "No store origin country is set in WooCommerce, so the duty cannot be "
 "applied. Set a base country or choose an origin below."
@@ -238,7 +325,7 @@ msgstr ""
 "Herkunft aus."
 
 #. translators: %s: ISO country code.
-#: src/Admin/Settings.php:362
+#: src/Admin/Settings.php:418
 #, php-format
 msgid ""
 "Origin %s is inside the EU, so the duty will not be added (intra-EU "
@@ -247,9 +334,28 @@ msgstr ""
 "Herkunft %s liegt innerhalb der EU, daher wird der Zoll nicht hinzugefügt "
 "(Sendungen innerhalb der EU sind ausgeschlossen)."
 
+#: src/Cart/DutyFeeApplicator.php:81 src/Cart/DutyFeeApplicator.php:135
+msgid "Not included in the total. Paid on delivery."
+msgstr ""
+
+#: src/Cart/DutyFeeApplicator.php:164
+msgid "Absorbed by the store, not charged to the customer."
+msgstr ""
+
+#: src/Cart/DutyFeeApplicator.php:165
+msgid "Shown to the customer as paid on delivery, not charged."
+msgstr ""
+
 #: src/Service/Texts.php:34
 msgid "EU import duty (estimate)"
 msgstr "EU-Einfuhrzoll (Schätzung)"
+
+#~ msgid ""
+#~ "Where parcels ship from. The duty only applies when this is outside the "
+#~ "EU."
+#~ msgstr ""
+#~ "Von wo Pakete versendet werden. Der Zoll gilt nur, wenn dieses Land "
+#~ "außerhalb der EU liegt."
 
 #~ msgid ""
 #~ "From 1 July 2026 the EU charges a flat customs duty per tariff line on "

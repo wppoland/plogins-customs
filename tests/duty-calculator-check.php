@@ -64,6 +64,12 @@ namespace Customs\Settings {
         public float $perLine = 10.0;
         public bool $enforceDates = false;
         public string $originPostcode = '';
+        public string $originState = '';
+
+        public function originState(): string
+        {
+            return $this->originState;
+        }
 
         public function enforceDates(): bool
         {
@@ -231,6 +237,13 @@ namespace Customs\Duty {
     $assert('Ceuta store to mainland Spain is charged', $calculator->calculate($cart, 'ES', '28001'), 10.0);
     $assert('Ceuta store to Germany is charged', $calculator->calculate($cart, 'DE'), 10.0);
 
+    $assert('US to province Ceuta, no postcode yet, is not charged', $calculator->calculate($cart, 'ES', '', 'CE'), 0.0);
+
+    $settings->originPostcode = '';
+    $settings->originState    = 'ML';
+    $assert('Melilla store with no postcode to mainland Spain is charged', $calculator->calculate($cart, 'ES', '28001'), 10.0);
+
+    $settings->originState    = 'M';
     $settings->originPostcode = '28001';
     $assert('Madrid store to Germany is not charged', $calculator->calculate($cart, 'DE'), 0.0);
 

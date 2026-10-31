@@ -129,14 +129,26 @@ final class SettingsRepository
      */
     public function originPostcode(): string
     {
-        $base = wc_get_base_location();
-        if (strtoupper((string) ($base['country'] ?? '')) !== $this->originCountry()) {
-            return '';
-        }
-
-        return function_exists('WC') && WC()->countries instanceof \WC_Countries
+        return $this->originIsBase() && function_exists('WC') && WC()->countries instanceof \WC_Countries
             ? (string) WC()->countries->get_base_postcode()
             : '';
+    }
+
+    /**
+     * Store state code (ES:CE is Ceuta, ES:ML is Melilla), on the same terms as
+     * originPostcode(). The store postcode is optional in WooCommerce, the
+     * province is what a Ceuta or Melilla store picks with its country.
+     */
+    public function originState(): string
+    {
+        return $this->originIsBase() ? (string) (wc_get_base_location()['state'] ?? '') : '';
+    }
+
+    private function originIsBase(): bool
+    {
+        $base = wc_get_base_location();
+
+        return strtoupper((string) ($base['country'] ?? '')) === $this->originCountry();
     }
 
     /**

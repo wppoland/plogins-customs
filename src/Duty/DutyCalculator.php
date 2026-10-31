@@ -68,8 +68,10 @@ final class DutyCalculator
      *                                 with the postcode.
      * @param string      $postcode    Destination postcode, when $destination is
      *                                 given.
+     * @param string      $state       Destination WooCommerce state code, when
+     *                                 $destination is given.
      */
-    public function calculate(\WC_Cart $cart, ?string $destination = null, string $postcode = ''): float
+    public function calculate(\WC_Cart $cart, ?string $destination = null, string $postcode = '', string $state = ''): float
     {
         if (! $this->settings->isEnabled()) {
             return 0.0;
@@ -83,14 +85,14 @@ final class DutyCalculator
         // it from outside, the UK, Ceuta and Melilla included). An unknown
         // origin cannot qualify.
         $origin = $this->settings->originCountry();
-        if ('' === $origin || $this->eu->isMember($origin, $this->settings->originPostcode())) {
+        if ('' === $origin || $this->eu->isMember($origin, $this->settings->originPostcode(), $this->settings->originState())) {
             return 0.0;
         }
 
         if (null === $destination) {
-            [$destination, $postcode] = $this->destination();
+            [$destination, $postcode, $state] = $this->destination();
         }
-        if ('' === $destination || ! $this->eu->isMember($destination, $postcode)) {
+        if ('' === $destination || ! $this->eu->isMember($destination, $postcode, $state)) {
             return 0.0;
         }
 
@@ -141,29 +143,31 @@ final class DutyCalculator
     }
 
     /**
-     * Resolve the destination country and postcode from the current customer,
-     * preferring the shipping address and falling back to billing.
+     * Resolve the destination country, postcode and state from the current
+     * customer, preferring the shipping address and falling back to billing.
      *
-     * @return array{0: string, 1: string}
+     * @return array{0: string, 1: string, 2: string}
      */
     private function destination(): array
     {
         if (! function_exists('WC')) {
-            return ['', ''];
+            return ['', '', ''];
         }
 
         $customer = WC()->customer;
         if (! $customer instanceof \WC_Customer) {
-            return ['', ''];
+            return ['', '', ''];
         }
 
         $country  = (string) $customer->get_shipping_country();
         $postcode = (string) $customer->get_shipping_postcode();
+        $state    = (string) $customer->get_shipping_state();
         if ('' === $country) {
             $country  = (string) $customer->get_billing_country();
             $postcode = (string) $customer->get_billing_postcode();
+            $state    = (string) $customer->get_billing_state();
         }
 
-        return [strtoupper(trim($country)), $postcode];
+        return [strtoupper(trim($country)), $postcode, $state];
     }
 }

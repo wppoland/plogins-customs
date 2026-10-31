@@ -188,7 +188,7 @@ final class Settings implements HasHooks
                                 }
                                 ?>
                             </select>
-                            <p class="description"><?php echo esc_html__('Where parcels ship from. The duty only applies when this is outside the EU customs territory. Ceuta and Melilla are outside it: a Spanish store address with a postcode starting 51 or 52 counts as outside the EU.', 'plogins-customs'); ?></p>
+                            <p class="description"><?php echo esc_html__('Where parcels ship from. The duty only applies when this is outside the EU customs territory. Ceuta and Melilla are outside it: a Spanish store address in the province of Ceuta or Melilla, or with a postcode starting 51 or 52, counts as outside the EU.', 'plogins-customs'); ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -367,7 +367,7 @@ final class Settings implements HasHooks
             return;
         }
 
-        if ($this->eu->isMember($origin, $this->settings->originPostcode())) {
+        if ($this->eu->isMember($origin, $this->settings->originPostcode(), $this->settings->originState())) {
             echo '<div class="notice notice-info inline"><p>';
             /* translators: %s: ISO country code. */
             echo esc_html(sprintf(__('Origin %s is inside the EU, so the duty will not be added (intra-EU shipments are excluded).', 'plogins-customs'), $origin));

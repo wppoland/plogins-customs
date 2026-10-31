@@ -20,7 +20,7 @@ The plugin cannot see how a parcel will be declared, so it assumes a distance sa
 
 The duty is only added between 1 July 2026 and 1 July 2028, the period Article 2 sets. If that period is extended, untick "Only apply the duty between 1 July 2026 and 1 July 2028" in the settings.
 
-Ceuta and Melilla are outside the customs territory of the Union (Regulation (EU) No 952/2013, Article 4(1)), although WooCommerce files them under Spain. A Spanish postcode starting 51 (Ceuta) or 52 (Melilla) is treated as outside the EU: a parcel shipped there is not charged, and a store whose WooCommerce address is in Ceuta or Melilla is charged on parcels to mainland Spain and the rest of the EU.
+Ceuta and Melilla are outside the customs territory of the Union (Regulation (EU) No 952/2013, Article 4(1)), although WooCommerce files them under Spain. A Spanish address in the province of Ceuta or Melilla, or with a postcode starting 51 (Ceuta) or 52 (Melilla), is treated as outside the EU: a parcel shipped there is not charged, and a store whose WooCommerce address is in Ceuta or Melilla is charged on parcels to mainland Spain and the rest of the EU.
 
 Separately, from 1 November 2026 customs charge a Union handling fee of 2 EUR per item on goods sold in distance sales, at any consignment value (Regulation (EU) 2026/2108, Article 20(2); Delegated Regulation (EU) 2026/2152, Articles 1 and 2). Customs does not add this fee.
 
@@ -90,7 +90,7 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 = 1.1.0 =
 * Added: the duty is only added between 1 July 2026 and 1 July 2028 (Council Regulation (EU) 2026/382, Article 2), Brussels time. Before, it would have kept charging after the duty ends. A new setting switches the check off in case the period is extended.
 * Added: an "Outside the 3 EUR duty" checkbox on the product's Shipping tab, for goods that claim a preferential tariff and are not imported under IOSS. Flagged products, and variations of a flagged product, add no duty line, so a mixed catalogue no longer has to switch the whole estimate off.
-* Added: Ceuta and Melilla are treated as outside the EU customs territory (Regulation (EU) No 952/2013, Article 4(1)). A Spanish destination postcode starting 51 or 52 is not charged, and a store with a Ceuta or Melilla address in WooCommerce is charged on parcels to the EU, mainland Spain included.
+* Added: Ceuta and Melilla are treated as outside the EU customs territory (Regulation (EU) No 952/2013, Article 4(1)). A Spanish destination in the province of Ceuta or Melilla, or with a postcode starting 51 or 52, is not charged, and a store with a Ceuta or Melilla address in WooCommerce is charged on parcels to the EU, mainland Spain included.
 
 = 1.0.21 =
 * Changed: the description and settings now follow the primary texts. Since 1 July 2026 the 3 EUR duty covers every distance sale to an EU customer in a consignment up to 150 EUR, with or without IOSS, except non-IOSS goods that claim a preferential tariff (Delegated Regulation (EU) 2026/1022). A courier parcel is no longer described as outside the rule. The legal definition of an item is quoted, with what the tariff-line count matches and what it misses, and the readme notes the 2 EUR Union handling fee from 1 November 2026, which the plugin does not add.

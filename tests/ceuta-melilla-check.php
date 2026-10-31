@@ -22,18 +22,21 @@ $eu   = new Customs\Geo\EuMembership();
 $fail = 0;
 
 $cases = [
-    ['ES', '',      true,  'Spain without a postcode is inside'],
-    ['ES', '28001', true,  'Madrid is inside'],
-    ['ES', '35001', true,  'Las Palmas (Canary Islands) is inside the customs territory'],
-    ['ES', '51001', false, 'Ceuta is outside'],
-    ['ES', ' 52006 ', false, 'Melilla is outside, whitespace trimmed'],
-    ['ES', '5100',  true,  'a four-digit 51 prefix is no Ceuta postcode'],
-    ['DE', '51063', true,  'a German 51xxx postcode (Cologne) is still inside'],
-    ['GB', '51001', false, 'the UK is outside regardless of postcode'],
+    ['ES', '',      true,  'Spain without a postcode is inside', ''],
+    ['ES', '28001', true,  'Madrid is inside', ''],
+    ['ES', '35001', true,  'Las Palmas (Canary Islands) is inside the customs territory', ''],
+    ['ES', '51001', false, 'Ceuta is outside', ''],
+    ['ES', ' 52006 ', false, 'Melilla is outside, whitespace trimmed', ''],
+    ['ES', '5100',  true,  'a four-digit 51 prefix is no Ceuta postcode', ''],
+    ['DE', '51063', true,  'a German 51xxx postcode (Cologne) is still inside', ''],
+    ['GB', '51001', false, 'the UK is outside regardless of postcode', ''],
+    ['ES', '',      false, 'province Ceuta without a postcode is outside', 'CE'],
+    ['ES', '',      false, 'province Melilla without a postcode is outside', 'ml'],
+    ['ES', '28001', true,  'province Madrid is inside', 'M'],
 ];
 
-foreach ($cases as [$country, $postcode, $want, $label]) {
-    $got = $eu->isMember($country, $postcode);
+foreach ($cases as [$country, $postcode, $want, $label, $state]) {
+    $got = $eu->isMember($country, $postcode, $state);
     if ($got !== $want) {
         fwrite(STDERR, sprintf("FAIL %s: got %s\n", $label, var_export($got, true)));
         $fail = 1;

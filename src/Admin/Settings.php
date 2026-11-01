@@ -235,6 +235,13 @@ final class Settings implements HasHooks
                         </td>
                     </tr>
                     <tr>
+                        <th scope="row"><label for="customs_eori"><?php echo esc_html__('Store EORI number', 'plogins-customs'); ?></label></th>
+                        <td>
+                            <input type="text" id="customs_eori" name="eori" value="<?php echo esc_attr((string) $s['eori']); ?>" class="regular-text" placeholder="e.g. GB123456789000" maxlength="17" />
+                            <p class="description"><?php echo esc_html__('Economic Operators Registration and Identification number (Union Customs Code, Reg. (EU) No 952/2013, Art. 9). Printed on customs paperwork and carrier export documents.', 'plogins-customs'); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
                         <th scope="row"><?php echo esc_html__('Tariff line basis', 'plogins-customs'); ?></th>
                         <td>
                             <fieldset>
@@ -326,6 +333,7 @@ final class Settings implements HasHooks
             'enforce_dates'  => isset($_POST['enforce_dates']),
             'duty_mode'      => isset($_POST['duty_mode']) ? sanitize_text_field(wp_unslash($_POST['duty_mode'])) : SettingsRepository::MODE_CHARGE,
             'goods_origin'   => isset($_POST['goods_origin']) ? sanitize_text_field(wp_unslash($_POST['goods_origin'])) : '',
+            'eori'           => isset($_POST['eori']) ? sanitize_text_field(wp_unslash($_POST['eori'])) : '',
             // Every checkbox on this form has to be listed here or it can never
             // be saved: normalize() reads this array, not $_POST, so a key that
             // is missing reads as false and is written back over whatever was

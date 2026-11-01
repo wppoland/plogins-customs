@@ -38,6 +38,14 @@ final class ProductFields implements HasHooks
             'placeholder' => __('e.g. 6109 (T-shirts)', 'plogins-customs'),
         ]);
 
+        woocommerce_wp_text_input([
+            'id'          => TariffLineCounter::DESC_META_KEY,
+            'label'       => __('Customs description', 'plogins-customs'),
+            'desc_tip'    => true,
+            'description' => __('Specific description for customs declarations and carrier manifests (e.g. "Cotton knitted men\'s t-shirt"). If empty, the product title is used.', 'plogins-customs'),
+            'placeholder' => __('e.g. Cotton knitted t-shirt', 'plogins-customs'),
+        ]);
+
         $countries = function_exists('WC') && WC()->countries instanceof \WC_Countries ? WC()->countries->get_countries() : [];
 
         woocommerce_wp_select([
@@ -85,6 +93,16 @@ final class ProductFields implements HasHooks
             $product->delete_meta_data(TariffLineCounter::META_KEY);
         } else {
             $product->update_meta_data(TariffLineCounter::META_KEY, $code);
+        }
+
+        $desc = isset($_POST[TariffLineCounter::DESC_META_KEY]) && is_string($_POST[TariffLineCounter::DESC_META_KEY])
+            ? sanitize_text_field(wp_unslash($_POST[TariffLineCounter::DESC_META_KEY]))
+            : '';
+
+        if ('' === $desc) {
+            $product->delete_meta_data(TariffLineCounter::DESC_META_KEY);
+        } else {
+            $product->update_meta_data(TariffLineCounter::DESC_META_KEY, $desc);
         }
 
         $origin = isset($_POST[TariffLineCounter::ORIGIN_META_KEY]) && is_string($_POST[TariffLineCounter::ORIGIN_META_KEY])

@@ -121,6 +121,24 @@ final class SettingsRepository
     }
 
     /**
+     * Store EORI number (UCC Art. 9). Cleaned uppercase alphanumeric string, max 17 chars.
+     */
+    public function eori(): string
+    {
+        return self::sanitizeEori((string) ($this->settings()['eori'] ?? ''));
+    }
+
+    /**
+     * EORI sanitizer: uppercase alphanumeric characters only, max 17 characters.
+     */
+    public static function sanitizeEori(string $value): string
+    {
+        $code = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $value) ?? '');
+
+        return substr($code, 0, 17);
+    }
+
+    /**
      * An ISO alpha-2 code in upper case, or '' when the value is not one.
      */
     public static function sanitizeCountry(string $value): string
@@ -249,6 +267,7 @@ final class SettingsRepository
             'enforce_dates'  => ! empty($raw['enforce_dates']),
             'duty_mode'      => self::sanitizeMode((string) ($raw['duty_mode'] ?? self::MODE_CHARGE)),
             'goods_origin'   => self::sanitizeCountry((string) ($raw['goods_origin'] ?? '')),
+            'eori'           => self::sanitizeEori((string) ($raw['eori'] ?? '')),
         ];
     }
 }

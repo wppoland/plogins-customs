@@ -35,6 +35,9 @@ final class TariffLineCounter
     /** Product country of origin (ISO alpha-2). */
     public const ORIGIN_META_KEY = '_customs_origin';
 
+    /** Product customs description for paperwork and declarations (fallback to title). */
+    public const DESC_META_KEY = '_customs_desc';
+
     public function __construct(private readonly SettingsRepository $settings)
     {
     }

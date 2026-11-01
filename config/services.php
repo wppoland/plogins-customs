@@ -8,6 +8,8 @@
 
 declare(strict_types=1);
 
+use Customs\Admin\CarrierCsvExport;
+use Customs\Admin\CommercialInvoice;
 use Customs\Admin\ProductFields;
 use Customs\Admin\Settings;
 use Customs\Cart\DutyFeeApplicator;
@@ -16,6 +18,8 @@ use Customs\Duty\DutyCalculator;
 use Customs\Duty\TariffLineCounter;
 use Customs\Geo\EuMembership;
 use Customs\Migrator;
+use Customs\Order\OrderCustomsData;
+use Customs\Rest\CustomsOrderController;
 use Customs\Settings\SettingsRepository;
 
 defined('ABSPATH') || exit;
@@ -47,5 +51,24 @@ return static function (Container $c): void {
     $c->singleton(Settings::class, static fn (Container $c): Settings => new Settings(
         $c->get(SettingsRepository::class),
         $c->get(EuMembership::class),
+    ));
+
+    $c->singleton(OrderCustomsData::class, static fn (Container $c): OrderCustomsData => new OrderCustomsData(
+        $c->get(SettingsRepository::class),
+        $c->get(EuMembership::class),
+    ));
+
+    $c->singleton(CommercialInvoice::class, static fn (Container $c): CommercialInvoice => new CommercialInvoice(
+        $c->get(OrderCustomsData::class),
+        $c->get(SettingsRepository::class),
+    ));
+
+    $c->singleton(CarrierCsvExport::class, static fn (Container $c): CarrierCsvExport => new CarrierCsvExport(
+        $c->get(OrderCustomsData::class),
+        $c->get(SettingsRepository::class),
+    ));
+
+    $c->singleton(CustomsOrderController::class, static fn (Container $c): CustomsOrderController => new CustomsOrderController(
+        $c->get(OrderCustomsData::class),
     ));
 };

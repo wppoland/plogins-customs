@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,7 @@ What it does:
 * Adds taxes on top: the duty is shown as its own line in addition to VAT
 * Who pays the duty is your choice: charge it at checkout (DDP), show it as an estimate outside the total because the carrier collects it on delivery (DAP), or absorb it and only record the amount on the order
 * Counts the same tariff line from two countries of origin as two lines, with a country of origin per product and a store default
+* Customs paperwork: generate printable Commercial Invoice and Customs Declaration (CN22/CN23) slips, carrier CSV export with formula injection defense, merchant EORI setting, customs product descriptions, and REST API order endpoint
 
 This is the WooCommerce equivalent of the import duty handling that hosted platforms add at checkout, without a monthly subscription.
 
@@ -91,6 +92,13 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.3.0 =
+* Added: Customs Paperwork. Generate printable Commercial Invoice and Customs Declaration (CN22/CN23) slips directly from the WooCommerce order edit screen and order list.
+* Added: Store EORI number setting under WooCommerce > EU Import Duty (Union Customs Code, Reg. (EU) No 952/2013, Art. 9), automatically printed on declarations and carrier export documents.
+* Added: Customs description field on the product Shipping tab, allowing granular goods descriptions on declarations with fallback to the product title.
+* Added: Carrier CSV export for single orders and bulk orders in the orders list, with built-in spreadsheet formula injection defense (CWE-1236).
+* Added: REST API endpoint (GET /wp-json/customs/v1/orders/<id>) providing structured order customs data for external ERP, 3PL, and warehouse integrations.
 
 = 1.2.0 =
 * Added: "Who pays the duty" setting. Charge it at checkout (the old behaviour and the default), show it as an estimate that is not added to the total for parcels where the carrier collects the duty on delivery, or absorb it. In the last two modes the amount is recorded on the order and shown on the order screen.

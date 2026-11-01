@@ -59,4 +59,7 @@ return [
     // Default country of origin of the goods (ISO-3166 alpha-2), used for any
     // product without its own. Empty means no origin is counted.
     'goods_origin'   => '',
+    // Merchant Economic Operators Registration and Identification (EORI) number
+    // (Union Customs Code, Reg. (EU) No 952/2013, Art. 9). Max 17 alphanumeric characters.
+    'eori'           => '',
 ];

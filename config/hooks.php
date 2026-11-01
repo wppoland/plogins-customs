@@ -11,9 +11,12 @@
 
 declare(strict_types=1);
 
+use Customs\Admin\CarrierCsvExport;
+use Customs\Admin\CommercialInvoice;
 use Customs\Admin\ProductFields;
 use Customs\Admin\Settings;
 use Customs\Cart\DutyFeeApplicator;
+use Customs\Rest\CustomsOrderController;
 
 defined('ABSPATH') || exit;
 
@@ -21,4 +24,7 @@ return [
     DutyFeeApplicator::class,
     ProductFields::class,
     Settings::class,
+    CommercialInvoice::class,
+    CarrierCsvExport::class,
+    CustomsOrderController::class,
 ];

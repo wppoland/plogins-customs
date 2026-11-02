@@ -293,6 +293,7 @@ final class Settings implements HasHooks
              * add-on can render its own section in the same look.
              */
             do_action('customs/settings_after_form');
+            $this->renderCompanionCard();
             ?>
         </div>
         <?php
@@ -443,5 +444,38 @@ final class Settings implements HasHooks
         }
 
         return [];
+    }
+
+    /**
+     * Cross-recommendation card for sister plugins (Plogins GTIN).
+     * Strictly scoped to the Customs settings screen per WordPress.org Guideline 11.
+     */
+    private function renderCompanionCard(): void
+    {
+        $isGtinActive = defined('PloginsGtin\\VERSION');
+        if (! $isGtinActive && function_exists('is_plugin_active')) {
+            $isGtinActive = is_plugin_active('plogins-gtin/plogins-gtin.php') || is_plugin_active('gtin/plogins-gtin.php');
+        }
+
+        ?>
+        <div class="card customs-companion-card" style="max-width: 800px; margin-top: 24px; padding: 16px 20px;">
+            <h2 class="title" style="margin-top: 0; font-size: 15px;"><?php echo esc_html__('Related plugin: Barcodes & customs tariff identification', 'plogins-customs'); ?></h2>
+            <p>
+                <?php echo esc_html__('Accurate customs declarations and courier exports require standard GTIN, EAN or UPC barcodes and HS tariff codes on your physical products.', 'plogins-customs'); ?>
+            </p>
+            <?php if ($isGtinActive) : ?>
+                <p style="color: #1a7f37; font-weight: 500;">
+                    <span class="dashicons dashicons-yes-alt" style="vertical-align: text-bottom;"></span>
+                    <?php echo esc_html__('GTIN & Barcode Lookup is active.', 'plogins-customs'); ?>
+                </p>
+            <?php else : ?>
+                <p>
+                    <a href="<?php echo esc_url(admin_url('plugin-install.php?s=plogins-gtin&tab=search&type=term')); ?>" class="button button-secondary">
+                        <?php echo esc_html__('Explore GTIN Barcode Lookup', 'plogins-customs'); ?> &rarr;
+                    </a>
+                </p>
+            <?php endif; ?>
+        </div>
+        <?php
     }
 }

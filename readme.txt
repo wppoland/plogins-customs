@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.3.1 =
+* Changed: tested with WooCommerce 11.2.
 
 = 1.3.0 =
 * Added: Customs Paperwork. Generate printable Commercial Invoice and Customs Declaration (CN22/CN23) slips directly from the WooCommerce order edit screen and order list.

@@ -185,8 +185,8 @@ final class TariffLineCounter
      *      a variation and did not carry its own code.
      *
      * Whichever path returns a non-empty string wins. The returned value is
-     * normalised (trimmed, upper-cased, punctuation collapsed) so that
-     * "4901.90", "4901-90" and " 4901 90 " are treated as the same code.
+     * normalised (upper-cased, separators removed) so that "4901.90",
+     * "4901-90", " 4901 90 " and "490190" are treated as the same code.
      */
     private function explicitCode(\WC_Product $product): string
     {
@@ -254,24 +254,16 @@ final class TariffLineCounter
      * Canonical form for a tariff code so that formatting differences do not
      * split what should be one grouping key.
      *
-     * Upper-cased so codes are compared case-insensitively. Runs of anything
-     * that is not a letter or digit are collapsed to a single dot, because
-     * "4901.90.00", "4901-90-00" and "4901 90 00" all describe the same
-     * heading for the plugin's line-counting purposes. An empty result means
-     * the caller should fall back to the category/product key.
+     * Upper-cased so codes are compared case-insensitively. Anything that is
+     * not a letter or digit is removed, because "4901.90.00", "4901-90-00",
+     * "4901 90 00" and "49019000" (the digits-only form Customs PRO saves) all
+     * describe the same heading for the plugin's line-counting purposes. An
+     * empty result means the caller should fall back to the category/product
+     * key.
      */
     private function normaliseCode(string $code): string
     {
-        $code = trim($code);
-        if ('' === $code) {
-            return '';
-        }
-
-        $code = strtoupper($code);
-        $code = preg_replace('/[^A-Z0-9]+/', '.', $code);
-        $code = trim((string) $code, '.');
-
-        return $code;
+        return (string) preg_replace('/[^A-Z0-9]/', '', strtoupper($code));
     }
 
     /**

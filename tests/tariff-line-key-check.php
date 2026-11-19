@@ -310,6 +310,17 @@ $assert(
     1,
 );
 
+// Customs PRO bulk edit and CSV import store digits only, while the product
+// field keeps what was typed, so both spellings of one code meet in one cart.
+$assert(
+    '"4901.90.00" typed in the product and "49019000" saved by Customs PRO are the same code',
+    $counter->count(new WC_Cart([
+        new WC_Product(209, [11], '4901.90.00'),
+        new WC_Product(210, [12], '49019000'),
+    ])),
+    1,
+);
+
 $assert(
     '"4901" and "4901.90" are still two different codes',
     $counter->count(new WC_Cart([

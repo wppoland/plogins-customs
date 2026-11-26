@@ -4,7 +4,7 @@ Tags: woocommerce, import duty, customs, eu, checkout
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 3. The same duty line in the cart on mobile.
 
 == Changelog ==
+
+= 1.3.3 =
+* Fixed: an order whose product was later deleted no longer stops the order edit screen with a critical error. The customs line uses the order item name.
 
 = 1.3.2 =
 * Fixed: a tariff code typed with separators (4901.90.00) and the same code saved as digits only (49019000), as Customs PRO bulk edit and CSV import save it, counted as two tariff lines. Separators are now ignored when grouping, so both count as one line. The grouping key passed to the `customs/tariff_line_key` filter now reads `code:49019000` instead of `code:4901.90.00`.

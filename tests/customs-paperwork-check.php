@@ -111,7 +111,7 @@ namespace {
             public string $name,
             public int $qty,
             public float $total,
-            public WC_Product $product
+            public WC_Product|false $product
         ) {}
 
         public function get_id(): int
@@ -134,7 +134,7 @@ namespace {
             return $this->total;
         }
 
-        public function get_product(): WC_Product
+        public function get_product(): WC_Product|false
         {
             return $this->product;
         }
@@ -368,6 +368,12 @@ namespace {
     $order->fees  = [new WC_Order_Item_Fee($settingsRepo->label(), 6.0)];
 
     $data = $extractor->forOrder($order);
+
+    // A deleted product: WooCommerce returns false, the line keeps its order item name.
+    $gone = new WC_Order();
+    $gone->items = [new WC_Order_Item_Product(4, 'Discontinued Lamp', 1, 20.0, false)];
+    $goneData = $extractor->forOrder($gone);
+    $check('Order data: deleted product falls back to the item name', ($goneData['items'][0]['customs_desc'] ?? '') === 'Discontinued Lamp');
 
     $check('Order data: ID matches', $data['order_id'] === 42);
     $check('Order data: destination recognized as EU', $data['is_eu_dest'] === true);

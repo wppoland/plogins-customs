@@ -83,7 +83,8 @@ final class OrderCustomsData
                 continue;
             }
 
-            $product = $item->get_product();
+            // get_product() returns false once the product is deleted; the resolvers take ?WC_Product.
+            $product = $item->get_product() ?: null;
             if ($product instanceof \WC_Product && $product->is_virtual()) {
                 continue;
             }
